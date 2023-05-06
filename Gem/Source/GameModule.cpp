@@ -18,6 +18,7 @@
 #include <AzCore/Module/Module.h>
 
 #include "Components/SpaceshipComponent.hpp"
+#include "Components/TileComponent.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
@@ -34,7 +35,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		{
 			m_descriptors.insert(m_descriptors.end(),
 			{
-				SpaceshipComponent::CreateDescriptor()
+				SpaceshipComponent::CreateDescriptor(),
+				TileComponent::CreateDescriptor()
 			});
 		}
 
