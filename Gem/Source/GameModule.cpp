@@ -20,6 +20,7 @@
 #include "Components/BeamComponent.hpp"
 #include "Components/SpaceshipComponent.hpp"
 #include "Components/TileComponent.hpp"
+#include "Components/TilesPoolComponent.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
@@ -38,7 +39,8 @@ namespace Loherangrin::Games::O3DEJam2305
 			{
 				BeamComponent::CreateDescriptor(),
 				SpaceshipComponent::CreateDescriptor(),
-				TileComponent::CreateDescriptor()
+				TileComponent::CreateDescriptor(),
+				TilesPoolComponent::CreateDescriptor()
 			});
 		}
 

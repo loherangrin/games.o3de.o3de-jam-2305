@@ -25,10 +25,13 @@
 
 namespace Loherangrin::Games::O3DEJam2305
 {
+	class TilesPoolComponent;
+
 	class TileComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected TileRequestBus::Handler
+		, protected TileNotificationBus::MultiHandler
 	{
 	public:
 		AZ_COMPONENT(TileComponent, "{D59C9EF7-BB5E-476F-B692-BFBB94FE3A06}");
@@ -50,6 +53,12 @@ namespace Loherangrin::Games::O3DEJam2305
 		// TileRequestBus
 		void AddEnergy(float i_amount) override;
 
+		TileId GetTileId() const override;
+
+		// TileNotificationBus
+		void OnTileClaimed() override;
+		void OnTileLost() override;
+
 	private:
 		enum class Animation : AZ::u8
 		{
@@ -57,6 +66,8 @@ namespace Loherangrin::Games::O3DEJam2305
 			FLIP,
 			SHAKE
 		};
+
+		void RegisterNeighbor(TileId i_tileId);
 
 		void Decay(float i_deltaTime);
 		void SubtractEnergy(float i_amount);
@@ -77,6 +88,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		bool m_isRecharging { false };
 		bool m_isClaimed { false };
+		AZ::u8 m_nClaimedNeighbors { 0 };
 
 		float m_flipSpeed { 2.f };
 
@@ -96,6 +108,10 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		static constexpr float THRESHOLDS_ALERT = 5.f;
 		static constexpr float THRESHOLDS_TOGGLE = 2.5f;
+
+		static constexpr AZ::u8 MAX_NEIGHBORS = 8;
+
+		friend TilesPoolComponent;
 	};
 
 } // Loherangrin::Games::O3DEJam2305

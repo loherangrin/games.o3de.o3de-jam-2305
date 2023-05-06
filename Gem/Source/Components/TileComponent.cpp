@@ -21,6 +21,7 @@
 
 #include "TileComponent.hpp"
 
+using Loherangrin::Games::O3DEJam2305::TileId;
 using Loherangrin::Games::O3DEJam2305::TileComponent;
 
 
@@ -96,6 +97,7 @@ void TileComponent::Activate()
 void TileComponent::Deactivate()
 {
 	TileRequestBus::Handler::BusDisconnect();
+	TileNotificationBus::MultiHandler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
 }
 
@@ -120,7 +122,9 @@ void TileComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoi
 
 void TileComponent::Decay(float i_deltaTime)
 {
-	const float lostEnergy = m_decaySpeed * i_deltaTime;
+	const float decayMultiplier = 1.f - static_cast<float>(m_nClaimedNeighbors) / static_cast<float>(MAX_NEIGHBORS);
+
+	const float lostEnergy = decayMultiplier * m_decaySpeed * i_deltaTime;
 	SubtractEnergy(lostEnergy);
 }
 
@@ -231,7 +235,8 @@ void TileComponent::PlayFlipAnimation(float i_deltaTime)
 {
 	m_animationParameter += m_flipSpeed * i_deltaTime;
 
-	if(m_animationParameter > 1.f)
+	const bool isEnd = (m_animationParameter > 1.f);
+	if(isEnd)
 	{
 		m_animationParameter = 1.f;
 		m_animation = Animation::NONE;
@@ -240,6 +245,18 @@ void TileComponent::PlayFlipAnimation(float i_deltaTime)
 	const AZ::Quaternion rotation = m_startRotation.Slerp(m_endRotation, m_animationParameter);
 	
 	EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalRotationQuaternion, rotation);
+
+	if(isEnd)
+	{
+		if(m_isClaimed)
+		{
+			EBUS_EVENT_ID(m_id, TileNotificationBus, OnTileClaimed);
+		}
+		else
+		{
+			EBUS_EVENT_ID(m_id, TileNotificationBus, OnTileLost);
+		}
+	}
 }
 
 void TileComponent::PlayShakeAnimation(float i_deltaTime)
@@ -283,4 +300,39 @@ void TileComponent::StopShakeAnimation()
 	const float initialHeight = AZ::Lerp(m_startHeight, m_endHeight, 0.5f);
 
 	EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalZ, initialHeight);
+}
+
+void TileComponent::RegisterNeighbor(TileId i_tileId)
+{
+	if(TileNotificationBus::MultiHandler::BusIsConnectedId(i_tileId))
+	{
+		return;
+	}
+
+	TileNotificationBus::MultiHandler::BusConnect(i_tileId);
+}
+
+TileId TileComponent::GetTileId() const
+{
+	return m_id;
+}
+
+void TileComponent::OnTileClaimed()
+{
+	if(m_nClaimedNeighbors >= MAX_NEIGHBORS)
+	{
+		return;
+	}
+
+	++m_nClaimedNeighbors;
+}
+
+void TileComponent::OnTileLost()
+{
+	if(m_nClaimedNeighbors == 0)
+	{
+		return;
+	}
+
+	--m_nClaimedNeighbors;
 }

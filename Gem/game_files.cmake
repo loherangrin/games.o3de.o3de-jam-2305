@@ -5,5 +5,7 @@ set(FILES
 	Source/Components/SpaceshipComponent.hpp
 	Source/Components/TileComponent.cpp
 	Source/Components/TileComponent.hpp
+	Source/Components/TilesPoolComponent.cpp
+	Source/Components/TilesPoolComponent.hpp
 	Source/EBuses/TileBus.hpp
 )

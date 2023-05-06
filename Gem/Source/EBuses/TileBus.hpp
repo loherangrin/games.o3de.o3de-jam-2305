@@ -21,13 +21,17 @@
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-   class TileRequests
+	using TileId = AZStd::size_t;
+
+	class TileRequests
 	{
 	public:
 		AZ_RTTI(TileRequests, "{8759B2BE-9228-4D42-80DB-3846877C3C56}");
 		virtual ~TileRequests() = default;
 
 		virtual void AddEnergy(float i_amount) = 0;
+
+		virtual TileId GetTileId() const = 0;
 	};
 	
 	class TileRequestBusTraits
@@ -41,5 +45,29 @@ namespace Loherangrin::Games::O3DEJam2305
 	};
 
 	using TileRequestBus = AZ::EBus<TileRequests, TileRequestBusTraits>;
+
+	// ---
+
+    class TileNotifications
+    {
+    public:
+        AZ_RTTI(TileNotifications, "{0A9D666C-D962-4DE2-90C5-9B9374C8331C}");
+        virtual ~TileNotifications() = default;
+
+		virtual void OnTileClaimed(){}
+		virtual void OnTileLost(){}
+    };
+    
+    class TileNotificationBusTraits
+        : public AZ::EBusTraits
+    {
+    public:
+		// EBusTraits
+        static constexpr AZ::EBusHandlerPolicy HandlerPolicy = AZ::EBusHandlerPolicy::Multiple;
+        static constexpr AZ::EBusAddressPolicy AddressPolicy = AZ::EBusAddressPolicy::ById;
+        using BusIdType = TileId;
+    };
+
+    using TileNotificationBus = AZ::EBus<TileNotifications, TileNotificationBusTraits>;
 
 } // Loherangrin::Games::O3DEJam2305
