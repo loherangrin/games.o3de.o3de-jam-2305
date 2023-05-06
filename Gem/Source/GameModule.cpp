@@ -17,6 +17,9 @@
 #include <AzCore/Memory/SystemAllocator.h>
 #include <AzCore/Module/Module.h>
 
+#include "Components/SpaceshipComponent.hpp"
+
+
 namespace Loherangrin::Games::O3DEJam2305
 {
 	class GameModule
@@ -31,6 +34,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		{
 			m_descriptors.insert(m_descriptors.end(),
 			{
+				SpaceshipComponent::CreateDescriptor()
 			});
 		}
 

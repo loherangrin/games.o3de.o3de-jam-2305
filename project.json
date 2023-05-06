@@ -18,7 +18,8 @@
         "Loherangrin_O3DEJam2305",
         "Atom",
         "CameraFramework",
-        "ImGui"
+        "ImGui",
+        "PhysX"
     ],
     "restricted": "Loherangrin_O3DEJam2305",
     "engine_version": "1.2.0",

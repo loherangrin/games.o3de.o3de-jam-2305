@@ -77,6 +77,7 @@ ly_add_target(
         PRIVATE
             Gem::${gem_name}.Private.Object
             AZ::AzCore
+            AZ::AzFramework
 )
 
 # if enabled, ${gem_name} is used by all kinds of applications
