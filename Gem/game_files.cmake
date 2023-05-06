@@ -1,6 +1,8 @@
 set(FILES
 	Source/Components/BeamComponent.cpp
 	Source/Components/BeamComponent.hpp
+	Source/Components/CollectableComponent.cpp
+	Source/Components/CollectableComponent.hpp
 	Source/Components/SpaceshipComponent.cpp
 	Source/Components/SpaceshipComponent.hpp
 	Source/Components/TileComponent.cpp

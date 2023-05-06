@@ -84,6 +84,8 @@ void TileComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArra
 
 void TileComponent::Activate()
 {
+	CollectablesNotificationBus::Handler::BusConnect();
+
 	if(m_isClaimed)
 	{
 		AZ::TickBus::Handler::BusConnect();
@@ -98,16 +100,24 @@ void TileComponent::Deactivate()
 {
 	TileRequestBus::Handler::BusDisconnect();
 	TileNotificationBus::MultiHandler::BusDisconnect();
+
 	AZ::TickBus::Handler::BusDisconnect();
+
+	CollectablesNotificationBus::Handler::BusConnect();
 }
 
 void TileComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
 {
+	if(m_noDecayTimer > 0.f)
+	{
+		m_noDecayTimer -= i_deltaTime;
+	}
+
 	if(m_isRecharging)
 	{
 		m_isRecharging = false;
 	}
-	else
+	else if(m_noDecayTimer < 0.f)
 	{
 		Decay(i_deltaTime);
 	}
@@ -335,4 +345,24 @@ void TileComponent::OnTileLost()
 	}
 
 	--m_nClaimedNeighbors;
+}
+
+void TileComponent::OnStopDecayCollected(float i_duration)
+{
+	if(!m_isClaimed)
+	{
+		return;
+	}
+
+	m_noDecayTimer = i_duration;
+}
+
+void TileComponent::OnTileEnergyCollected(float i_energy)
+{
+	if(!m_isClaimed)
+	{
+		return;
+	}
+
+	AddEnergy(i_energy);
 }

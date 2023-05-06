@@ -17,27 +17,19 @@
 #pragma once
 
 #include <AzCore/Component/Component.h>
-#include <AzCore/Component/TickBus.h>
-#include <AzCore/std/containers/set.h>
 
-#include <AzFramework/Input/Events/InputChannelEventListener.h>
 #include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
-
-#include "../EBuses/CollectableBus.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-	class BeamComponent
+	class CollectableComponent
 		: public AZ::Component
-		, protected AZ::TickBus::Handler
-		, protected AzFramework::InputChannelEventListener
 		, protected Physics::RigidBodyNotificationBus::Handler
-		, protected CollectablesNotificationBus::Handler
 	{
 	public:
-		AZ_COMPONENT(BeamComponent, "{FD7684A2-7DA0-482E-A104-B9F1D99DFD35}");
+		AZ_COMPONENT(CollectableComponent, "{1192D238-1E11-406C-B4D0-88A60BA5199D}");
 		static void Reflect(AZ::ReflectContext* io_context);
 
 		static void GetProvidedServices(AZ::ComponentDescriptor::DependencyArrayType& io_provided);
@@ -51,40 +43,24 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Activate() override;
 		void Deactivate() override;
 
-		// AZ::TickBus
-		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
-
-		// AzFramework::InputChannelEventListener
-		bool OnInputChannelEventFiltered(const AzFramework::InputChannel& i_inputChannel) override;
-
 		// Physics::RigidBodyNotificationBus
 		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
 
-		// CollectablesNotificationBus
-		void OnSpaceshipEnergyCollected(float i_energy) override;
-
 	private:
-		void ConnectTriggerHandlers();
-		void DisconnectTriggerHandlers();
+		enum class CollectableType : AZ::u8
+		{
+			NONE = 0,
+			STOP_DECAY,
+			SPACESHIP_ENERGY,
+			TILE_ENERGY
+		};
 
-		void TransferEnergyToTiles(float i_deltaTime);
-		void SelectTile(const AZ::EntityId& i_tileEntityId);
-		void DeselectTile(const AZ::EntityId& i_tileEntityId);
+		CollectableType m_type { CollectableType::NONE };
 
-		void Toggle();
-		void TurnOn();
-		void TurnOff();
-
-		bool m_isEnabled { false };
-
-		float m_maxEnergy { 10.f };
-		float m_energy { 0.f };
-		float m_transferSpeed { 1.f };
-
-		AZStd::set<AZ::EntityId> m_selectedTiles {};
+		float m_amount { 0.f };
+		float m_duration { 0.f };
 
 		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
-		AzPhysics::SimulatedBodyEvents::OnTriggerExit::Handler m_triggerExitHandler;
 	};
 
-} // Loherangrin::Games::O3DEJam2305
+} // // Loherangrin::Games::O3DEJam2305

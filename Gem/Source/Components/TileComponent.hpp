@@ -20,6 +20,7 @@
 #include <AzCore/Component/TickBus.h>
 #include <AzCore/Math/Quaternion.h>
 
+#include "../EBuses/CollectableBus.hpp"
 #include "../EBuses/TileBus.hpp"
 
 
@@ -30,6 +31,7 @@ namespace Loherangrin::Games::O3DEJam2305
 	class TileComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
+		, protected CollectablesNotificationBus::Handler
 		, protected TileRequestBus::Handler
 		, protected TileNotificationBus::MultiHandler
 	{
@@ -59,6 +61,10 @@ namespace Loherangrin::Games::O3DEJam2305
 		void OnTileClaimed() override;
 		void OnTileLost() override;
 
+		// CollectablesNotificationBus
+		void OnStopDecayCollected(float i_duration) override;
+		void OnTileEnergyCollected(float i_energy) override;
+
 	private:
 		enum class Animation : AZ::u8
 		{
@@ -84,7 +90,9 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		float m_maxEnergy { 10.f };
 		float m_energy { 0.f };
+
 		float m_decaySpeed { 1.f };
+		float m_noDecayTimer { -1.f };
 
 		bool m_isRecharging { false };
 		bool m_isClaimed { false };

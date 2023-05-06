@@ -120,22 +120,33 @@ void BeamComponent::Activate()
 		TurnOff();
 	}
 
+	CollectablesNotificationBus::Handler::BusConnect();
 	InputChannelEventListener::Connect();
 }
 
 void BeamComponent::Deactivate()
 {
 	InputChannelEventListener::Disconnect();
+	CollectablesNotificationBus::Handler::BusDisconnect();
 
 	if(m_isEnabled)
 	{
 		DisconnectTriggerHandlers();
 	}
+
+	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
 }
 
-void BeamComponent::OnPhysicsEnabled([[maybe_unused]] const AZ::EntityId& i_entityI)
+void BeamComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
 {
-	EBUS_EVENT_ID(GetEntityId(), AZ::TransformBus, SetOnParentChangedBehavior, AZ::OnParentChangedBehavior::Update);
+	if(i_entityId != GetEntityId())
+	{
+		return;
+	}
+
+	EBUS_EVENT_ID(i_entityId, AZ::TransformBus, SetOnParentChangedBehavior, AZ::OnParentChangedBehavior::Update);
+
+	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
 }
 
 void BeamComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
@@ -266,4 +277,9 @@ void BeamComponent::TransferEnergyToTiles(float i_deltaTime)
 
 		TurnOff();
 	}
+}
+
+void BeamComponent::OnSpaceshipEnergyCollected(float i_energy)
+{
+	m_energy = AZStd::clamp(m_energy + i_energy, 0.f, m_maxEnergy);
 }

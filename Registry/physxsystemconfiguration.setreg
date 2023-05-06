@@ -10,7 +10,7 @@
                                 "Spaceship",
                                 "Beam",
                                 "Tile",
-                                {},
+                                "Collectable",
                                 {},
                                 {},
                                 {},
@@ -103,7 +103,7 @@
                                     },
                                     "Name": "Beam_Collisions",
                                     "Group": {
-                                        "Mask": 18446744073709551608
+                                        "Mask": 18446744073709551592
                                     }
                                 },
                                 {
@@ -112,7 +112,16 @@
                                     },
                                     "Name": "Tile_Collisions",
                                     "Group": {
-                                        "Mask": 18446744073709551604
+                                        "Mask": 18446744073709551588
+                                    }
+                                },
+                                {
+                                    "Id": {
+                                        "GroupId": "{094428DB-3F56-4BA2-B5CD-6983A96AD9F0}"
+                                    },
+                                    "Name": "Collectable_Collisions",
+                                    "Group": {
+                                        "Mask": 18446744073709551586
                                     }
                                 }
                             ]
