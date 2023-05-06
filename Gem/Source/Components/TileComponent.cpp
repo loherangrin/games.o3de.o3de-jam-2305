@@ -81,29 +81,35 @@ void TileComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArray
 void TileComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
-void TileComponent::Init()
-{
-	// TODO - Debug
-	m_energy = m_maxEnergy;
-	m_isClaimed = true;
-}
-
 void TileComponent::Activate()
 {
 	if(m_isClaimed)
 	{
 		AZ::TickBus::Handler::BusConnect();
 	}
+
+	const AZ::EntityId thisEntityId = GetEntityId();
+
+	TileRequestBus::Handler::BusConnect(thisEntityId);
 }
 
 void TileComponent::Deactivate()
 {
+	TileRequestBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
 }
 
 void TileComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
 {
-	Decay(i_deltaTime);
+	if(m_isRecharging)
+	{
+		m_isRecharging = false;
+	}
+	else
+	{
+		Decay(i_deltaTime);
+	}
+
 	PlayAnimation(i_deltaTime);
 
 	if(m_animation == Animation::NONE && m_energy < AZ::Constants::FloatEpsilon)
@@ -118,18 +124,19 @@ void TileComponent::Decay(float i_deltaTime)
 	SubtractEnergy(lostEnergy);
 }
 
-void TileComponent::SubtractEnergy(float i_value)
+void TileComponent::SubtractEnergy(float i_amount)
 {
-	AddEnergy(-i_value);
+	AddEnergy(-i_amount);
 }
 
-void TileComponent::AddEnergy(float i_value)
+void TileComponent::AddEnergy(float i_amount)
 {
-	m_energy = AZStd::clamp(m_energy + i_value, 0.f, m_maxEnergy);
+	m_energy = AZStd::clamp(m_energy + i_amount, 0.f, m_maxEnergy);
 
-	const bool isAdded = (i_value > 0.f);
+	const bool isAdded = (i_amount > 0.f);
 	if(isAdded)
 	{
+		m_isRecharging = true;
 		if(!m_isClaimed && m_energy > THRESHOLDS_TOGGLE)
 		{
 			Toggle();

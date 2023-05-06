@@ -7,9 +7,9 @@
                         "Layers": {
                             "LayerNames": [
                                 "Default",
-                                {},
-                                {},
-                                {},
+                                "Spaceship",
+                                "Beam",
+                                "Tile",
                                 {},
                                 {},
                                 {},
@@ -87,6 +87,33 @@
                                         "Mask": 0
                                     },
                                     "ReadOnly": true
+                                },
+                                {
+                                    "Id": {
+                                        "GroupId": "{30896EF5-6489-4057-B12C-1944567E3A69}"
+                                    },
+                                    "Name": "Spaceship_Collisions",
+                                    "Group": {
+                                        "Mask": 18446744073709551601
+                                    }
+                                },
+                                {
+                                    "Id": {
+                                        "GroupId": "{9F05DE5B-C03D-468D-AB22-ABF74B1E6857}"
+                                    },
+                                    "Name": "Beam_Collisions",
+                                    "Group": {
+                                        "Mask": 18446744073709551608
+                                    }
+                                },
+                                {
+                                    "Id": {
+                                        "GroupId": "{77D4F507-7872-46C7-AB05-8EF256E9596E}"
+                                    },
+                                    "Name": "Tile_Collisions",
+                                    "Group": {
+                                        "Mask": 18446744073709551604
+                                    }
                                 }
                             ]
                         }

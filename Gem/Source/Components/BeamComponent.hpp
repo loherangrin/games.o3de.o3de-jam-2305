@@ -18,20 +18,23 @@
 
 #include <AzCore/Component/Component.h>
 #include <AzCore/Component/TickBus.h>
-#include <AzCore/Math/Quaternion.h>
+#include <AzCore/std/containers/set.h>
 
-#include "../EBuses/TileBus.hpp"
+#include <AzFramework/Input/Events/InputChannelEventListener.h>
+#include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
+#include <AzFramework/Physics/RigidBodyBus.h>
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-	class TileComponent
+	class BeamComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
-		, protected TileRequestBus::Handler
+		, protected AzFramework::InputChannelEventListener
+		, protected Physics::RigidBodyNotificationBus::Handler
 	{
 	public:
-		AZ_COMPONENT(TileComponent, "{D59C9EF7-BB5E-476F-B692-BFBB94FE3A06}");
+		AZ_COMPONENT(BeamComponent, "{FD7684A2-7DA0-482E-A104-B9F1D99DFD35}");
 		static void Reflect(AZ::ReflectContext* io_context);
 
 		static void GetProvidedServices(AZ::ComponentDescriptor::DependencyArrayType& io_provided);
@@ -41,61 +44,41 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	protected:
 		// AZ::Component
+		void Init() override;
 		void Activate() override;
 		void Deactivate() override;
 
 		// AZ::TickBus
 		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
 
-		// TileRequestBus
-		void AddEnergy(float i_amount) override;
+		// AzFramework::InputChannelEventListener
+		bool OnInputChannelEventFiltered(const AzFramework::InputChannel& i_inputChannel) override;
+
+		// Physics::RigidBodyNotificationBus
+		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
 
 	private:
-		enum class Animation : AZ::u8
-		{
-			NONE = 0,
-			FLIP,
-			SHAKE
-		};
+		void ConnectTriggerHandlers();
+		void DisconnectTriggerHandlers();
 
-		void Decay(float i_deltaTime);
-		void SubtractEnergy(float i_amount);
+		void TransferEnergyToTiles(float i_deltaTime);
+		void SelectTile(const AZ::EntityId& i_tileEntityId);
+		void DeselectTile(const AZ::EntityId& i_tileEntityId);
 
-		void Alert();
 		void Toggle();
+		void TurnOn();
+		void TurnOff();
 
-		void PlayAnimation(float i_deltaTime);
-		void PlayFlipAnimation(float i_deltaTime);
-		void PlayShakeAnimation(float i_deltaTime);
-
-		void StopAnimation();
-		void StopShakeAnimation();
+		bool m_isEnabled { false };
 
 		float m_maxEnergy { 10.f };
 		float m_energy { 0.f };
-		float m_decaySpeed { 1.f };
+		float m_transferSpeed { 1.f };
 
-		bool m_isRecharging { false };
-		bool m_isClaimed { false };
+		AZStd::set<AZ::EntityId> m_selectedTiles {};
 
-		float m_flipSpeed { 2.f };
-
-		float m_maxShakeHeight { 1.f };
-		float m_shakeSpeed { 2.f };
-
-		Animation m_animation { Animation::NONE };
-		float m_animationParameter { 0.f };
-
-		float m_startHeight { 0.f };
-		float m_endHeight { 0.f };
-
-		AZ::Quaternion m_startRotation { AZ::Quaternion::CreateIdentity() };
-		AZ::Quaternion m_endRotation { AZ::Quaternion::CreateIdentity() };
-
-		AZ::EntityId m_meshEntityId {};
-
-		static constexpr float THRESHOLDS_ALERT = 5.f;
-		static constexpr float THRESHOLDS_TOGGLE = 2.5f;
+		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
+		AzPhysics::SimulatedBodyEvents::OnTriggerExit::Handler m_triggerExitHandler;
 	};
 
 } // Loherangrin::Games::O3DEJam2305

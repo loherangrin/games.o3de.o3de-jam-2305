@@ -17,6 +17,7 @@
 #include <AzCore/Memory/SystemAllocator.h>
 #include <AzCore/Module/Module.h>
 
+#include "Components/BeamComponent.hpp"
 #include "Components/SpaceshipComponent.hpp"
 #include "Components/TileComponent.hpp"
 
@@ -35,6 +36,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		{
 			m_descriptors.insert(m_descriptors.end(),
 			{
+				BeamComponent::CreateDescriptor(),
 				SpaceshipComponent::CreateDescriptor(),
 				TileComponent::CreateDescriptor()
 			});

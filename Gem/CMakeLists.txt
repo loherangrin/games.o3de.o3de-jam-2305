@@ -62,6 +62,7 @@ ly_add_target(
         PRIVATE
             AZ::AzGameFramework
             Gem::Atom_AtomBridge.Static
+            Gem::AtomLyIntegration_CommonFeatures.Static
 )
 
 ly_add_target(
