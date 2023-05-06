@@ -1,0 +1,28 @@
+{
+    "project_name": "Loherangrin_O3DEJam2305",
+    "version": "1.0.0",
+    "project_id": "{9344DD1F-23C1-48E6-8F5F-6C91E2C53713}",
+    "origin": "https://github.com/loherangrin/games.o3de.o3de-jam-2305",
+    "license": "https://github.com/loherangrin/games.o3de.o3de-jam-2305/blob/main/LICENSE",
+    "display_name": "Loherangrin_O3DEJam2305",
+    "summary": "Submission to O3DE Jam - May 5-7, 2023",
+    "canonical_tags": [
+        "Project"
+    ],
+    "user_tags": [
+        "Loherangrin_O3DEJam2305"
+    ],
+    "icon_path": "preview.png",
+    "engine": "o3de",
+    "gem_names": [
+        "Loherangrin_O3DEJam2305",
+        "Atom",
+        "CameraFramework",
+        "ImGui"
+    ],
+    "restricted": "Loherangrin_O3DEJam2305",
+    "engine_version": "1.2.0",
+    "external_subdirectories": [
+        "Gem"
+    ]
+}

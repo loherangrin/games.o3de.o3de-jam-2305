@@ -1,0 +1,29 @@
+{
+    "gem_name": "Loherangrin_O3DEJam2305",
+    "version": "1.0.0",
+    "display_name": "Loherangrin_O3DEJam2305",
+    "license": "Apache-2.0",
+    "license_url": "https://github.com/loherangrin/games.o3de.o3de-jam-2305/blob/main/LICENSE",
+    "origin": "Loherangrin",
+    "origin_url": "https://github.com/loherangrin/games.o3de.o3de-jam-2305",
+    "type": "",
+    "summary": "Submission to O3DE Jam - May 5-7, 2023",
+    "canonical_tags": [
+        "Gem"
+    ],
+    "user_tags": [
+        "Loherangrin_O3DEJam2305"
+    ],
+    "platforms": [
+        "${Platforms}"
+    ],
+    "icon_path": "preview.png",
+    "requirements": "",
+    "documentation_url": "",
+    "dependencies": [
+    ],
+    "compatible_engines": [
+    ],
+    "engine_api_dependencies":[
+    ]
+}

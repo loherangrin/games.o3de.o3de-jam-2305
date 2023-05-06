@@ -1,0 +1,18 @@
+{
+    "Amazon": {
+        "AssetProcessor": {
+            "Settings": {
+                "ScanFolder Loherangrin_O3DEJam2305/Assets": {
+                    "watch": "@GEMROOT:Loherangrin_O3DEJam2305@/Assets",
+                    "recursive": 1,
+                    "order": 101
+                },
+                "ScanFolder Loherangrin_O3DEJam2305/Registry": {
+                    "watch": "@GEMROOT:Loherangrin_O3DEJam2305@/Registry",
+                    "recursive": 1,
+                    "order": 102
+                }
+            }
+        }
+    }
+}
