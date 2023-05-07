@@ -12,5 +12,6 @@ set(FILES
 	Source/Components/TilesPoolComponent.cpp
 	Source/Components/TilesPoolComponent.hpp
 	Source/EBuses/CollectableBus.hpp
+	Source/EBuses/SpaceshipBus.hpp
 	Source/EBuses/TileBus.hpp
 )

@@ -24,7 +24,7 @@
 #include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
 
-#include "../EBuses/CollectableBus.hpp"
+#include "../EBuses/SpaceshipBus.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
@@ -34,7 +34,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		, protected AZ::TickBus::Handler
 		, protected AzFramework::InputChannelEventListener
 		, protected Physics::RigidBodyNotificationBus::Handler
-		, protected CollectablesNotificationBus::Handler
+		, protected SpaceshipNotificationBus::Handler
 	{
 	public:
 		AZ_COMPONENT(BeamComponent, "{FD7684A2-7DA0-482E-A104-B9F1D99DFD35}");
@@ -60,8 +60,11 @@ namespace Loherangrin::Games::O3DEJam2305
 		// Physics::RigidBodyNotificationBus
 		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
 
-		// CollectablesNotificationBus
-		void OnSpaceshipEnergyCollected(float i_energy) override;
+		// SpaceshipNotificationBus
+		void OnEnergySavingModeActivated() override;
+		void OnEnergySavingModeDeactivated() override;
+		void OnRechargingStarted() override;
+		void OnRechargingEnded() override;
 
 	private:
 		void ConnectTriggerHandlers();
@@ -75,10 +78,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		void TurnOn();
 		void TurnOff();
 
+		bool m_isLocked { false };
 		bool m_isEnabled { false };
 
-		float m_maxEnergy { 10.f };
-		float m_energy { 0.f };
 		float m_transferSpeed { 1.f };
 
 		AZStd::set<AZ::EntityId> m_selectedTiles {};

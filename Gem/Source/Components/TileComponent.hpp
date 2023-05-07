@@ -56,6 +56,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		void AddEnergy(float i_amount) override;
 
 		TileId GetTileId() const override;
+		bool IsClaimed() const override;
 
 		// TileNotificationBus
 		void OnTileClaimed() override;

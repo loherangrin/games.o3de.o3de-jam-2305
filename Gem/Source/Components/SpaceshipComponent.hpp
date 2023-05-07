@@ -20,6 +20,10 @@
 #include <AzCore/Component/TickBus.h>
 
 #include <AzFramework/Input/Events/InputChannelEventListener.h>
+#include <AzFramework/Physics/Collision/CollisionGroups.h>
+
+#include "../EBuses/SpaceshipBus.hpp"
+#include "../EBuses/TileBus.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
@@ -28,6 +32,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected AzFramework::InputChannelEventListener
+		, protected SpaceshipRequestBus::Handler
+		, protected TileNotificationBus::Handler
 	{
 	public:
 		AZ_COMPONENT(SpaceshipComponent, "{0738CB1F-FB7B-4A7D-8DED-A7A71E7D150C}");
@@ -50,12 +56,28 @@ namespace Loherangrin::Games::O3DEJam2305
 		// AzFramework::InputChannelEventListener
 		bool OnInputChannelEventFiltered(const AzFramework::InputChannel& i_inputChannel) override;
 
+		// SpaceshipRequestBus
+		void SubtractEnergy(float i_energy) override;
+
+		// TileNotificationBus
+		void OnTileLost() override;
+
 	private:
 		void ApplyRotation(const AZ::Transform& i_thisTransform, float i_deltaTime) const;
-		void ApplyHorizontalTranslation(const AZ::Transform& i_thisTransform) const;
+		bool ApplyHorizontalTranslation(const AZ::Transform& i_thisTransform) const;
 		void ApplyVerticalTranslation(float i_deltaTime);
 
+		TileId GetTileIdIfClaimed() const;
 		bool IsGrounded() const;
+
+		void TakeOff();
+		void Land(TileId i_tileId);
+
+		void AddEnergy(float i_amount);
+		bool IsLowEnergy() const;
+
+		void ConsumeEnergy(float i_deltaTime);
+		void RechargeEnergy(float i_deltaTime);
 
 		float m_moveDirection { 0.f };
 		float m_moveSpeed { 5.f };
@@ -69,7 +91,20 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_minHeight { 0.f };
 		float m_maxHeight { 2.f };
 
+		float m_maxEnergy { 10.f };
+		float m_energy { 0.f };
+		float m_consumptionRate { 0.5f };
+		float m_rechargeRate { 1.f };
+
+		float m_lowEnergyThreshold { 2.f };
+		float m_lowEnergySpeedMultiplier { 0.5f };
+
+		float m_speedMultiplier { 1.f };
+
 		AZ::EntityId m_meshEntityId {};
+		AzPhysics::CollisionGroup m_tileCollisionGroup {};
+
+		static constexpr const char* COLLISION_GROUPS_ALL_TILES = "AllTiles_Query";
 	};
 
 } // Loherangrin::Games::O3DEJam2305

@@ -329,6 +329,11 @@ TileId TileComponent::GetTileId() const
 	return m_id;
 }
 
+bool TileComponent::IsClaimed() const
+{
+	return m_isClaimed;
+}
+
 void TileComponent::OnTileClaimed()
 {
 	if(m_nClaimedNeighbors >= MAX_NEIGHBORS)

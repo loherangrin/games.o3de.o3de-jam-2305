@@ -23,6 +23,8 @@ namespace Loherangrin::Games::O3DEJam2305
 {
 	using TileId = AZStd::size_t;
 
+    static constexpr TileId INVALID_TILE_ID = AZStd::numeric_limits<TileId>::max();
+
 	class TileRequests
 	{
 	public:
@@ -32,6 +34,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		virtual void AddEnergy(float i_amount) = 0;
 
 		virtual TileId GetTileId() const = 0;
+        virtual bool IsClaimed() const = 0;
 	};
 	
 	class TileRequestBusTraits

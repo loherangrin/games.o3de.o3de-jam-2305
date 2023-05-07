@@ -39,7 +39,6 @@ void BeamComponent::Reflect(AZ::ReflectContext* io_context)
 	{
 		serializeContext->Class<BeamComponent, AZ::Component>()
 			->Version(0)
-			->Field("Energy", &BeamComponent::m_maxEnergy)
 			->Field("Transfer", &BeamComponent::m_transferSpeed)
 		;
 
@@ -50,11 +49,7 @@ void BeamComponent::Reflect(AZ::ReflectContext* io_context)
 					->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC_CE("Game"))
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
-				->ClassElement(AZ::Edit::ClassElements::Group, "Energy")
-					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
-
-					->DataElement(AZ::Edit::UIHandlers::Default, &BeamComponent::m_maxEnergy, "Max", "")
-					->DataElement(AZ::Edit::UIHandlers::Default, &BeamComponent::m_transferSpeed, "Transfer", "")
+				->DataElement(AZ::Edit::UIHandlers::Default, &BeamComponent::m_transferSpeed, "Transfer", "")
 			;
 		}
 	}
@@ -103,13 +98,12 @@ void BeamComponent::Init()
 		const AZ::EntityId otherEntityId = i_trigger.m_otherBody->GetEntityId();
 		DeselectTile(otherEntityId);
 	});
-
-	m_energy = m_maxEnergy;
 }
 
 void BeamComponent::Activate()
 {
 	Physics::RigidBodyNotificationBus::Handler::BusConnect(GetEntityId());
+	SpaceshipNotificationBus::Handler::BusConnect();
 
 	if(m_isEnabled)
 	{
@@ -120,14 +114,13 @@ void BeamComponent::Activate()
 		TurnOff();
 	}
 
-	CollectablesNotificationBus::Handler::BusConnect();
 	InputChannelEventListener::Connect();
 }
 
 void BeamComponent::Deactivate()
 {
 	InputChannelEventListener::Disconnect();
-	CollectablesNotificationBus::Handler::BusDisconnect();
+	SpaceshipNotificationBus::Handler::BusDisconnect();
 
 	if(m_isEnabled)
 	{
@@ -191,7 +184,7 @@ void BeamComponent::Toggle()
 
 void BeamComponent::TurnOn()
 {
-	if(m_energy < AZ::Constants::FloatEpsilon)
+	if(m_isLocked)
 	{
 		return;
 	}
@@ -269,17 +262,35 @@ void BeamComponent::TransferEnergyToTiles(float i_deltaTime)
 		EBUS_EVENT_ID(tileEntityId, TileRequestBus, AddEnergy, tileEnergy);
 	}
 
-	m_energy -= sentEnergy;
+	EBUS_EVENT(SpaceshipRequestBus, SubtractEnergy, sentEnergy);
+}
 
-	if(m_energy < 0.f)
+void BeamComponent::OnEnergySavingModeActivated()
+{
+	m_isLocked = true;
+
+	if(m_isEnabled)
 	{
-		m_energy = 0.f;
-
 		TurnOff();
 	}
 }
 
-void BeamComponent::OnSpaceshipEnergyCollected(float i_energy)
+void BeamComponent::OnEnergySavingModeDeactivated()
 {
-	m_energy = AZStd::clamp(m_energy + i_energy, 0.f, m_maxEnergy);
+	m_isLocked = false;
+}
+
+void BeamComponent::OnRechargingStarted()
+{
+	if(m_isEnabled)
+	{
+		TurnOff();
+
+		m_isLocked = true;
+	}
+}
+
+void BeamComponent::OnRechargingEnded()
+{
+	m_isLocked = false;
 }
