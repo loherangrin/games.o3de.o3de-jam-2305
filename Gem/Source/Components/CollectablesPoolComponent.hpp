@@ -63,8 +63,12 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_collectableHeight { 1.f };
 
 		AZ::Data::Asset<AzFramework::Spawnable> m_stopDecayPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipDamagePrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipEnergyPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_tileDamagePrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_tileEnergyPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_speedUpPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_speedDownPrefab {};
 
     	AZStd::unordered_map<CollectableType, AzFramework::EntitySpawnTicket> m_collectableSpawnTickets {};
 

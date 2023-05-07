@@ -22,6 +22,7 @@
 #include <AzFramework/Input/Events/InputChannelEventListener.h>
 #include <AzFramework/Physics/Collision/CollisionGroups.h>
 
+#include "../EBuses/CollectableBus.hpp"
 #include "../EBuses/SpaceshipBus.hpp"
 #include "../EBuses/TileBus.hpp"
 
@@ -32,6 +33,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected AzFramework::InputChannelEventListener
+		, protected CollectablesNotificationBus::Handler
 		, protected SpaceshipRequestBus::Handler
 		, protected TileNotificationBus::Handler
 	{
@@ -59,6 +61,10 @@ namespace Loherangrin::Games::O3DEJam2305
 		// SpaceshipRequestBus
 		void SubtractEnergy(float i_energy) override;
 
+		// CollectablesNotificationBus
+		void OnSpaceshipEnergyCollected(float i_energy) override;
+		void OnSpeedCollected(float i_multiplier, float i_duration) override;
+
 		// TileNotificationBus
 		void OnTileLost() override;
 
@@ -78,6 +84,8 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		void ConsumeEnergy(float i_deltaTime);
 		void RechargeEnergy(float i_deltaTime);
+
+		void ResetSpeedMultiplierOnTimerEnd(float i_deltaTime);
 
 		float m_moveDirection { 0.f };
 		float m_moveSpeed { 5.f };
@@ -100,6 +108,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_lowEnergySpeedMultiplier { 0.5f };
 
 		float m_speedMultiplier { 1.f };
+		float m_speedTimer { -1.f };
 
 		AZ::EntityId m_meshEntityId {};
 		AzPhysics::CollisionGroup m_tileCollisionGroup {};

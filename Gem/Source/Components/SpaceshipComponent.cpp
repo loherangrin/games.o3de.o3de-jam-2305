@@ -124,12 +124,15 @@ void SpaceshipComponent::Activate()
 	AZ::TickBus::Handler::BusConnect();
 	InputChannelEventListener::Connect();
 
+	CollectablesNotificationBus::Handler::BusConnect();
 	SpaceshipRequestBus::Handler::BusConnect();
 }
 
 void SpaceshipComponent::Deactivate()
 {
 	SpaceshipRequestBus::Handler::BusDisconnect();
+
+	CollectablesNotificationBus::Handler::BusConnect();
 	TileNotificationBus::Handler::BusDisconnect();
 
 	InputChannelEventListener::Disconnect();
@@ -142,6 +145,8 @@ void SpaceshipComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTi
 	{
 		RechargeEnergy(i_deltaTime);
 	}
+
+	ResetSpeedMultiplierOnTimerEnd(i_deltaTime);
 
 	AZ::Transform thisTransform { AZ::Transform::CreateIdentity() };
 	EBUS_EVENT_ID_RESULT(thisTransform, GetEntityId(), AZ::TransformBus, GetWorldTM);
@@ -362,7 +367,7 @@ void SpaceshipComponent::AddEnergy(float i_energy)
 	{
 		if(isLowEnergy)
 		{
-			m_speedMultiplier = m_lowEnergySpeedMultiplier;
+			m_speedMultiplier = AZStd::min(m_lowEnergySpeedMultiplier, m_speedMultiplier);
 
 			EBUS_EVENT(SpaceshipNotificationBus, OnEnergySavingModeActivated);
 		}
@@ -398,5 +403,34 @@ void SpaceshipComponent::RechargeEnergy(float i_deltaTime)
 	if(AZ::IsClose(m_energy, m_maxEnergy, AZ::Constants::FloatEpsilon))
 	{
 		EBUS_EVENT(SpaceshipNotificationBus, OnRechargingEnded);
+	}
+}
+
+void SpaceshipComponent::OnSpaceshipEnergyCollected(float i_energy)
+{
+	AddEnergy(i_energy);
+}
+
+void SpaceshipComponent::OnSpeedCollected(float i_multiplier, float i_duration)
+{
+	m_speedMultiplier = i_multiplier;
+	m_speedTimer = i_duration;
+}
+
+void SpaceshipComponent::ResetSpeedMultiplierOnTimerEnd(float i_deltaTime)
+{
+	if(m_speedTimer < 0.f)
+	{
+		return;
+	}
+
+	m_speedTimer -= i_deltaTime;
+
+	if(m_speedTimer < 0.f)
+	{
+		m_speedMultiplier = (IsLowEnergy())
+			? m_lowEnergySpeedMultiplier
+			: 1.f
+		;
 	}
 }

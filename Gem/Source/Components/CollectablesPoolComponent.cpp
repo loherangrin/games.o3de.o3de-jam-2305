@@ -35,9 +35,13 @@ void CollectablesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("Seed", &CollectablesPoolComponent::m_collectableSeed)
 			->Field("Probability", &CollectablesPoolComponent::m_collectableProbability)
 			->Field("Decay", &CollectablesPoolComponent::m_stopDecayPrefab)
+			->Field("DamageSpaceship", &CollectablesPoolComponent::m_spaceshipDamagePrefab)
+			->Field("DamageTile", &CollectablesPoolComponent::m_tileDamagePrefab)
 			->Field("EnergySpaceship", &CollectablesPoolComponent::m_spaceshipEnergyPrefab)
 			->Field("EnergyTile", &CollectablesPoolComponent::m_tileEnergyPrefab)
 			->Field("Height", &CollectablesPoolComponent::m_collectableHeight)
+			->Field("SpeedUp", &CollectablesPoolComponent::m_speedUpPrefab)
+			->Field("SpeedDown", &CollectablesPoolComponent::m_speedDownPrefab)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -58,8 +62,14 @@ void CollectablesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 					
 					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_stopDecayPrefab, "Stop Decay", "")
 
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_spaceshipDamagePrefab, "Damage - Spaceship", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_tileDamagePrefab, "Damage - Tile", "")
+
 					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_spaceshipEnergyPrefab, "Energy - Spaceship", "")
 					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_tileEnergyPrefab, "Energy - Tile", "")
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_speedUpPrefab, "Speed - Up", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_speedDownPrefab, "Speed - Down", "")
 
 				->ClassElement(AZ::Edit::ClassElements::Group, "")
 
@@ -88,8 +98,12 @@ void CollectablesPoolComponent::GetDependentServices(AZ::ComponentDescriptor::De
 void CollectablesPoolComponent::Init()
 {
 	m_collectableSpawnTickets[CollectableType::STOP_DECAY] = AzFramework::EntitySpawnTicket { m_stopDecayPrefab };
+	m_collectableSpawnTickets[CollectableType::SPACESHIP_DAMAGE] = AzFramework::EntitySpawnTicket { m_spaceshipDamagePrefab };
+	m_collectableSpawnTickets[CollectableType::TILE_DAMAGE] = AzFramework::EntitySpawnTicket { m_tileDamagePrefab };
 	m_collectableSpawnTickets[CollectableType::SPACESHIP_ENERGY] = AzFramework::EntitySpawnTicket { m_spaceshipEnergyPrefab };
 	m_collectableSpawnTickets[CollectableType::TILE_ENERGY] = AzFramework::EntitySpawnTicket { m_tileEnergyPrefab };
+	m_collectableSpawnTickets[CollectableType::SPEED_UP] = AzFramework::EntitySpawnTicket { m_speedUpPrefab };
+	m_collectableSpawnTickets[CollectableType::SPEED_DOWN] = AzFramework::EntitySpawnTicket { m_speedDownPrefab };
 
 	m_randomGenerator.SetSeed(m_collectableSeed);
 }

@@ -30,6 +30,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		virtual void OnStopDecayCollected(float i_duration){}
 		virtual void OnSpaceshipEnergyCollected(float i_energy){}
 		virtual void OnTileEnergyCollected(float i_energy){}
+        virtual void OnSpeedCollected(float i_multiplier, float i_duration){}
     };
     
     class CollectablesNotificationBusTraits

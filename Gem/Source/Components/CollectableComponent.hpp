@@ -53,8 +53,12 @@ namespace Loherangrin::Games::O3DEJam2305
 		{
 			NONE = 0,
 			STOP_DECAY,
+			SPACESHIP_DAMAGE,
 			SPACESHIP_ENERGY,
-			TILE_ENERGY
+			TILE_DAMAGE,
+			TILE_ENERGY,
+			SPEED_UP,
+			SPEED_DOWN
 		};
 
 		CollectableType m_type { CollectableType::NONE };

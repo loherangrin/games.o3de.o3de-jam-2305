@@ -86,15 +86,39 @@ void CollectableComponent::Init()
 			}
 			break;
 
+			case CollectableType::SPACESHIP_DAMAGE:
+			{
+				EBUS_EVENT(CollectablesNotificationBus, OnSpaceshipEnergyCollected, -m_amount);
+			}
+			break;
+
 			case CollectableType::SPACESHIP_ENERGY:
 			{
 				EBUS_EVENT(CollectablesNotificationBus, OnSpaceshipEnergyCollected, m_amount);
 			}
 			break;
 
+			case CollectableType::TILE_DAMAGE:
+			{
+				EBUS_EVENT(CollectablesNotificationBus, OnTileEnergyCollected, -m_amount);
+			}
+			break;
+
 			case CollectableType::TILE_ENERGY:
 			{
 				EBUS_EVENT(CollectablesNotificationBus, OnTileEnergyCollected, m_amount);
+			}
+			break;
+
+			case CollectableType::SPEED_UP:
+			{
+				EBUS_EVENT(CollectablesNotificationBus, OnSpeedCollected, m_amount, m_duration);
+			}
+			break;
+
+			case CollectableType::SPEED_DOWN:
+			{
+				EBUS_EVENT(CollectablesNotificationBus, OnSpeedCollected, 1.f / m_amount, m_duration);
 			}
 			break;
 		}
