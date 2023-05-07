@@ -11,7 +11,7 @@
                                 "Beam",
                                 "Tile",
                                 "Collectable",
-                                {},
+                                "Storm",
                                 {},
                                 {},
                                 {},
@@ -103,7 +103,7 @@
                                     },
                                     "Name": "Beam_Collisions",
                                     "Group": {
-                                        "Mask": 18446744073709551592
+                                        "Mask": 18446744073709551560
                                     }
                                 },
                                 {
@@ -121,16 +121,25 @@
                                     },
                                     "Name": "Collectable_Collisions",
                                     "Group": {
-                                        "Mask": 18446744073709551586
+                                        "Mask": 18446744073709551554
                                     }
                                 },
                                 {
                                     "Id": {
                                         "GroupId": "{6BEF38D8-18D5-426C-A241-46401749095E}"
                                     },
+                                    "Name": "Storm_Collisions",
+                                    "Group": {
+                                        "Mask": 18446744073709551562
+                                    }
+                                },
+                                {
+                                    "Id": {
+                                        "GroupId": "{ABCF9B61-615A-484B-97E4-1778C5E93DDA}"
+                                    },
                                     "Name": "AllTiles_Query",
                                     "Group": {
-                                        "Mask": 18446744073709551592
+                                        "Mask": 18446744073709551560
                                     }
                                 }
                             ]

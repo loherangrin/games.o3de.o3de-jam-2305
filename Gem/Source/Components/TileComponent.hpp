@@ -54,6 +54,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// TileRequestBus
 		void AddEnergy(float i_amount) override;
+		void SubtractEnergy(float i_amount) override;
 
 		TileId GetTileId() const override;
 		bool IsClaimed() const override;
@@ -77,7 +78,6 @@ namespace Loherangrin::Games::O3DEJam2305
 		void RegisterNeighbor(TileId i_tileId);
 
 		void Decay(float i_deltaTime);
-		void SubtractEnergy(float i_amount);
 
 		void Alert();
 		void Toggle();

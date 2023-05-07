@@ -32,6 +32,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		virtual ~TileRequests() = default;
 
 		virtual void AddEnergy(float i_amount) = 0;
+        virtual void SubtractEnergy(float i_amount) = 0;
 
 		virtual TileId GetTileId() const = 0;
         virtual bool IsClaimed() const = 0;

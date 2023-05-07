@@ -21,6 +21,7 @@
 #include "Components/CollectableComponent.hpp"
 #include "Components/CollectablesPoolComponent.hpp"
 #include "Components/SpaceshipComponent.hpp"
+#include "Components/StormComponent.hpp"
 #include "Components/TileComponent.hpp"
 #include "Components/TilesPoolComponent.hpp"
 
@@ -43,6 +44,7 @@ namespace Loherangrin::Games::O3DEJam2305
 				CollectableComponent::CreateDescriptor(),
 				CollectablesPoolComponent::CreateDescriptor(),
 				SpaceshipComponent::CreateDescriptor(),
+				StormComponent::CreateDescriptor(),
 				TileComponent::CreateDescriptor(),
 				TilesPoolComponent::CreateDescriptor()
 			});

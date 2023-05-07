@@ -7,6 +7,8 @@ set(FILES
 	Source/Components/CollectablesPoolComponent.hpp
 	Source/Components/SpaceshipComponent.cpp
 	Source/Components/SpaceshipComponent.hpp
+	Source/Components/StormComponent.cpp
+	Source/Components/StormComponent.hpp
 	Source/Components/TileComponent.cpp
 	Source/Components/TileComponent.hpp
 	Source/Components/TilesPoolComponent.cpp
