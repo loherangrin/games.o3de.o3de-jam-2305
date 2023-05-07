@@ -3,11 +3,14 @@ set(FILES
 	Source/Components/BeamComponent.hpp
 	Source/Components/CollectableComponent.cpp
 	Source/Components/CollectableComponent.hpp
+	Source/Components/CollectablesPoolComponent.cpp
+	Source/Components/CollectablesPoolComponent.hpp
 	Source/Components/SpaceshipComponent.cpp
 	Source/Components/SpaceshipComponent.hpp
 	Source/Components/TileComponent.cpp
 	Source/Components/TileComponent.hpp
 	Source/Components/TilesPoolComponent.cpp
 	Source/Components/TilesPoolComponent.hpp
+	Source/EBuses/CollectableBus.hpp
 	Source/EBuses/TileBus.hpp
 )

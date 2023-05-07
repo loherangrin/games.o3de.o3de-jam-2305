@@ -16,22 +16,26 @@
 
 #pragma once
 
+#include <AzCore/Asset/AssetCommon.h>
 #include <AzCore/Component/Component.h>
+#include <AzCore/Math/Random.h>
+#include <AzCore/std/containers/map.h>
 
-#include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
-#include <AzFramework/Physics/RigidBodyBus.h>
+#include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
+#include <AzFramework/Spawnable/Spawnable.h>
+
+#include "CollectableComponent.hpp"
+#include "../EBuses/TileBus.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-	class CollectablesPoolComponent;
-
-	class CollectableComponent
+	class CollectablesPoolComponent
 		: public AZ::Component
-		, protected Physics::RigidBodyNotificationBus::Handler
+		, protected TilesNotificationBus::Handler
 	{
 	public:
-		AZ_COMPONENT(CollectableComponent, "{1192D238-1E11-406C-B4D0-88A60BA5199D}");
+		AZ_COMPONENT(CollectablesPoolComponent, "{06734ACD-DE93-4A48-887C-3C8AC30F7E3B}");
 		static void Reflect(AZ::ReflectContext* io_context);
 
 		static void GetProvidedServices(AZ::ComponentDescriptor::DependencyArrayType& io_provided);
@@ -45,26 +49,26 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Activate() override;
 		void Deactivate() override;
 
-		// Physics::RigidBodyNotificationBus
-		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
+		// TilesNotificationBus
+		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
 
 	private:
-		enum class CollectableType : AZ::u8
-		{
-			NONE = 0,
-			STOP_DECAY,
-			SPACESHIP_ENERGY,
-			TILE_ENERGY
-		};
+		using CollectableType = CollectableComponent::CollectableType;
 
-		CollectableType m_type { CollectableType::NONE };
+		void TryCreateCollectable(const AZ::EntityId& i_tileEntityId);
+		void DestroyAllCollectables();
 
-		float m_amount { 0.f };
-		float m_duration { 0.f };
+		AZ::u64 m_collectableSeed { 1234 };
+		float m_collectableProbability { 0.1f };
+		float m_collectableHeight { 1.f };
 
-		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
+		AZ::Data::Asset<AzFramework::Spawnable> m_stopDecayPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipEnergyPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_tileEnergyPrefab {};
 
-		friend CollectablesPoolComponent;
+    	AZStd::unordered_map<CollectableType, AzFramework::EntitySpawnTicket> m_collectableSpawnTickets {};
+
+		AZ::SimpleLcgRandom m_randomGenerator {};
 	};
 
-} // // Loherangrin::Games::O3DEJam2305
+} // Loherangrin::Games::O3DEJam2305

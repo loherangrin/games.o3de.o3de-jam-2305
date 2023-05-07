@@ -261,10 +261,12 @@ void TileComponent::PlayFlipAnimation(float i_deltaTime)
 		if(m_isClaimed)
 		{
 			EBUS_EVENT_ID(m_id, TileNotificationBus, OnTileClaimed);
+			EBUS_EVENT(TilesNotificationBus, OnTileClaimed, GetEntityId());
 		}
 		else
 		{
 			EBUS_EVENT_ID(m_id, TileNotificationBus, OnTileLost);
+			EBUS_EVENT(TilesNotificationBus, OnTileLost, GetEntityId());
 		}
 	}
 }
