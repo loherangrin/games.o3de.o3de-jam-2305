@@ -9,6 +9,8 @@ set(FILES
 	Source/Components/SpaceshipComponent.hpp
 	Source/Components/StormComponent.cpp
 	Source/Components/StormComponent.hpp
+	Source/Components/StormsPoolComponent.cpp
+	Source/Components/StormsPoolComponent.hpp
 	Source/Components/TileComponent.cpp
 	Source/Components/TileComponent.hpp
 	Source/Components/TilesPoolComponent.cpp

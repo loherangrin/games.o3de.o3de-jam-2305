@@ -50,6 +50,28 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	using TileRequestBus = AZ::EBus<TileRequests, TileRequestBusTraits>;
 
+    // ---
+
+    class TilesRequests
+	{
+	public:
+		AZ_RTTI(TilesRequests, "{363FA7F7-61EE-456B-AF34-25A87AC51CC4}");
+		virtual ~TilesRequests() = default;
+
+		virtual AZ::Vector2 GetGridSize() const = 0;
+	};
+	
+	class TilesRequestBusTraits
+		: public AZ::EBusTraits
+	{
+	public:
+		// EBusTraits
+		static constexpr AZ::EBusHandlerPolicy HandlerPolicy = AZ::EBusHandlerPolicy::Single;
+		static constexpr AZ::EBusAddressPolicy AddressPolicy = AZ::EBusAddressPolicy::Single;
+	};
+
+	using TilesRequestBus = AZ::EBus<TilesRequests, TilesRequestBusTraits>;
+
 	// ---
 
     class TileNotifications

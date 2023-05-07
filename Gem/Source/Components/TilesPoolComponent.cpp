@@ -90,6 +90,15 @@ void TilesPoolComponent::Deactivate()
 	DestroyAllTiles();
 }
 
+AZ::Vector2 TilesPoolComponent::GetGridSize() const
+{
+	return AZ::Vector2
+	{
+		m_gridLength * m_cellSize.GetX(),
+		m_gridLength * m_cellSize.GetY()
+	};
+}
+
 void TilesPoolComponent::CreateAllTiles()
 {
 	for(AZ::u16 i = 0; i < m_gridLength; ++i)

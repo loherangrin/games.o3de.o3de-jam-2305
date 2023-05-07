@@ -26,6 +26,8 @@
 
 namespace Loherangrin::Games::O3DEJam2305
 {
+	class StormsPoolComponent;
+
 	class StormComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
@@ -75,6 +77,8 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
 		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerExitHandler;
+
+		friend StormsPoolComponent;
 	};
 
 } // Loherangrin::Games::O3DEJam2305

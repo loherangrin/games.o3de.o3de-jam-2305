@@ -18,21 +18,21 @@
 
 #include <AzCore/Asset/AssetCommon.h>
 #include <AzCore/Component/Component.h>
+#include <AzCore/Component/TickBus.h>
+#include <AzCore/Math/Random.h>
 
 #include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
 #include <AzFramework/Spawnable/Spawnable.h>
 
-#include "../EBuses/TileBus.hpp"
-
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-	class TilesPoolComponent
+	class StormsPoolComponent
 		: public AZ::Component
-		, protected TilesRequestBus::Handler
+		, protected AZ::TickBus::Handler
 	{
 	public:
-		AZ_COMPONENT(TilesPoolComponent, "{C2212D14-4B02-4AE2-A5C9-2485D5CBEE54}");
+		AZ_COMPONENT(StormsPoolComponent, "{C66C7EBA-D5DF-4331-9B67-38123276A580}");
 		static void Reflect(AZ::ReflectContext* io_context);
 
 		static void GetProvidedServices(AZ::ComponentDescriptor::DependencyArrayType& io_provided);
@@ -46,23 +46,34 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Activate() override;
 		void Deactivate() override;
 
-		// TilesRequestBus
-		AZ::Vector2 GetGridSize() const override;
+		// AZ::TickBus
+		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
 
 	private:
-		void CreateAllTiles();
-		void CreateTile(AZ::u16 i_row, AZ::u16 i_column);
+		void CreateStorm();
+		void DestroyAllStorms();
 
-		void DestroyAllTiles();
+		float GenerateRandomInRange(float i_min, float i_max);
 
-		TileId CalculateTileId(AZ::u16 i_row, AZ::u16 i_column) const;
-		AZStd::vector<TileId> CalculateNeighbors(AZ::u16 i_row, AZ::u16 i_column) const;
+		float m_spawnDelay { 15.f };
+		float m_timer { -1.f };
 
-		AZ::u16 m_gridLength { 10 };
-		AZ::Vector2 m_cellSize { AZ::Vector2::CreateOne() };
+		float m_stormHeight { 1.f };
 
-		AZ::Data::Asset<AzFramework::Spawnable> m_tilePrefab {};
-    	AzFramework::EntitySpawnTicket m_tileSpawnTicket {};
+		float m_minStormDuration { 5.f };
+		float m_maxStormDuration { 15.f };
+
+		float m_minStormSpeed { 1.f };
+		float m_maxStormSpeed { 4.f };
+
+		float m_minStormStrength { 5.f };
+		float m_maxStormStrength { 10.f };
+
+		AZ::Data::Asset<AzFramework::Spawnable> m_stormPrefab {};
+		AzFramework::EntitySpawnTicket m_stormSpawnTicket {};
+
+		AZ::u64 m_randomSeed { 1234 };
+		AZ::SimpleLcgRandom m_randomGenerator {};
 	};
 
-} // Loherangrin::Games::O3DEJam2305
+ } // Loherangrin::Games::O3DEJam2305
