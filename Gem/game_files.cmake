@@ -5,6 +5,8 @@ set(FILES
 	Source/Components/CollectableComponent.hpp
 	Source/Components/CollectablesPoolComponent.cpp
 	Source/Components/CollectablesPoolComponent.hpp
+	Source/Components/ScoreComponent.cpp
+	Source/Components/ScoreComponent.hpp
 	Source/Components/SpaceshipComponent.cpp
 	Source/Components/SpaceshipComponent.hpp
 	Source/Components/StormComponent.cpp

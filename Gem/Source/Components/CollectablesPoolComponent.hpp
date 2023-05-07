@@ -67,6 +67,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipEnergyPrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_tileDamagePrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_tileEnergyPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_smallPointsPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_mediumPointsPrefab {};
+		AZ::Data::Asset<AzFramework::Spawnable> m_largePointsPrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_speedUpPrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_speedDownPrefab {};
 

@@ -17,11 +17,13 @@
 #pragma once
 
 #include <AzCore/EBus/EBus.h>
+#include <AzCore/Math/Vector2.h>
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
 	using TileId = AZStd::size_t;
+	using TileCount = TileId;
 
     static constexpr TileId INVALID_TILE_ID = AZStd::numeric_limits<TileId>::max();
 

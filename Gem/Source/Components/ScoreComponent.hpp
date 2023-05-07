@@ -17,21 +17,22 @@
 #pragma once
 
 #include <AzCore/Component/Component.h>
+#include <AzCore/Component/TickBus.h>
 
-#include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
-#include <AzFramework/Physics/RigidBodyBus.h>
+#include "../EBuses/CollectableBus.hpp"
+#include "../EBuses/TileBus.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
-	class CollectablesPoolComponent;
-
-	class CollectableComponent
+	class ScoreComponent
 		: public AZ::Component
-		, protected Physics::RigidBodyNotificationBus::Handler
+		, protected AZ::TickBus::Handler
+		, protected CollectablesNotificationBus::Handler
+		, protected TilesNotificationBus::Handler
 	{
 	public:
-		AZ_COMPONENT(CollectableComponent, "{1192D238-1E11-406C-B4D0-88A60BA5199D}");
+		AZ_COMPONENT(ScoreComponent, "{2F874DB1-040E-415A-837E-AB24C8F299D5}");
 		static void Reflect(AZ::ReflectContext* io_context);
 
 		static void GetProvidedServices(AZ::ComponentDescriptor::DependencyArrayType& io_provided);
@@ -41,37 +42,32 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	protected:
 		// AZ::Component
-		void Init() override;
 		void Activate() override;
 		void Deactivate() override;
 
-		// Physics::RigidBodyNotificationBus
-		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
+		// AZ::TickBus
+		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
+
+		// CollectablesNotificationBus
+		void OnPointsCollected(Points i_points) override;
+
+		// TilesNotificationBus
+		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
+		void OnTileLost(const AZ::EntityId& i_tileEntityId) override;
 
 	private:
-		enum class CollectableType : AZ::u8
-		{
-			NONE = 0,
-			STOP_DECAY,
-			SPACESHIP_DAMAGE,
-			SPACESHIP_ENERGY,
-			TILE_DAMAGE,
-			TILE_ENERGY,
-			SMALL_POINTS,
-			MEDIUM_POINTS,
-			LARGE_POINTS,
-			SPEED_UP,
-			SPEED_DOWN
-		};
+		using Points = CollectablesNotifications::Points;
+		using TotalPoints = AZ::u64;
 
-		CollectableType m_type { CollectableType::NONE };
+		Points CalculateAllTilePoints() const;
 
-		float m_amount { 0.f };
-		float m_duration { 0.f };
+		TotalPoints m_totalPoints { 0 };
 
-		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
+		Points m_claimedTilePoints { 1 };
+		TileCount m_nClaimedTiles { 0 };
 
-		friend CollectablesPoolComponent;
+		float m_tileTimerPeriod { 1.f };
+		float m_timer { -1.f };
 	};
 
-} // // Loherangrin::Games::O3DEJam2305
+} // Loherangrin::Games::O3DEJam2305

@@ -110,6 +110,14 @@ void CollectableComponent::Init()
 			}
 			break;
 
+			case CollectableType::SMALL_POINTS:
+			case CollectableType::MEDIUM_POINTS:
+			case CollectableType::LARGE_POINTS:
+			{
+				EBUS_EVENT(CollectablesNotificationBus, OnPointsCollected, static_cast<CollectablesNotifications::Points>(m_amount));
+			}
+			break;
+
 			case CollectableType::SPEED_UP:
 			{
 				EBUS_EVENT(CollectablesNotificationBus, OnSpeedCollected, m_amount, m_duration);

@@ -24,12 +24,15 @@ namespace Loherangrin::Games::O3DEJam2305
 	class CollectablesNotifications
     {
     public:
+        using Points = AZ::u16;
+
         AZ_RTTI(CollectablesNotifications, "{580578F6-150A-4A30-8A22-C799B336B52A}");
         virtual ~CollectablesNotifications() = default;
 
 		virtual void OnStopDecayCollected(float i_duration){}
 		virtual void OnSpaceshipEnergyCollected(float i_energy){}
 		virtual void OnTileEnergyCollected(float i_energy){}
+        virtual void OnPointsCollected(Points i_points){}
         virtual void OnSpeedCollected(float i_multiplier, float i_duration){}
     };
     

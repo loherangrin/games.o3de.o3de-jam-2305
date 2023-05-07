@@ -20,6 +20,7 @@
 #include "Components/BeamComponent.hpp"
 #include "Components/CollectableComponent.hpp"
 #include "Components/CollectablesPoolComponent.hpp"
+#include "Components/ScoreComponent.hpp"
 #include "Components/SpaceshipComponent.hpp"
 #include "Components/StormComponent.hpp"
 #include "Components/StormsPoolComponent.hpp"
@@ -44,6 +45,7 @@ namespace Loherangrin::Games::O3DEJam2305
 				BeamComponent::CreateDescriptor(),
 				CollectableComponent::CreateDescriptor(),
 				CollectablesPoolComponent::CreateDescriptor(),
+				ScoreComponent::CreateDescriptor(),
 				SpaceshipComponent::CreateDescriptor(),
 				StormComponent::CreateDescriptor(),
 				StormsPoolComponent::CreateDescriptor(),
