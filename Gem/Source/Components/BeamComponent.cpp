@@ -1,4 +1,4 @@
-/* Submission to O3DE Jam - May 5-7, 2023
+/* Submission to O3DE Jam - May 5-14, 2023
  * Copyright 2023 Matteo Grasso
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
