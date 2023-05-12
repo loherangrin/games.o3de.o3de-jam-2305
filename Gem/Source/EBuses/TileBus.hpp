@@ -106,6 +106,8 @@ namespace Loherangrin::Games::O3DEJam2305
         AZ_RTTI(TilesNotifications, "{3240463C-C419-4970-A7E5-F82FD1D490A4}");
         virtual ~TilesNotifications() = default;
 
+		virtual void OnTileEnergyChanged(const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy){}
+
         virtual void OnTileClaimed(const AZ::EntityId& i_tileEntityId){}
 		virtual void OnTileLost(const AZ::EntityId& i_tileEntityId){}
     };

@@ -27,6 +27,7 @@
 #include <AzFramework/Physics/CollisionBus.h>
 #include <AzFramework/Physics/PhysicsScene.h>
 
+#include "../EBuses/GameBus.hpp"
 #include "SpaceshipComponent.hpp"
 
 using Loherangrin::Games::O3DEJam2305::SpaceshipComponent;
@@ -113,16 +114,13 @@ void SpaceshipComponent::GetDependentServices(AZ::ComponentDescriptor::Dependenc
 void SpaceshipComponent::Init()
 {
 	m_turnSpeed = AZ::DegToRad(m_turnSpeed);
-
-	m_energy = m_maxEnergy;
 }
 
 void SpaceshipComponent::Activate()
 {
 	EBUS_EVENT_RESULT(m_tileCollisionGroup, Physics::CollisionRequestBus, GetCollisionGroupByName, AZStd::string { COLLISION_GROUPS_ALL_TILES });
 
-	AZ::TickBus::Handler::BusConnect();
-	InputChannelEventListener::Connect();
+	GameNotificationBus::Handler::BusConnect();
 
 	CollectablesNotificationBus::Handler::BusConnect();
 	SpaceshipRequestBus::Handler::BusConnect();
@@ -135,8 +133,65 @@ void SpaceshipComponent::Deactivate()
 	CollectablesNotificationBus::Handler::BusConnect();
 	TileNotificationBus::Handler::BusDisconnect();
 
+	GameNotificationBus::Handler::BusDisconnect();
+
 	InputChannelEventListener::Disconnect();
 	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void SpaceshipComponent::OnGameCreated()
+{
+	m_speedMultiplier = m_lowEnergySpeedMultiplier;
+	m_liftDirection = 1.f;
+
+	AZ::TickBus::Handler::BusConnect();
+}
+
+void SpaceshipComponent::OnGameLoading()
+{
+	ResetInput();
+	ResetPosition();
+	ResetState();
+
+	EBUS_EVENT(SpaceshipNotificationBus, OnTakeOffStarted);
+	EBUS_EVENT(SpaceshipNotificationBus, OnTakeOffEnded);
+
+	EBUS_EVENT(SpaceshipNotificationBus, OnEnergySavingModeDeactivated);
+	EBUS_EVENT(SpaceshipNotificationBus, OnSpaceshipEnergyChanged, m_energy / m_maxEnergy);
+}
+
+void SpaceshipComponent::OnGameStarted()
+{
+	OnGameResumed();
+}
+
+void SpaceshipComponent::OnGamePaused()
+{
+	InputChannelEventListener::Disconnect();
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void SpaceshipComponent::OnGameResumed()
+{
+	AZ::TickBus::Handler::BusConnect();
+	InputChannelEventListener::Connect();
+}
+		
+void SpaceshipComponent::OnGameEnded()
+{
+	OnGamePaused();
+}
+
+void SpaceshipComponent::OnGameDestroyed()
+{
+	ResetInput();
+	ResetPosition();
+	ResetState();
+
+	m_speedMultiplier = m_lowEnergySpeedMultiplier;
+	m_liftDirection = -1.f;
+
+	AZ::TickBus::Handler::BusConnect();
 }
 
 void SpaceshipComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
@@ -223,6 +278,11 @@ bool SpaceshipComponent::OnInputChannelEventFiltered(const AzFramework::InputCha
 			}
 		}		
 	}
+	// Pause
+	else if(channelId == AzFramework::InputDeviceKeyboard::Key::AlphanumericP)
+	{
+		EBUS_EVENT(GameNotificationBus, OnGamePaused);
+	}
 	else
 	{
 		return false;
@@ -259,11 +319,15 @@ void SpaceshipComponent::ApplyVerticalTranslation(float i_deltaTime)
 	{
 		m_liftParameter = 0.f;
 		m_liftDirection = 0.f;
+
+		EBUS_EVENT(SpaceshipNotificationBus, OnLandingEnded);
 	}
 	else if(m_liftParameter > 1.f)
 	{
 		m_liftParameter = 1.f;
 		m_liftDirection = 0.f;
+
+		EBUS_EVENT(SpaceshipNotificationBus, OnTakeOffEnded);
 	}
 
 	const float height = AZ::Lerp(m_minHeight, m_maxHeight, m_liftParameter);
@@ -324,7 +388,7 @@ void SpaceshipComponent::TakeOff()
 
 	m_liftDirection = 1.f;
 
-	EBUS_EVENT(SpaceshipNotificationBus, OnRechargingEnded);
+	EBUS_EVENT(SpaceshipNotificationBus, OnTakeOffStarted);
 }
 
 void SpaceshipComponent::Land(TileId i_tileId)
@@ -333,7 +397,7 @@ void SpaceshipComponent::Land(TileId i_tileId)
 
 	TileNotificationBus::Handler::BusConnect(i_tileId);
 
-	EBUS_EVENT(SpaceshipNotificationBus, OnRechargingStarted);
+	EBUS_EVENT(SpaceshipNotificationBus, OnLandingStarted);
 }
 
 void SpaceshipComponent::OnTileLost()
@@ -378,6 +442,13 @@ void SpaceshipComponent::AddEnergy(float i_energy)
 			EBUS_EVENT(SpaceshipNotificationBus, OnEnergySavingModeDeactivated);
 		}
 	}
+
+	EBUS_EVENT(SpaceshipNotificationBus, OnSpaceshipEnergyChanged, m_energy / m_maxEnergy);
+
+	if(m_energy < 0.f)
+	{
+		EBUS_EVENT(GameNotificationBus, OnGameEnded);
+	}
 }
 
 void SpaceshipComponent::ConsumeEnergy(float i_deltaTime)
@@ -399,11 +470,6 @@ void SpaceshipComponent::RechargeEnergy(float i_deltaTime)
 	}
 
 	AddEnergy(m_rechargeRate * i_deltaTime);
-
-	if(AZ::IsClose(m_energy, m_maxEnergy, AZ::Constants::FloatEpsilon))
-	{
-		EBUS_EVENT(SpaceshipNotificationBus, OnRechargingEnded);
-	}
 }
 
 void SpaceshipComponent::OnSpaceshipEnergyCollected(float i_energy)
@@ -433,4 +499,34 @@ void SpaceshipComponent::ResetSpeedMultiplierOnTimerEnd(float i_deltaTime)
 			: 1.f
 		;
 	}
+}
+
+void SpaceshipComponent::ResetInput()
+{
+	m_moveDirection = 0.f;
+	m_turnDirection = 0.f;
+	m_liftDirection = 0.f;
+}
+
+void SpaceshipComponent::ResetPosition()
+{
+	const AZ::EntityId thisEntityId = GetEntityId();
+
+	EBUS_EVENT_ID(thisEntityId, Physics::CharacterRequestBus, SetBasePosition, AZ::Vector3::CreateZero());
+	EBUS_EVENT_ID(thisEntityId, AZ::TransformBus, SetWorldRotationQuaternion, AZ::Quaternion::CreateIdentity());
+}
+
+void SpaceshipComponent::ResetState()
+{
+	m_energy = m_maxEnergy;
+
+	if(m_liftParameter < 1.f)
+	{
+		m_liftParameter = 1.f;
+
+		EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalZ, m_maxHeight);
+	}
+
+	m_speedMultiplier = 1.f;
+	m_speedTimer = -1.f;
 }

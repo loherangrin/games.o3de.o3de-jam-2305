@@ -17,7 +17,11 @@ set(FILES
 	Source/Components/TileComponent.hpp
 	Source/Components/TilesPoolComponent.cpp
 	Source/Components/TilesPoolComponent.hpp
+	Source/Components/UiComponent.cpp
+	Source/Components/UiComponent.hpp
 	Source/EBuses/CollectableBus.hpp
+	Source/EBuses/GameBus.hpp
+	Source/EBuses/ScoreBus.hpp
 	Source/EBuses/SpaceshipBus.hpp
 	Source/EBuses/TileBus.hpp
 )

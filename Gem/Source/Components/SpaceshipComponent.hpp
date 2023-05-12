@@ -23,6 +23,7 @@
 #include <AzFramework/Physics/Collision/CollisionGroups.h>
 
 #include "../EBuses/CollectableBus.hpp"
+#include "../EBuses/GameBus.hpp"
 #include "../EBuses/SpaceshipBus.hpp"
 #include "../EBuses/TileBus.hpp"
 
@@ -34,6 +35,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		, protected AZ::TickBus::Handler
 		, protected AzFramework::InputChannelEventListener
 		, protected CollectablesNotificationBus::Handler
+		, protected GameNotificationBus::Handler
 		, protected SpaceshipRequestBus::Handler
 		, protected TileNotificationBus::Handler
 	{
@@ -65,6 +67,15 @@ namespace Loherangrin::Games::O3DEJam2305
 		void OnSpaceshipEnergyCollected(float i_energy) override;
 		void OnSpeedCollected(float i_multiplier, float i_duration) override;
 
+		// GameBus
+		void OnGameCreated() override;
+		void OnGameLoading() override;
+		void OnGameStarted() override;
+		void OnGamePaused() override;
+		void OnGameResumed() override;
+		void OnGameEnded() override;
+		void OnGameDestroyed() override;
+
 		// TileNotificationBus
 		void OnTileLost() override;
 
@@ -86,6 +97,10 @@ namespace Loherangrin::Games::O3DEJam2305
 		void RechargeEnergy(float i_deltaTime);
 
 		void ResetSpeedMultiplierOnTimerEnd(float i_deltaTime);
+
+		void ResetInput();
+		void ResetPosition();
+		void ResetState();
 
 		float m_moveDirection { 0.f };
 		float m_moveSpeed { 5.f };

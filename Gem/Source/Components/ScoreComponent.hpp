@@ -20,6 +20,8 @@
 #include <AzCore/Component/TickBus.h>
 
 #include "../EBuses/CollectableBus.hpp"
+#include "../EBuses/GameBus.hpp"
+#include "../EBuses/ScoreBus.hpp"
 #include "../EBuses/TileBus.hpp"
 
 
@@ -29,6 +31,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected CollectablesNotificationBus::Handler
+		, protected GameNotificationBus::Handler
 		, protected TilesNotificationBus::Handler
 	{
 	public:
@@ -51,13 +54,19 @@ namespace Loherangrin::Games::O3DEJam2305
 		// CollectablesNotificationBus
 		void OnPointsCollected(Points i_points) override;
 
+		// GameNotificationBus
+		void OnGameLoading() override;
+		void OnGamePaused() override;
+		void OnGameResumed() override;
+		void OnGameEnded() override;
+
 		// TilesNotificationBus
 		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
 		void OnTileLost(const AZ::EntityId& i_tileEntityId) override;
 
 	private:
 		using Points = CollectablesNotifications::Points;
-		using TotalPoints = AZ::u64;
+		using TotalPoints = ScoreNotifications::TotalPoints;
 
 		Points CalculateAllTilePoints() const;
 

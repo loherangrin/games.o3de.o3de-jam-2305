@@ -63,6 +63,7 @@ ly_add_target(
             AZ::AzGameFramework
             Gem::Atom_AtomBridge.Static
             Gem::AtomLyIntegration_CommonFeatures.Static
+            Gem::LyShine.Static
 )
 
 ly_add_target(
@@ -79,6 +80,7 @@ ly_add_target(
             Gem::${gem_name}.Private.Object
             AZ::AzCore
             AZ::AzFramework
+            Gem::LyShine.Static
 )
 
 # if enabled, ${gem_name} is used by all kinds of applications

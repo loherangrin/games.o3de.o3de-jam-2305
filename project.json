@@ -19,6 +19,7 @@
         "Atom",
         "CameraFramework",
         "ImGui",
+        "LyShine",
         "PhysX"
     ],
     "restricted": "Loherangrin_O3DEJam2305",

@@ -124,12 +124,30 @@ void CollectablesPoolComponent::Init()
 
 void CollectablesPoolComponent::Activate()
 {
-	TilesNotificationBus::Handler::BusConnect();
+	GameNotificationBus::Handler::BusConnect();
 }
 
 void CollectablesPoolComponent::Deactivate()
 {
+	TilesNotificationBus::Handler::BusDisconnect();
+	GameNotificationBus::Handler::BusDisconnect();
+
 	DestroyAllCollectables();
+}
+
+void CollectablesPoolComponent::OnGameLoading()
+{
+	DestroyAllCollectables();
+}
+
+void CollectablesPoolComponent::OnGameStarted()
+{
+	TilesNotificationBus::Handler::BusConnect();
+}
+
+void CollectablesPoolComponent::OnGameEnded()
+{
+	TilesNotificationBus::Handler::BusDisconnect();
 }
 
 void CollectablesPoolComponent::OnTileClaimed(const AZ::EntityId& i_tileEntityId)
@@ -175,13 +193,11 @@ void CollectablesPoolComponent::TryCreateCollectable(const AZ::EntityId& i_tileE
 
 void CollectablesPoolComponent::DestroyAllCollectables()
 {
-	AzFramework::DespawnAllEntitiesOptionalArgs despawnOptions;
-
 	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
     AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
 
 	for(auto& it : m_collectableSpawnTickets)
 	{
-		spawnableSystem->DespawnAllEntities(it.second, AZStd::move(despawnOptions));
+		spawnableSystem->DespawnAllEntities(it.second);
 	}
 }

@@ -24,12 +24,15 @@
 #include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
 #include <AzFramework/Spawnable/Spawnable.h>
 
+#include "../EBuses/GameBus.hpp"
+
 
 namespace Loherangrin::Games::O3DEJam2305
 {
 	class StormsPoolComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
+		, protected GameNotificationBus::Handler
 	{
 	public:
 		AZ_COMPONENT(StormsPoolComponent, "{C66C7EBA-D5DF-4331-9B67-38123276A580}");
@@ -48,6 +51,13 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// AZ::TickBus
 		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
+
+		// GameNotificationBus
+		void OnGameLoading() override;
+		void OnGameStarted() override;
+		void OnGamePaused() override;
+		void OnGameResumed() override;
+		void OnGameEnded() override;
 
 	private:
 		void CreateStorm();

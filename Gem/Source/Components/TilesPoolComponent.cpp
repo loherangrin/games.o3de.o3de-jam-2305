@@ -81,13 +81,22 @@ void TilesPoolComponent::Init()
 
 void TilesPoolComponent::Activate()
 {
-	// TODO - Debug
 	CreateAllTiles();
+
+	GameNotificationBus::Handler::BusConnect();
 }
 
 void TilesPoolComponent::Deactivate()
 {
+	GameNotificationBus::Handler::BusDisconnect();
+
 	DestroyAllTiles();
+}
+
+void TilesPoolComponent::OnGameLoading()
+{
+	DestroyAllTiles();
+	CreateAllTiles();
 }
 
 AZ::Vector2 TilesPoolComponent::GetGridSize() const
@@ -163,12 +172,10 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
 
 void TilesPoolComponent::DestroyAllTiles()
 {
-	AzFramework::DespawnAllEntitiesOptionalArgs despawnOptions;
-
 	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
     AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
 
-	spawnableSystem->DespawnAllEntities(m_tileSpawnTicket, AZStd::move(despawnOptions));
+	spawnableSystem->DespawnAllEntities(spawnableSystem->DespawnAllEntities(m_tileSpawnTicket);
 }
 
 TileId TilesPoolComponent::CalculateTileId(AZ::u16 i_row, AZ::u16 i_column) const

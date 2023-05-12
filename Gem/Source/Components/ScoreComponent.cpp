@@ -68,6 +68,7 @@ void ScoreComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArr
 
 void ScoreComponent::Activate()
 {
+	GameNotificationBus::Handler::BusConnect();
 	CollectablesNotificationBus::Handler::BusConnect();
 	TilesNotificationBus::Handler::BusConnect();
 }
@@ -76,6 +77,7 @@ void ScoreComponent::Deactivate()
 {
 	TilesNotificationBus::Handler::BusConnect();
 	CollectablesNotificationBus::Handler::BusDisconnect();
+	GameNotificationBus::Handler::BusDisconnect();
 }
 
 void ScoreComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
@@ -92,11 +94,44 @@ void ScoreComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePo
 	}
 
 	m_totalPoints += CalculateAllTilePoints();
+
+	EBUS_EVENT(ScoreNotificationBus, OnScoreChanged, m_totalPoints);
+}
+
+void ScoreComponent::OnGameLoading()
+{
+	AZ::TickBus::Handler::BusDisconnect();
+
+	m_totalPoints = 0;
+	m_nClaimedTiles = 0;
+
+	EBUS_EVENT(ScoreNotificationBus, OnScoreChanged, m_totalPoints);
+	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
+}
+
+void ScoreComponent::OnGamePaused()
+{
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void ScoreComponent::OnGameResumed()
+{
+	if(m_nClaimedTiles > 0)
+	{
+		AZ::TickBus::Handler::BusConnect();
+	}
+}
+
+void ScoreComponent::OnGameEnded()
+{
+	AZ::TickBus::Handler::BusDisconnect();
 }
 
 void ScoreComponent::OnPointsCollected(Points i_points)
 {
 	m_totalPoints += i_points;
+
+	EBUS_EVENT(ScoreNotificationBus, OnScoreChanged, m_totalPoints);
 }
 
 void ScoreComponent::OnTileClaimed([[maybe_unused]] const AZ::EntityId& i_tileEntityId)
@@ -108,6 +143,8 @@ void ScoreComponent::OnTileClaimed([[maybe_unused]] const AZ::EntityId& i_tileEn
 		AZ::TickBus::Handler::BusConnect();
 		m_timer = m_tileTimerPeriod;
 	}
+
+	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
 }
 
 void ScoreComponent::OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntityId)
@@ -118,6 +155,8 @@ void ScoreComponent::OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntit
 	{
 		AZ::TickBus::Handler::BusDisconnect();
 	}
+
+	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
 }
 
 ScoreComponent::Points ScoreComponent::CalculateAllTilePoints() const

@@ -147,6 +147,7 @@ void StormComponent::Init()
 void StormComponent::Activate()
 {
 	Physics::RigidBodyNotificationBus::Handler::BusConnect(GetEntityId());
+	GameNotificationBus::Handler::BusConnect();
 }
 
 void StormComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
@@ -173,11 +174,27 @@ void StormComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
 
 void StormComponent::Deactivate()
 {
+	GameNotificationBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
 
 	m_triggerEnterHandler.Disconnect();
 	m_triggerExitHandler.Disconnect();
+}
+
+void StormComponent::OnGamePaused()
+{
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void StormComponent::OnGameResumed()
+{
+	AZ::TickBus::Handler::BusConnect();
+}
+
+void StormComponent::OnGameEnded()
+{
+	AZ::TickBus::Handler::BusDisconnect();
 }
 
 void StormComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)

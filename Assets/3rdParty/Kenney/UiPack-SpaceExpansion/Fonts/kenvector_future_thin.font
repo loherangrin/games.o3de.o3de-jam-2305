@@ -1,0 +1,7 @@
+<fontshader>
+	<font path="kenvector_future_thin.ttf" w="512" h="256"/>
+	<effect name="default">
+		<pass>
+		</pass>
+	</effect>
+</fontshader>

@@ -24,6 +24,7 @@
 #include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
 
+#include "../EBuses/GameBus.hpp"
 #include "../EBuses/SpaceshipBus.hpp"
 
 
@@ -34,6 +35,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		, protected AZ::TickBus::Handler
 		, protected AzFramework::InputChannelEventListener
 		, protected Physics::RigidBodyNotificationBus::Handler
+		, protected GameNotificationBus::Handler
 		, protected SpaceshipNotificationBus::Handler
 	{
 	public:
@@ -60,11 +62,19 @@ namespace Loherangrin::Games::O3DEJam2305
 		// Physics::RigidBodyNotificationBus
 		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
 
+		// GameNotificationBus
+		void OnGameLoading() override;
+		void OnGameStarted() override;
+		void OnGamePaused() override;
+		void OnGameResumed() override;
+		void OnGameEnded() override;
+		void OnGameDestroyed() override;
+
 		// SpaceshipNotificationBus
 		void OnEnergySavingModeActivated() override;
 		void OnEnergySavingModeDeactivated() override;
-		void OnRechargingStarted() override;
-		void OnRechargingEnded() override;
+		void OnLandingStarted() override;
+		void OnTakeOffEnded() override;
 
 	private:
 		void ConnectTriggerHandlers();

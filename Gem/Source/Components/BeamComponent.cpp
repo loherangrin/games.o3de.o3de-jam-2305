@@ -103,7 +103,9 @@ void BeamComponent::Init()
 void BeamComponent::Activate()
 {
 	Physics::RigidBodyNotificationBus::Handler::BusConnect(GetEntityId());
+
 	SpaceshipNotificationBus::Handler::BusConnect();
+	GameNotificationBus::Handler::BusConnect();
 
 	if(m_isEnabled)
 	{
@@ -113,13 +115,15 @@ void BeamComponent::Activate()
 	{
 		TurnOff();
 	}
-
-	InputChannelEventListener::Connect();
 }
 
 void BeamComponent::Deactivate()
 {
+	GameNotificationBus::Handler::BusDisconnect();
+
 	InputChannelEventListener::Disconnect();
+	AZ::TickBus::Handler::BusDisconnect();
+
 	SpaceshipNotificationBus::Handler::BusDisconnect();
 
 	if(m_isEnabled)
@@ -128,6 +132,51 @@ void BeamComponent::Deactivate()
 	}
 
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
+}
+
+void BeamComponent::OnGameLoading()
+{
+	if(m_isEnabled)
+	{
+		TurnOff();
+	}
+
+	m_isLocked = false;
+	m_selectedTiles.clear();
+}
+
+void BeamComponent::OnGameStarted()
+{
+	OnGameResumed();
+}
+
+void BeamComponent::OnGamePaused()
+{
+	InputChannelEventListener::Disconnect();
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void BeamComponent::OnGameResumed()
+{
+	if(m_isEnabled)
+	{
+		AZ::TickBus::Handler::BusConnect();
+	}
+
+	InputChannelEventListener::Connect();
+}
+
+void BeamComponent::OnGameEnded()
+{
+	OnGamePaused();
+}
+
+void BeamComponent::OnGameDestroyed()
+{
+	if(m_isEnabled)
+	{
+		TurnOff();
+	}
 }
 
 void BeamComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
@@ -280,7 +329,7 @@ void BeamComponent::OnEnergySavingModeDeactivated()
 	m_isLocked = false;
 }
 
-void BeamComponent::OnRechargingStarted()
+void BeamComponent::OnLandingStarted()
 {
 	if(m_isEnabled)
 	{
@@ -290,7 +339,7 @@ void BeamComponent::OnRechargingStarted()
 	}
 }
 
-void BeamComponent::OnRechargingEnded()
+void BeamComponent::OnTakeOffEnded()
 {
 	m_isLocked = false;
 }

@@ -3,3 +3,8 @@
 [Uu]ser/
 _savebackup/
 CMakeUserPresets.json
+
+Assets/3rdParty/**/*.png
+Assets/3rdParty/**/*.ttf
+Assets/3rdParty/**/*.txt
+Assets/3rdParty/**/*.xml

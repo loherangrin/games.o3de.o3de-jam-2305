@@ -113,14 +113,40 @@ void StormsPoolComponent::Init()
 
 void StormsPoolComponent::Activate()
 {
-	AZ::TickBus::Handler::BusConnect();
+	GameNotificationBus::Handler::BusConnect();
 }
 
 void StormsPoolComponent::Deactivate()
 {
+	GameNotificationBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
 
 	DestroyAllStorms();
+}
+
+void StormsPoolComponent::OnGameLoading()
+{
+	DestroyAllStorms();
+}
+
+void StormsPoolComponent::OnGameStarted()
+{
+	OnGameResumed();
+}
+
+void StormsPoolComponent::OnGamePaused()
+{
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void StormsPoolComponent::OnGameResumed()
+{
+	AZ::TickBus::Handler::BusConnect();
+}
+
+void StormsPoolComponent::OnGameEnded()
+{
+	OnGamePaused();
 }
 
 void StormsPoolComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)

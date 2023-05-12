@@ -22,6 +22,7 @@
 #include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
 #include <AzFramework/Spawnable/Spawnable.h>
 
+#include "../EBuses/GameBus.hpp"
 #include "../EBuses/TileBus.hpp"
 
 
@@ -30,6 +31,7 @@ namespace Loherangrin::Games::O3DEJam2305
 	class TilesPoolComponent
 		: public AZ::Component
 		, protected TilesRequestBus::Handler
+		, protected GameNotificationBus::Handler
 	{
 	public:
 		AZ_COMPONENT(TilesPoolComponent, "{C2212D14-4B02-4AE2-A5C9-2485D5CBEE54}");
@@ -48,6 +50,9 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// TilesRequestBus
 		AZ::Vector2 GetGridSize() const override;
+
+		// GameNotificationBus
+		void OnGameLoading() override;
 
 	private:
 		void CreateAllTiles();

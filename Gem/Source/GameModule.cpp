@@ -26,6 +26,7 @@
 #include "Components/StormsPoolComponent.hpp"
 #include "Components/TileComponent.hpp"
 #include "Components/TilesPoolComponent.hpp"
+#include "Components/UiComponent.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
@@ -50,7 +51,8 @@ namespace Loherangrin::Games::O3DEJam2305
 				StormComponent::CreateDescriptor(),
 				StormsPoolComponent::CreateDescriptor(),
 				TileComponent::CreateDescriptor(),
-				TilesPoolComponent::CreateDescriptor()
+				TilesPoolComponent::CreateDescriptor(),
+				UiComponent::CreateDescriptor()
 			});
 		}
 

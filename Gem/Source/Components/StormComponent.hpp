@@ -23,6 +23,8 @@
 #include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
 
+#include "../EBuses/GameBus.hpp"
+
 
 namespace Loherangrin::Games::O3DEJam2305
 {
@@ -32,6 +34,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected Physics::RigidBodyNotificationBus::Handler
+		, protected GameNotificationBus::Handler
 	{
 	public:
 		AZ_COMPONENT(StormComponent, "{9486C200-FB68-4508-9173-154832C41611}");
@@ -53,6 +56,11 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// Physics::RigidBodyNotificationBus
 		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
+
+		// GameNotificationBus
+		void OnGamePaused() override;
+		void OnGameResumed() override;
+		void OnGameEnded() override;
 
 	private:
 		void ApplyMovement(float i_deltaTime);

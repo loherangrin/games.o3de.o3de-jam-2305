@@ -91,6 +91,8 @@ void TileComponent::Activate()
 		AZ::TickBus::Handler::BusConnect();
 	}
 
+	GameNotificationBus::Handler::BusConnect();
+
 	const AZ::EntityId thisEntityId = GetEntityId();
 
 	TileRequestBus::Handler::BusConnect(thisEntityId);
@@ -101,9 +103,28 @@ void TileComponent::Deactivate()
 	TileRequestBus::Handler::BusDisconnect();
 	TileNotificationBus::MultiHandler::BusDisconnect();
 
+	GameNotificationBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
 
 	CollectablesNotificationBus::Handler::BusConnect();
+}
+
+void TileComponent::OnGamePaused()
+{
+	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void TileComponent::OnGameResumed()
+{
+	if(m_animation != Animation::NONE || m_energy > 0.f)
+	{
+		AZ::TickBus::Handler::BusConnect();
+	}
+}
+
+void TileComponent::OnGameEnded()
+{
+	AZ::TickBus::Handler::BusDisconnect();
 }
 
 void TileComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
@@ -174,6 +195,8 @@ void TileComponent::AddEnergy(float i_amount)
 			}
 		}
 	}
+
+	EBUS_EVENT(TilesNotificationBus, OnTileEnergyChanged, GetEntityId(), m_energy / m_maxEnergy);
 }
 
 void TileComponent::Alert()

@@ -24,14 +24,16 @@
 #include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
 #include <AzFramework/Spawnable/Spawnable.h>
 
-#include "CollectableComponent.hpp"
+#include "../EBuses/GameBus.hpp"
 #include "../EBuses/TileBus.hpp"
+#include "CollectableComponent.hpp"
 
 
 namespace Loherangrin::Games::O3DEJam2305
 {
 	class CollectablesPoolComponent
 		: public AZ::Component
+		, protected GameNotificationBus::Handler
 		, protected TilesNotificationBus::Handler
 	{
 	public:
@@ -48,6 +50,11 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Init() override;
 		void Activate() override;
 		void Deactivate() override;
+
+		// GameNotificationBus
+		void OnGameLoading() override;
+		void OnGameStarted() override;
+		void OnGameEnded() override;
 
 		// TilesNotificationBus
 		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
