@@ -197,9 +197,9 @@ void TileComponent::AddEnergy(float i_amount)
 		{
 			Toggle();
 		}
-		else if(m_isClaimed && m_energy > THRESHOLDS_ALERT)
+		else if(m_isClaimed && m_animation == Animation::SHAKE && m_energy > THRESHOLDS_ALERT)
 		{
-			StopAnimation();
+			StopShakeAnimation();
 		}
 	}
 	else
@@ -222,12 +222,10 @@ void TileComponent::AddEnergy(float i_amount)
 
 void TileComponent::Alert()
 {
-	if(m_animation == Animation::SHAKE)
+	if(m_animation != Animation::NONE)
 	{
 		return;
 	}
-
-	StopAnimation();
 
 	m_animation = Animation::SHAKE;
 	m_animationParameter = 0.5f;
@@ -245,13 +243,15 @@ void TileComponent::Toggle()
 {
 	if(m_animation == Animation::FLIP)
 	{
-		return;
+		m_animationParameter = 1.f - m_animationParameter;	
 	}
+	else
+	{
+		StopAnimation();
 
-	StopAnimation();
-
-	m_animation = Animation::FLIP;
-	m_animationParameter = 0.f;
+		m_animation = Animation::FLIP;
+		m_animationParameter = 0.f;
+	}
 
 	const float startAngle = (m_isClaimed) ? AZ::Constants::Pi : 0.f;
 	const float endAngle = (m_isClaimed) ? 0.f : AZ::Constants::Pi;
