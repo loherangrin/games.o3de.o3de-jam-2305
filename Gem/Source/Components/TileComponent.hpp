@@ -17,6 +17,7 @@
 #pragma once
 
 #include <AzCore/Component/Component.h>
+#include <AzCore/Component/EntityBus.h>
 #include <AzCore/Component/TickBus.h>
 #include <AzCore/Math/Quaternion.h>
 
@@ -31,6 +32,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	class TileComponent
 		: public AZ::Component
+		, protected AZ::EntityBus::Handler
 		, protected AZ::TickBus::Handler
 		, protected CollectablesNotificationBus::Handler
 		, protected GameNotificationBus::Handler
@@ -50,6 +52,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		// AZ::Component
 		void Activate() override;
 		void Deactivate() override;
+
+		// AZ::EntityBus
+		void OnEntityActivated(const AZ::EntityId& i_entityId) override;
 
 		// AZ::TickBus
 		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
@@ -104,6 +109,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		bool m_isRecharging { false };
 		bool m_isClaimed { false };
+		bool m_isLocked { false };
 		AZ::u8 m_nClaimedNeighbors { 0 };
 
 		float m_flipSpeed { 2.f };

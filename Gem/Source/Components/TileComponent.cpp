@@ -88,7 +88,7 @@ void TileComponent::Activate()
 
 	if(m_isClaimed)
 	{
-		AZ::TickBus::Handler::BusConnect();
+		AZ::EntityBus::Handler::BusConnect(m_meshEntityId);
 	}
 
 	GameNotificationBus::Handler::BusConnect();
@@ -105,8 +105,24 @@ void TileComponent::Deactivate()
 
 	GameNotificationBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
+	AZ::EntityBus::Handler::BusDisconnect();
 
 	CollectablesNotificationBus::Handler::BusConnect();
+}
+	
+void TileComponent::OnEntityActivated(const AZ::EntityId& i_entityId)
+{
+	AZ_Assert(i_entityId == m_meshEntityId, "Expecting mesh entity");
+	AZ::EntityBus::Handler::BusDisconnect();
+
+	const AZ::Quaternion rotation = AZ::Quaternion::CreateRotationX(AZ::Constants::Pi);
+
+	EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalRotationQuaternion, rotation);
+
+ 	if(!m_isLocked)
+	{
+		AZ::TickBus::Handler::BusConnect();
+	}
 }
 
 void TileComponent::OnGamePaused()
@@ -166,6 +182,11 @@ void TileComponent::SubtractEnergy(float i_amount)
 
 void TileComponent::AddEnergy(float i_amount)
 {
+	if(m_isLocked)
+	{
+		return;
+	}
+
 	m_energy = AZStd::clamp(m_energy + i_amount, 0.f, m_maxEnergy);
 
 	const bool isAdded = (i_amount > 0.f);

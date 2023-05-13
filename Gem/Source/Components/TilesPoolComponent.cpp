@@ -248,10 +248,21 @@ TilesPoolComponent::CellIndexesList TilesPoolComponent::CreateAllObstacles()
 	const auto nObstacleColumns = static_cast<AZ::u16>(columnScale * m_gridLength);	
 
 	CellIndexesList obstacleCellIndexes {};
-	for(AZ::u16 i = 0; i < m_maxObstacles; ++i)
+	for(AZ::u16 i = 0, nAttempts = 0; i < m_maxObstacles;)
 	{
 		const AZ::u16 obstacleRow = m_randomGenerator.Getu64Random() % nObstacleRows;
 		const AZ::u16 obstacleColumn = m_randomGenerator.Getu64Random() % nObstacleColumns;
+
+		if(obstacleRow == nObstacleRows / 2 && obstacleColumn == nObstacleColumns / 2)
+		{
+			++nAttempts;
+			if(nAttempts > m_maxObstacles)
+			{
+				return obstacleCellIndexes;
+			}
+
+			continue;
+		}
 
 		CreateObstacle(obstacleRow, obstacleColumn);
 
@@ -265,6 +276,9 @@ TilesPoolComponent::CellIndexesList TilesPoolComponent::CreateAllObstacles()
 				obstacleCellIndexes.emplace(AZStd::make_pair(tileRow + j, tileColumn + k));
 			}
 		}
+
+		nAttempts = 0;
+		++i;
 	}
 
 	return obstacleCellIndexes;
@@ -300,27 +314,33 @@ void TilesPoolComponent::CreateObstacle(AZ::u16 i_row, AZ::u16 i_column)
 
 void TilesPoolComponent::CreateAllTiles(const CellIndexesList& i_ignoredCellIndexes)
 {
+	const AZ::u16 halfLength = m_gridLength / 2;
+
 	for(AZ::u16 i = 0; i < m_gridLength; ++i)
 	{
+		const bool isCenterRow = (i == halfLength);
+		
 		for(AZ::u16 j = 0; j < m_gridLength; ++j)
 		{
 			if(i_ignoredCellIndexes.contains(AZStd::make_pair(i, j)))
 			{
 				continue;
 			}
-			
-			CreateTile(i, j);
+
+			const bool isCenterColumn = (j == halfLength);
+
+			CreateTile(i, j, isCenterRow && isCenterColumn);
 		}
 	}
 }
 
-void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
+void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isStart)
 {
 	const AZStd::size_t tileType = m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size();
 
 	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
 
-	spawnOptions.m_preInsertionCallback = [this, i_row, i_column]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
+	spawnOptions.m_preInsertionCallback = [this, i_row, i_column, i_isStart]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
 		{
@@ -331,6 +351,14 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
 		AZ::Entity* newEntity = *(i_newEntities.begin() + 1);
 		auto newTile = newEntity->FindComponent<TileComponent>();
 		newTile->m_id = CalculateTileId(i_row, i_column);
+
+		if(i_isStart)
+		{
+			newTile->m_isClaimed = true;
+			newTile->m_isLocked = true;
+
+			return;
+		}
 
 		const AZStd::vector<TileId> neighborIds = CalculateNeighbors(i_row, i_column);
 		for(const TileId neighborId : neighborIds)

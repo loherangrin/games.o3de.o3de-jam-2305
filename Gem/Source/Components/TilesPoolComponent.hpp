@@ -69,7 +69,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		void CreateObstacle(AZ::u16 i_row, AZ::u16 i_column);
 
 		void CreateAllTiles(const CellIndexesList& i_ignoredCellIndexes = {});
-		void CreateTile(AZ::u16 i_row, AZ::u16 i_column);
+		void CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isStart);
 
 		void DestroyAllBoundaries();
 		void DestroyAllObstacles();
