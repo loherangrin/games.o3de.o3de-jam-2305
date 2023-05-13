@@ -18,6 +18,10 @@
 
 #include <AzCore/Asset/AssetCommon.h>
 #include <AzCore/Component/Component.h>
+#include <AzCore/Math/Random.h>
+#include <AzCore/Math/Vector3.h>
+#include <AzCore/std/containers/set.h>
+#include <AzCore/std/containers/vector.h>
 
 #include <AzFramework/Spawnable/SpawnableEntitiesInterface.h>
 #include <AzFramework/Spawnable/Spawnable.h>
@@ -55,19 +59,47 @@ namespace Loherangrin::Games::O3DEJam2305
 		void OnGameLoading() override;
 
 	private:
-		void CreateAllTiles();
+		using CellIndex = AZStd::pair<AZ::u16, AZ::u16>;
+		using CellIndexesList = AZStd::set<CellIndex>;
+
+		void CreateAllBoundaries();
+		void CreateBoundary(const AZ::Vector3& i_translation);
+
+		CellIndexesList CreateAllObstacles();
+		void CreateObstacle(AZ::u16 i_row, AZ::u16 i_column);
+
+		void CreateAllTiles(const CellIndexesList& i_ignoredCellIndexes = {});
 		void CreateTile(AZ::u16 i_row, AZ::u16 i_column);
 
+		void DestroyAllBoundaries();
+		void DestroyAllObstacles();
 		void DestroyAllTiles();
 
 		TileId CalculateTileId(AZ::u16 i_row, AZ::u16 i_column) const;
 		AZStd::vector<TileId> CalculateNeighbors(AZ::u16 i_row, AZ::u16 i_column) const;
 
-		AZ::u16 m_gridLength { 10 };
-		AZ::Vector2 m_cellSize { AZ::Vector2::CreateOne() };
+		AZ::Vector3 CalculateCellPosition(AZ::u16 i_row, AZ::u16 i_column, const AZ::Vector2& i_cellSize) const;
+		static void DestroyAllEntities(AZStd::vector<AzFramework::EntitySpawnTicket>& io_spawnTickets);
 
-		AZ::Data::Asset<AzFramework::Spawnable> m_tilePrefab {};
-    	AzFramework::EntitySpawnTicket m_tileSpawnTicket {};
+		AZ::u16 m_gridLength { 10 };
+		AZ::u16 m_maxObstacles { 5 };
+
+		AZ::Vector2 m_boundaryCellSize { AZ::Vector2::CreateOne() };
+		AZ::Vector2 m_obstacleCellSize { AZ::Vector2::CreateOne() };
+		AZ::Vector2 m_tileCellSize { AZ::Vector2::CreateOne() };
+
+		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_boundaryPrefabs {};
+    	AZStd::vector<AzFramework::EntitySpawnTicket> m_boundarySpawnTickets {};
+
+		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_obstaclePrefabs {};
+    	AZStd::vector<AzFramework::EntitySpawnTicket> m_obstacleSpawnTickets {};
+
+		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_tilePrefabs {};
+    	AZStd::vector<AzFramework::EntitySpawnTicket> m_tileSpawnTickets {};
+
+
+		AZ::u64 m_randomSeed { 1234 };
+		AZ::SimpleLcgRandom m_randomGenerator {};
 	};
 
 } // Loherangrin::Games::O3DEJam2305

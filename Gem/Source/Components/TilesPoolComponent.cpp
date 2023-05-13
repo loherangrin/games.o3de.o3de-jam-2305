@@ -34,9 +34,15 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 	{
 		serializeContext->Class<TilesPoolComponent, AZ::Component>()
 			->Version(0)
-			->Field("Tile", &TilesPoolComponent::m_tilePrefab)
 			->Field("Grid", &TilesPoolComponent::m_gridLength)
-			->Field("Cell", &TilesPoolComponent::m_cellSize)
+			->Field("Seed", &TilesPoolComponent::m_randomSeed)
+			->Field("TileSize", &TilesPoolComponent::m_tileCellSize)
+			->Field("Tiles", &TilesPoolComponent::m_tilePrefabs)
+			->Field("BoundarySize", &TilesPoolComponent::m_boundaryCellSize)
+			->Field("Boundaries", &TilesPoolComponent::m_boundaryPrefabs)
+			->Field("ObstacleCount", &TilesPoolComponent::m_maxObstacles)
+			->Field("ObstacleSize", &TilesPoolComponent::m_obstacleCellSize)
+			->Field("Obstacles", &TilesPoolComponent::m_obstaclePrefabs)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -46,13 +52,31 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 					->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC_CE("Game"))
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
-				->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tilePrefab, "Prefab", "")
+				->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_gridLength, "Grid", "")
 
-				->ClassElement(AZ::Edit::ClassElements::Group, "Grid")
+				->ClassElement(AZ::Edit::ClassElements::Group, "Random")
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
-					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_gridLength, "Length", "")
-					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_cellSize, "Cell", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_randomSeed, "Seed", "")
+
+				->ClassElement(AZ::Edit::ClassElements::Group, "Tiles")
+					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tileCellSize, "Cell", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tilePrefabs, "Prefabs", "")
+
+				->ClassElement(AZ::Edit::ClassElements::Group, "Boundaries")
+					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_boundaryCellSize, "Cell", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_boundaryPrefabs, "Prefabs", "")
+
+				->ClassElement(AZ::Edit::ClassElements::Group, "Obstacles")
+					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_maxObstacles, "Max", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_obstacleCellSize, "Cell", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_obstaclePrefabs, "Prefabs", "")
 			;
 		}
 	}
@@ -76,11 +100,27 @@ void TilesPoolComponent::GetDependentServices(AZ::ComponentDescriptor::Dependenc
 
 void TilesPoolComponent::Init()
 {
-	m_tileSpawnTicket = AzFramework::EntitySpawnTicket { m_tilePrefab };
+	for(auto& prefab : m_boundaryPrefabs)
+	{
+		m_boundarySpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { prefab });
+	}
+
+	for(auto& prefab : m_obstaclePrefabs)
+	{
+		m_obstacleSpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { prefab });
+	}
+	
+	for(auto& prefab : m_tilePrefabs)
+	{
+		m_tileSpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { prefab });
+	}
+
+	m_randomGenerator.SetSeed(m_randomSeed);
 }
 
 void TilesPoolComponent::Activate()
 {
+	CreateAllBoundaries();
 	CreateAllTiles();
 
 	GameNotificationBus::Handler::BusConnect();
@@ -90,30 +130,185 @@ void TilesPoolComponent::Deactivate()
 {
 	GameNotificationBus::Handler::BusDisconnect();
 
+	DestroyAllObstacles();
 	DestroyAllTiles();
+	DestroyAllBoundaries();
 }
 
 void TilesPoolComponent::OnGameLoading()
 {
+	DestroyAllObstacles();
 	DestroyAllTiles();
-	CreateAllTiles();
+
+	const CellIndexesList obstacleIndexes = CreateAllObstacles();
+	CreateAllTiles(obstacleIndexes);
 }
 
 AZ::Vector2 TilesPoolComponent::GetGridSize() const
 {
-	return AZ::Vector2
-	{
-		m_gridLength * m_cellSize.GetX(),
-		m_gridLength * m_cellSize.GetY()
-	};
+	return (m_tileCellSize * m_gridLength);
 }
 
-void TilesPoolComponent::CreateAllTiles()
+void TilesPoolComponent::CreateAllBoundaries()
+{
+	const AZ::Vector2 halfGridSize = GetGridSize() / 2.f;
+	const AZ::Vector2 halfBoundaryCellSize = m_boundaryCellSize / 2.f;
+
+	AZ::Vector3 translation
+	{
+		-halfGridSize.GetX() - halfBoundaryCellSize.GetX(),
+		halfGridSize.GetY() + halfBoundaryCellSize.GetY(),
+		0.f
+	};
+
+	for(AZ::u8 i = 0; i < 4; ++i)
+	{
+		AZ::Vector3 offset;
+		switch(i)
+		{
+			case 0:
+			{
+				offset = { 1.f, 0.f, 0.f };
+			}
+			break;
+
+			case 1:
+			{
+				offset = { 0.f, -1.f, 0.f };
+			}
+			break;
+
+			case 2:
+			{
+				offset = { -1.f, 0.f, 0.f };
+			}
+			break;
+
+			case 3:
+			{
+				offset = { 0.f, 1.f, 0.f };
+			}
+			break;
+		}
+
+		offset *= (i % 2 == 0) ? m_boundaryCellSize.GetX() : m_boundaryCellSize.GetY();
+		translation += offset;
+
+		const float scale = (i % 2 == 0)
+			? m_tileCellSize.GetX() / m_boundaryCellSize.GetX()
+			: m_tileCellSize.GetY() / m_boundaryCellSize.GetY()
+		;
+
+		const auto length = static_cast<AZ::u16>(static_cast<float>(m_gridLength) * scale);
+		for(AZ::u16 j = 0; j < length; ++j)
+		{
+			CreateBoundary(translation);
+			translation += offset;
+		}
+
+		CreateBoundary(translation);
+	}
+}
+
+void TilesPoolComponent::CreateBoundary(const AZ::Vector3& i_translation)
+{
+	const AZStd::size_t boundaryType = m_randomGenerator.Getu64Random() % m_boundarySpawnTickets.size();
+
+	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
+
+	spawnOptions.m_completionCallback = [i_translation]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
+	{
+		if(i_newEntities.empty())
+		{
+			AZ_Error("TilesPool", false, "Unable to spawn boundaries. Please check if prefabs are assigned");
+			return;
+		}
+
+		const AZ::Entity* newRootEntity = *(i_newEntities.begin());
+		const AZ::EntityId newRootEntityId = newRootEntity->GetId();
+
+		EBUS_EVENT_ID(newRootEntityId, AZ::TransformBus, SetLocalTranslation, i_translation);
+	};
+
+	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
+    AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
+
+	spawnableSystem->SpawnAllEntities(m_boundarySpawnTickets[boundaryType], AZStd::move(spawnOptions));
+}
+
+TilesPoolComponent::CellIndexesList TilesPoolComponent::CreateAllObstacles()
+{
+	const float rowScale = m_tileCellSize.GetY() / m_obstacleCellSize.GetY();
+	const float columnScale = m_tileCellSize.GetX() / m_obstacleCellSize.GetX();
+
+	const float invertedRowScale = 1.f / rowScale;
+	const float invertedColumnScale = 1.f / columnScale;
+
+	const auto nObstacleRows = static_cast<AZ::u16>(rowScale * m_gridLength);
+	const auto nObstacleColumns = static_cast<AZ::u16>(columnScale * m_gridLength);	
+
+	CellIndexesList obstacleCellIndexes {};
+	for(AZ::u16 i = 0; i < m_maxObstacles; ++i)
+	{
+		const AZ::u16 obstacleRow = m_randomGenerator.Getu64Random() % nObstacleRows;
+		const AZ::u16 obstacleColumn = m_randomGenerator.Getu64Random() % nObstacleColumns;
+
+		CreateObstacle(obstacleRow, obstacleColumn);
+
+		const auto tileRow = static_cast<AZ::u16>(static_cast<float>(obstacleRow) * invertedRowScale);
+		const auto tileColumn = static_cast<AZ::u16>(static_cast<float>(obstacleColumn) * invertedColumnScale);
+
+		for(AZ::u16 j = 0; j < static_cast<AZ::u16>(invertedRowScale); ++j)
+		{
+			for(AZ::u16 k = 0; k < static_cast<AZ::u16>(invertedColumnScale); ++k)
+			{
+				obstacleCellIndexes.emplace(AZStd::make_pair(tileRow + j, tileColumn + k));
+			}
+		}
+	}
+
+	return obstacleCellIndexes;
+}
+
+void TilesPoolComponent::CreateObstacle(AZ::u16 i_row, AZ::u16 i_column)
+{
+	const AZStd::size_t obstacleType = m_randomGenerator.Getu64Random() % m_obstacleSpawnTickets.size();
+
+	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
+
+	spawnOptions.m_completionCallback = [this, i_row, i_column]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
+	{
+		if(i_newEntities.empty())
+		{
+			AZ_Error("TilesPool", false, "Unable to spawn obstacles. Please check if prefabs are assigned");
+			return;
+		}
+
+		const AZ::Vector3 obstacleTranslation = CalculateCellPosition(i_row, i_column, m_obstacleCellSize);
+
+		const AZ::Entity* newRootEntity = *(i_newEntities.begin());
+		const AZ::EntityId newRootEntityId = newRootEntity->GetId();
+
+		EBUS_EVENT_ID(newRootEntityId, AZ::TransformBus, SetLocalTranslation, obstacleTranslation);
+	};
+
+	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
+    AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
+
+	spawnableSystem->SpawnAllEntities(m_obstacleSpawnTickets[obstacleType], AZStd::move(spawnOptions));
+}
+
+void TilesPoolComponent::CreateAllTiles(const CellIndexesList& i_ignoredCellIndexes)
 {
 	for(AZ::u16 i = 0; i < m_gridLength; ++i)
 	{
 		for(AZ::u16 j = 0; j < m_gridLength; ++j)
 		{
+			if(i_ignoredCellIndexes.contains(AZStd::make_pair(i, j)))
+			{
+				continue;
+			}
+			
 			CreateTile(i, j);
 		}
 	}
@@ -121,13 +316,15 @@ void TilesPoolComponent::CreateAllTiles()
 
 void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
 {
+	const AZStd::size_t tileType = m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size();
+
 	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
 
 	spawnOptions.m_preInsertionCallback = [this, i_row, i_column]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
 		{
-			AZ_Error("TilesPool", false, "Unable to spawn tiles. Please check if a prefab is assigned");
+			AZ_Error("TilesPool", false, "Unable to spawn tiles. Please check if prefabs are assigned");
 			return;
 		}
 
@@ -150,13 +347,7 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
 			return;
 		}
 
-		const AZ::Vector2 halfGridSize = (m_cellSize * m_gridLength) / 2.f;
-		const AZ::Vector3 tileTranslation
-		{
-			i_row * m_cellSize.GetX() - halfGridSize.GetX(),
-			i_column * m_cellSize.GetY() - halfGridSize.GetY(),
-			0.f
-		};
+		const AZ::Vector3 tileTranslation = CalculateCellPosition(i_row, i_column, m_tileCellSize);
 
 		const AZ::Entity* newRootEntity = *(i_newEntities.begin());
 		const AZ::EntityId newRootEntityId = newRootEntity->GetId();
@@ -167,15 +358,45 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column)
 	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
     AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
 
-	spawnableSystem->SpawnAllEntities(m_tileSpawnTicket, AZStd::move(spawnOptions));
+	spawnableSystem->SpawnAllEntities(m_tileSpawnTickets[tileType], AZStd::move(spawnOptions));
+}
+
+void TilesPoolComponent::DestroyAllBoundaries()
+{
+	DestroyAllEntities(m_boundarySpawnTickets);
+}
+
+void TilesPoolComponent::DestroyAllObstacles()
+{
+	DestroyAllEntities(m_obstacleSpawnTickets);
 }
 
 void TilesPoolComponent::DestroyAllTiles()
 {
+	DestroyAllEntities(m_tileSpawnTickets);
+}
+
+void TilesPoolComponent::DestroyAllEntities(AZStd::vector<AzFramework::EntitySpawnTicket>& io_spawnTickets)
+{
 	auto spawnableSystem = AzFramework::SpawnableEntitiesInterface::Get();
     AZ_Assert(spawnableSystem, "Unable to retrieve the main spawnable system");
 
-	spawnableSystem->DespawnAllEntities(spawnableSystem->DespawnAllEntities(m_tileSpawnTicket);
+	for(auto& spawnTicket : io_spawnTickets)
+	{
+		spawnableSystem->DespawnAllEntities(spawnTicket);
+	}
+}
+
+AZ::Vector3 TilesPoolComponent::CalculateCellPosition(AZ::u16 i_row, AZ::u16 i_column, const AZ::Vector2& i_cellSize) const
+{
+	const AZ::Vector2 gridOffset = (GetGridSize() - i_cellSize) / 2.f;
+
+	return
+	{
+		i_column * i_cellSize.GetX() - gridOffset.GetX(),
+		i_row * i_cellSize.GetY() - gridOffset.GetY(),
+		0.f
+	};
 }
 
 TileId TilesPoolComponent::CalculateTileId(AZ::u16 i_row, AZ::u16 i_column) const
