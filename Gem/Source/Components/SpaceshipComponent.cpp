@@ -372,10 +372,16 @@ TileId SpaceshipComponent::GetTileIdIfClaimed() const
 
 		if(isClaimed)
 		{
-			TileId tileId { 0 };
-			EBUS_EVENT_ID_RESULT(tileId, hit.m_entityId, TileRequestBus, GetTileId);
+			bool isLandingArea { false };
+			EBUS_EVENT_ID_RESULT(isLandingArea, hit.m_entityId, TileRequestBus, IsLandingArea);
 
-			return tileId;
+			if(isLandingArea)
+			{
+				TileId tileId { 0 };
+				EBUS_EVENT_ID_RESULT(tileId, hit.m_entityId, TileRequestBus, GetTileId);
+
+				return tileId;
+			}
 		}
 	}
 

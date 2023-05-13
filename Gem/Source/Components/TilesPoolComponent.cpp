@@ -37,6 +37,7 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("Grid", &TilesPoolComponent::m_gridLength)
 			->Field("Seed", &TilesPoolComponent::m_randomSeed)
 			->Field("TileSize", &TilesPoolComponent::m_tileCellSize)
+			->Field("TilesLanding", &TilesPoolComponent::m_landingTilePrefab)
 			->Field("Tiles", &TilesPoolComponent::m_tilePrefabs)
 			->Field("BoundarySize", &TilesPoolComponent::m_boundaryCellSize)
 			->Field("Boundaries", &TilesPoolComponent::m_boundaryPrefabs)
@@ -63,7 +64,8 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
 					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tileCellSize, "Cell", "")
-					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tilePrefabs, "Prefabs", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_landingTilePrefab, "Prefab - Landing", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_tilePrefabs, "Prefabs - Others", "")
 
 				->ClassElement(AZ::Edit::ClassElements::Group, "Boundaries")
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
@@ -110,6 +112,7 @@ void TilesPoolComponent::Init()
 		m_obstacleSpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { prefab });
 	}
 	
+	m_tileSpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { m_landingTilePrefab });
 	for(auto& prefab : m_tilePrefabs)
 	{
 		m_tileSpawnTickets.emplace_back(AzFramework::EntitySpawnTicket { prefab });
@@ -336,11 +339,11 @@ void TilesPoolComponent::CreateAllTiles(const CellIndexesList& i_ignoredCellInde
 
 void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isStart)
 {
-	const AZStd::size_t tileType = m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size();
+	const AZStd::size_t tileType = (i_isStart) ? 0 : m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size();
 
 	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
 
-	spawnOptions.m_preInsertionCallback = [this, i_row, i_column, i_isStart]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
+	spawnOptions.m_preInsertionCallback = [this, i_row, i_column, i_isStart, tileType]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
 		{
@@ -351,6 +354,7 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isSt
 		AZ::Entity* newEntity = *(i_newEntities.begin() + 1);
 		auto newTile = newEntity->FindComponent<TileComponent>();
 		newTile->m_id = CalculateTileId(i_row, i_column);
+		newTile->m_isLandingArea = (tileType == 0);
 
 		if(i_isStart)
 		{

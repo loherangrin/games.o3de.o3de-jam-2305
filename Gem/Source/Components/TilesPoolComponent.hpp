@@ -94,6 +94,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_obstaclePrefabs {};
     	AZStd::vector<AzFramework::EntitySpawnTicket> m_obstacleSpawnTickets {};
 
+		AZ::Data::Asset<AzFramework::Spawnable> m_landingTilePrefab {};
 		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_tilePrefabs {};
     	AZStd::vector<AzFramework::EntitySpawnTicket> m_tileSpawnTickets {};
 

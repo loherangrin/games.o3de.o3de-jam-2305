@@ -38,6 +38,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		virtual TileId GetTileId() const = 0;
         virtual bool IsClaimed() const = 0;
+		virtual bool IsLandingArea() const = 0;
 	};
 	
 	class TileRequestBusTraits

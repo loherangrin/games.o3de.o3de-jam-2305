@@ -378,6 +378,11 @@ bool TileComponent::IsClaimed() const
 	return m_isClaimed;
 }
 
+bool TileComponent::IsLandingArea() const
+{
+	return m_isLandingArea;
+}
+
 void TileComponent::OnTileClaimed()
 {
 	if(m_nClaimedNeighbors >= MAX_NEIGHBORS)

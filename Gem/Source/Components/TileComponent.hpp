@@ -65,6 +65,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		TileId GetTileId() const override;
 		bool IsClaimed() const override;
+		bool IsLandingArea() const override;
 
 		// TileNotificationBus
 		void OnTileClaimed() override;
@@ -110,6 +111,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		bool m_isRecharging { false };
 		bool m_isClaimed { false };
 		bool m_isLocked { false };
+		bool m_isLandingArea { false };
+
 		AZ::u8 m_nClaimedNeighbors { 0 };
 
 		float m_flipSpeed { 2.f };
