@@ -339,7 +339,7 @@ void SpaceshipComponent::ApplyRotation(const AZ::Transform& i_transform, float i
 {
 	const AZ::Quaternion& rotation = i_transform.GetRotation();
 
-	const float angleOffset = m_turnDirection * m_speedMultiplier * m_turnSpeed * i_deltaTime;
+	const float angleOffset = m_turnDirection * m_turnSpeed * i_deltaTime;
 	const AZ::Quaternion angularOffset = AZ::Quaternion::CreateRotationZ(angleOffset);
 
 	const AZ::Quaternion newRotation = angularOffset * rotation;
