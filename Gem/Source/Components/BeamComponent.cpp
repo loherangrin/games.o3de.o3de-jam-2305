@@ -284,6 +284,8 @@ void BeamComponent::SelectTile(const AZ::EntityId& i_tileEntityId)
 	{
 		AZ::TickBus::Handler::BusConnect();
 	}
+
+	EBUS_EVENT_ID(i_tileEntityId, TileRequestBus, SetSelected, true);
 }
 
 void BeamComponent::DeselectTile(const AZ::EntityId& i_tileEntityId)
@@ -294,6 +296,8 @@ void BeamComponent::DeselectTile(const AZ::EntityId& i_tileEntityId)
 	{
 		AZ::TickBus::Handler::BusDisconnect();
 	}
+
+	EBUS_EVENT_ID(i_tileEntityId, TileRequestBus, SetSelected, false);
 }
 
 void BeamComponent::TransferEnergyToTiles(float i_deltaTime)

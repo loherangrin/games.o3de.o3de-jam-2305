@@ -32,7 +32,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	class TileComponent
 		: public AZ::Component
-		, protected AZ::EntityBus::Handler
+		, protected AZ::EntityBus::MultiHandler
 		, protected AZ::TickBus::Handler
 		, protected CollectablesNotificationBus::Handler
 		, protected GameNotificationBus::Handler
@@ -66,6 +66,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		TileId GetTileId() const override;
 		bool IsClaimed() const override;
 		bool IsLandingArea() const override;
+
+		void SetSelected(bool i_enabled) override;
 
 		// TileNotificationBus
 		void OnTileClaimed() override;
@@ -130,6 +132,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::Quaternion m_endRotation { AZ::Quaternion::CreateIdentity() };
 
 		AZ::EntityId m_meshEntityId {};
+		AZ::EntityId m_selectionEntityId {};
 
 		static constexpr float THRESHOLDS_ALERT = 5.f;
 		static constexpr float THRESHOLDS_TOGGLE = 2.5f;

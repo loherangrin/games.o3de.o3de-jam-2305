@@ -39,6 +39,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		virtual TileId GetTileId() const = 0;
         virtual bool IsClaimed() const = 0;
 		virtual bool IsLandingArea() const = 0;
+
+		virtual void SetSelected(bool i_enabled) = 0;
 	};
 	
 	class TileRequestBusTraits
@@ -111,6 +113,9 @@ namespace Loherangrin::Games::O3DEJam2305
 
         virtual void OnTileClaimed(const AZ::EntityId& i_tileEntityId){}
 		virtual void OnTileLost(const AZ::EntityId& i_tileEntityId){}
+
+		virtual void OnTileSelected(const AZ::EntityId& i_tileEntityId){}
+		virtual void OnTileDeselected(const AZ::EntityId& i_tileEntityId){}
     };
     
     class TilesNotificationBusTraits

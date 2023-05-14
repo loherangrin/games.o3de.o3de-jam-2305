@@ -76,6 +76,10 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// TilesNotificationBus
 		void OnTileEnergyChanged(const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy) override;
+		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
+		void OnTileLost(const AZ::EntityId& i_tileEntityId) override;
+		void OnTileSelected(const AZ::EntityId& i_tileEntityId);
+		void OnTileDeselected(const AZ::EntityId& i_tileEntityId);
 
 	private:
 		enum class Animation : AZ::u8
@@ -117,6 +121,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_fadeDuration { 3.f };
 		float m_timer { -1.f };
 
+		AZ::EntityId m_selectedTileEntityId {};
+
 		AZ::EntityId m_menuCamera {};
 		AZ::EntityId m_gameCamera {};
 
@@ -129,8 +135,10 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::EntityId m_endMenuEntityId {};
 
 		// Hud
+		AZ::EntityId m_energyBarsSeparatorEntityId {};
 		AZ::EntityId m_spaceshipLowEnergyEntityId {};
 		AZ::EntityId m_spaceshipHighEnergyEntityId {};
+		AZ::EntityId m_tileEnergyBarEntityId {};
 		AZ::EntityId m_tileLowEnergyEntityId {};
 		AZ::EntityId m_tileHighEnergyEntityId {};
 		AZ::EntityId m_claimedTilesEntityId {};
@@ -160,8 +168,10 @@ namespace Loherangrin::Games::O3DEJam2305
 		static constexpr float FADE_SPEED = 0.5f;
 
 		static constexpr const char* UI_HUD = "Hud";
+		static constexpr const char* UI_HUD_ENERGY_BARS_SEPARATOR_IMAGE = "Separator";
 		static constexpr const char* UI_HUD_SPACESHIP_LOW_ENERGY_IMAGE = "SpaceshipEnergy_LowValue";
 		static constexpr const char* UI_HUD_SPACESHIP_HIGH_ENERGY_IMAGE = "SpaceshipEnergy_HighValue";
+		static constexpr const char* UI_HUD_TILE_ENERGY_BAR = "TileEnergy";
 		static constexpr const char* UI_HUD_TILE_LOW_ENERGY_IMAGE = "TileEnergy_LowValue";
 		static constexpr const char* UI_HUD_TILE_HIGH_ENERGY_IMAGE = "TileEnergy_HighValue";
 		static constexpr const char* UI_HUD_CLAIMED_TILES_TEXT = "ClaimedTiles_Value";

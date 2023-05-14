@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+#include <AtomLyIntegration/CommonFeatures/Mesh/MeshComponentBus.h>
+
 #include <AzCore/Component/TransformBus.h>
 #include <AzCore/Serialization/EditContext.h>
 #include <AzCore/Serialization/EditContextConstants.inl>
@@ -37,6 +39,7 @@ void TileComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("Flip", &TileComponent::m_flipSpeed)
 			->Field("ShakeSpeed", &TileComponent::m_shakeSpeed)
 			->Field("ShakeHeight", &TileComponent::m_maxShakeHeight)
+			->Field("Select", &TileComponent::m_selectionEntityId)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -59,6 +62,10 @@ void TileComponent::Reflect(AZ::ReflectContext* io_context)
 
 					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_shakeSpeed, "Alert", "")
 					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_flipSpeed, "Toggle", "")
+
+				->ClassElement(AZ::Edit::ClassElements::Group, "")
+
+				->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_selectionEntityId, "Selection", "")
 			;
 		}
 	}
@@ -86,9 +93,10 @@ void TileComponent::Activate()
 {
 	CollectablesNotificationBus::Handler::BusConnect();
 
+	AZ::EntityBus::MultiHandler::BusConnect(m_selectionEntityId);
 	if(m_isClaimed)
 	{
-		AZ::EntityBus::Handler::BusConnect(m_meshEntityId);
+		AZ::EntityBus::MultiHandler::BusConnect(m_meshEntityId);
 	}
 
 	GameNotificationBus::Handler::BusConnect();
@@ -105,23 +113,27 @@ void TileComponent::Deactivate()
 
 	GameNotificationBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
-	AZ::EntityBus::Handler::BusDisconnect();
+	AZ::EntityBus::MultiHandler::BusDisconnect();
 
 	CollectablesNotificationBus::Handler::BusConnect();
 }
 	
 void TileComponent::OnEntityActivated(const AZ::EntityId& i_entityId)
 {
-	AZ_Assert(i_entityId == m_meshEntityId, "Expecting mesh entity");
-	AZ::EntityBus::Handler::BusDisconnect();
-
-	const AZ::Quaternion rotation = AZ::Quaternion::CreateRotationX(AZ::Constants::Pi);
-
-	EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalRotationQuaternion, rotation);
-
- 	if(!m_isLocked)
+	if(i_entityId == m_meshEntityId)
 	{
-		AZ::TickBus::Handler::BusConnect();
+		const AZ::Quaternion rotation = AZ::Quaternion::CreateRotationX(AZ::Constants::Pi);
+
+		EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalRotationQuaternion, rotation);
+
+		if(!m_isLocked)
+		{
+			AZ::TickBus::Handler::BusConnect();
+		}
+	}
+	else if(i_entityId == m_selectionEntityId)
+	{
+		SetSelected(false);
 	}
 }
 
@@ -381,6 +393,28 @@ bool TileComponent::IsClaimed() const
 bool TileComponent::IsLandingArea() const
 {
 	return m_isLandingArea;
+}
+
+void TileComponent::SetSelected(bool i_enabled)
+{
+	bool isSelected { false };
+	EBUS_EVENT_ID_RESULT(isSelected, m_selectionEntityId, AZ::Render::MeshComponentRequestBus, GetVisibility);
+
+	if(isSelected == i_enabled)
+	{
+		return;
+	}
+	
+	EBUS_EVENT_ID(m_selectionEntityId, AZ::Render::MeshComponentRequestBus, SetVisibility, i_enabled);
+
+	if(i_enabled)
+	{
+		EBUS_EVENT(TilesNotificationBus, OnTileSelected, GetEntityId());
+	}
+	else
+	{
+		EBUS_EVENT(TilesNotificationBus, OnTileDeselected, GetEntityId());
+	}
 }
 
 void TileComponent::OnTileClaimed()

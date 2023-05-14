@@ -147,8 +147,10 @@ bool UiComponent::FindAllUiElements(const AZ::EntityId& i_canvasId)
 	m_canvasId = i_canvasId;
 
 	m_hudEntityId = FindUiElement(UI_HUD);
+	m_energyBarsSeparatorEntityId = FindUiElement(UI_HUD_ENERGY_BARS_SEPARATOR_IMAGE);
 	m_spaceshipLowEnergyEntityId = FindUiElement(UI_HUD_SPACESHIP_LOW_ENERGY_IMAGE);
 	m_spaceshipHighEnergyEntityId = FindUiElement(UI_HUD_SPACESHIP_HIGH_ENERGY_IMAGE);
+	m_tileEnergyBarEntityId = FindUiElement(UI_HUD_TILE_ENERGY_BAR);
 	m_tileLowEnergyEntityId = FindUiElement(UI_HUD_TILE_LOW_ENERGY_IMAGE);
 	m_tileHighEnergyEntityId = FindUiElement(UI_HUD_TILE_HIGH_ENERGY_IMAGE);
 	m_claimedTilesEntityId = FindUiElement(UI_HUD_CLAIMED_TILES_TEXT);
@@ -263,8 +265,16 @@ void UiComponent::StartGame()
 {
 	ShowUiElement(m_loadingScreenEntityId, 0.f);
 
+	HideUiElement(m_spaceshipLowEnergyEntityId);
+	ShowUiElement(m_spaceshipHighEnergyEntityId);
 	m_spaceshipEnergyEntityId = &m_spaceshipHighEnergyEntityId;
+
+	ShowUiElement(m_tileLowEnergyEntityId);
+	HideUiElement(m_tileHighEnergyEntityId);
 	m_tileEnergyEntityId = &m_tileLowEnergyEntityId;
+
+	HideUiElement(m_tileEnergyBarEntityId);
+	HideUiElement(m_energyBarsSeparatorEntityId);
 
 	GameNotificationBus::Handler::BusConnect();
 	ScoreNotificationBus::Handler::BusConnect();
@@ -441,9 +451,70 @@ void UiComponent::OnSpaceshipEnergyChanged(float i_normalizedNewEnergy)
 	EBUS_EVENT_ID(*m_spaceshipEnergyEntityId, UiImageBus, SetFillAmount, i_normalizedNewEnergy);
 }
 
-void UiComponent::OnTileEnergyChanged([[maybe_unused]] const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy)
+void UiComponent::OnTileEnergyChanged(const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy)
 {
+	if(i_tileEntityId != m_selectedTileEntityId)
+	{
+		return ;
+	}
+
 	EBUS_EVENT_ID(*m_tileEnergyEntityId, UiImageBus, SetFillAmount, i_normalizedNewEnergy);
+}
+
+void UiComponent::OnTileClaimed(const AZ::EntityId& i_tileEntityId)
+{
+	if(i_tileEntityId != m_selectedTileEntityId)
+	{
+		return ;
+	}
+
+	SwapUiElements(m_tileEnergyEntityId, m_tileHighEnergyEntityId);
+}
+
+void UiComponent::OnTileLost(const AZ::EntityId& i_tileEntityId)
+{
+	if(i_tileEntityId != m_selectedTileEntityId)
+	{
+		return ;
+	}
+
+	SwapUiElements(m_tileEnergyEntityId, m_tileLowEnergyEntityId);
+}
+	
+void UiComponent::OnTileSelected(const AZ::EntityId& i_tileEntityId)
+{
+	if(!m_selectedTileEntityId.IsValid())
+	{
+		ShowUiElement(m_tileEnergyBarEntityId);
+		ShowUiElement(m_energyBarsSeparatorEntityId);
+	}
+
+	bool isClaimed { false };
+	EBUS_EVENT_ID_RESULT(isClaimed, i_tileEntityId, TileRequestBus, IsClaimed);
+
+	if(isClaimed && m_tileEnergyEntityId != &m_tileHighEnergyEntityId)
+	{
+		SwapUiElements(m_tileEnergyEntityId, m_tileHighEnergyEntityId);
+	}
+	else if(!isClaimed && m_tileEnergyEntityId != &m_tileLowEnergyEntityId)
+	{
+		SwapUiElements(m_tileEnergyEntityId, m_tileLowEnergyEntityId);
+	}
+
+	m_selectedTileEntityId = i_tileEntityId;
+}
+
+void UiComponent::OnTileDeselected(const AZ::EntityId& i_tileEntityId)
+{
+	if(i_tileEntityId != m_selectedTileEntityId)
+	{
+		return;
+	}
+
+	HideUiElement(m_tileEnergyBarEntityId);
+	HideUiElement(m_energyBarsSeparatorEntityId);
+
+	m_selectedTileEntityId.SetInvalid();
 }
 
 void UiComponent::ConnectOnButtonClick(const AZ::EntityId& i_buttonEntityId, const UiButtonInterface::OnClickCallback& i_callback)
