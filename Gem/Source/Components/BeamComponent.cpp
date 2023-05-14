@@ -126,10 +126,7 @@ void BeamComponent::Deactivate()
 
 	SpaceshipNotificationBus::Handler::BusDisconnect();
 
-	if(m_isEnabled)
-	{
-		DisconnectTriggerHandlers();
-	}
+	DisconnectTriggerHandlers();
 
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
 }
@@ -189,6 +186,8 @@ void BeamComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
 	EBUS_EVENT_ID(i_entityId, AZ::TransformBus, SetOnParentChangedBehavior, AZ::OnParentChangedBehavior::Update);
 
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
+
+	ConnectTriggerHandlers();
 }
 
 void BeamComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
@@ -240,7 +239,15 @@ void BeamComponent::TurnOn()
 
 	m_isEnabled = true;
 
-	ConnectTriggerHandlers();
+	if(!m_selectedTiles.empty())
+	{
+		for(const AZ::EntityId& tileEntityId : m_selectedTiles)
+		{
+			EBUS_EVENT_ID(tileEntityId, TileRequestBus, SetSelected, true);
+		}
+
+		AZ::TickBus::Handler::BusConnect();
+	}
 
 	EBUS_EVENT_ID(GetEntityId(), AZ::Render::MeshComponentRequestBus, SetVisibility, true);
 }
@@ -250,9 +257,11 @@ void BeamComponent::TurnOff()
 	m_isEnabled = false;
 
 	AZ::TickBus::Handler::BusDisconnect();
-	DisconnectTriggerHandlers();
 
-	m_selectedTiles.clear();
+	for(const AZ::EntityId& tileEntityId : m_selectedTiles)
+	{
+		EBUS_EVENT_ID(tileEntityId, TileRequestBus, SetSelected, false);
+	}
 
 	EBUS_EVENT_ID(GetEntityId(), AZ::Render::MeshComponentRequestBus, SetVisibility, false);
 }
@@ -280,6 +289,11 @@ void BeamComponent::SelectTile(const AZ::EntityId& i_tileEntityId)
 {
 	m_selectedTiles.emplace(i_tileEntityId);
 
+	if(!m_isEnabled)
+	{
+		return;
+	}
+
 	if(!AZ::TickBus::Handler::BusIsConnected())
 	{
 		AZ::TickBus::Handler::BusConnect();
@@ -291,6 +305,11 @@ void BeamComponent::SelectTile(const AZ::EntityId& i_tileEntityId)
 void BeamComponent::DeselectTile(const AZ::EntityId& i_tileEntityId)
 {
 	m_selectedTiles.extract(i_tileEntityId);
+
+	if(!m_isEnabled)
+	{
+		return;
+	}
 
 	if(m_selectedTiles.empty())
 	{
