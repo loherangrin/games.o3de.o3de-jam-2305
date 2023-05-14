@@ -17,6 +17,7 @@
 #pragma once
 
 #include <AzCore/Component/Component.h>
+#include <AzCore/Component/TickBus.h>
 
 #include <AzFramework/Physics/Common/PhysicsSimulatedBodyEvents.h>
 #include <AzFramework/Physics/RigidBodyBus.h>
@@ -28,6 +29,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 	class CollectableComponent
 		: public AZ::Component
+		, protected AZ::TickBus::Handler
 		, protected Physics::RigidBodyNotificationBus::Handler
 	{
 	public:
@@ -44,6 +46,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Init() override;
 		void Activate() override;
 		void Deactivate() override;
+
+		// AZ::TickBus
+		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
 
 		// Physics::RigidBodyNotificationBus
 		void OnPhysicsEnabled(const AZ::EntityId& i_entityId) override;
@@ -68,6 +73,8 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		float m_amount { 0.f };
 		float m_duration { 0.f };
+
+		float m_timer { 0.f };
 
 		AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler m_triggerEnterHandler;
 

@@ -21,6 +21,7 @@
 #include <AzCore/Serialization/EditContextConstants.inl>
 #include <AzCore/Serialization/SerializeContext.h>
 
+#include "CollectableComponent.hpp"
 #include "CollectablesPoolComponent.hpp"
 
 using Loherangrin::Games::O3DEJam2305::CollectablesPoolComponent;
@@ -45,6 +46,8 @@ void CollectablesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("SpeedUp", &CollectablesPoolComponent::m_speedUpPrefab)
 			->Field("SpeedDown", &CollectablesPoolComponent::m_speedDownPrefab)
 			->Field("Height", &CollectablesPoolComponent::m_collectableHeight)
+			->Field("ExpirationMin", &CollectablesPoolComponent::m_minCollectableExpiration)
+			->Field("ExpirationMax", &CollectablesPoolComponent::m_maxCollectableExpiration)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -80,7 +83,12 @@ void CollectablesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 
 				->ClassElement(AZ::Edit::ClassElements::Group, "")
 
-					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_collectableHeight, "Height", "")
+				->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_collectableHeight, "Height", "")
+				
+				->ClassElement(AZ::Edit::ClassElements::Group, "Expiration")
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_minCollectableExpiration, "Min", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &CollectablesPoolComponent::m_maxCollectableExpiration, "Max", "")
 			;
 		}
 	}
@@ -166,6 +174,20 @@ void CollectablesPoolComponent::TryCreateCollectable(const AZ::EntityId& i_tileE
 	auto collectableType = static_cast<CollectableType>((m_randomGenerator.Getu64Random() % m_collectableSpawnTickets.size()) + 1);
 
 	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
+
+	spawnOptions.m_preInsertionCallback = [this]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableEntityContainerView i_newEntities)
+	{
+		if(i_newEntities.empty())
+		{
+			AZ_Error("CollectablesPool", false, "Unable to spawn collectables. Please check if a prefab is assigned");
+			return;
+		}
+
+		AZ::Entity* newEntity = *(i_newEntities.begin() + 1);
+		auto newCollectable = newEntity->FindComponent<CollectableComponent>();
+		newCollectable->m_timer = GenerateRandomInRange(m_minCollectableExpiration, m_maxCollectableExpiration);
+	};
+
 	spawnOptions.m_completionCallback = [this, i_tileEntityId](AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
@@ -200,4 +222,9 @@ void CollectablesPoolComponent::DestroyAllCollectables()
 	{
 		spawnableSystem->DespawnAllEntities(it.second);
 	}
+}
+
+float CollectablesPoolComponent::GenerateRandomInRange(float i_min, float i_max)
+{
+	return (i_min + (m_randomGenerator.GetRandomFloat() * (i_max - i_min)));
 }

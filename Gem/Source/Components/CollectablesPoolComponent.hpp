@@ -65,9 +65,14 @@ namespace Loherangrin::Games::O3DEJam2305
 		void TryCreateCollectable(const AZ::EntityId& i_tileEntityId);
 		void DestroyAllCollectables();
 
+		float GenerateRandomInRange(float i_min, float i_max);
+
 		AZ::u64 m_collectableSeed { 1234 };
 		float m_collectableProbability { 0.1f };
 		float m_collectableHeight { 1.f };
+
+		float m_minCollectableExpiration { 2.f };
+		float m_maxCollectableExpiration { 10.f };
 
 		AZ::Data::Asset<AzFramework::Spawnable> m_stopDecayPrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipDamagePrefab {};

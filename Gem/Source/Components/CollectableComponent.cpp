@@ -142,6 +142,7 @@ void CollectableComponent::Activate()
 
 void CollectableComponent::Deactivate()
 {
+	AZ::TickBus::Handler::BusDisconnect();
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
 
 	m_triggerEnterHandler.Disconnect();
@@ -162,4 +163,20 @@ void CollectableComponent::OnPhysicsEnabled(const AZ::EntityId& i_entityId)
 	collider->RegisterOnTriggerEnterHandler(m_triggerEnterHandler);
 
 	Physics::RigidBodyNotificationBus::Handler::BusDisconnect();
+
+	if(m_timer > 0.f)
+	{
+		AZ::TickBus::Handler::BusConnect();
+	}
+}
+
+void CollectableComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint i_time)
+{
+	m_timer -= i_deltaTime;
+	if(m_timer > 0.f)
+	{
+		return;
+	}
+
+	EBUS_EVENT(AzFramework::GameEntityContextRequestBus, DestroyGameEntityAndDescendants, GetEntityId());
 }
