@@ -34,7 +34,7 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 	{
 		serializeContext->Class<TilesPoolComponent, AZ::Component>()
 			->Version(0)
-			->Field("Grid", &TilesPoolComponent::m_gridLength)
+			->Field("Grid", &TilesPoolComponent::m_maxGridLength)
 			->Field("Seed", &TilesPoolComponent::m_randomSeed)
 			->Field("TileSize", &TilesPoolComponent::m_tileCellSize)
 			->Field("TilesLanding", &TilesPoolComponent::m_landingTilePrefab)
@@ -53,7 +53,7 @@ void TilesPoolComponent::Reflect(AZ::ReflectContext* io_context)
 					->Attribute(AZ::Edit::Attributes::AppearsInAddComponentMenu, AZ_CRC_CE("Game"))
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
-				->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_gridLength, "Grid", "")
+				->DataElement(AZ::Edit::UIHandlers::Default, &TilesPoolComponent::m_maxGridLength, "Grid", "")
 
 				->ClassElement(AZ::Edit::ClassElements::Group, "Random")
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
@@ -123,8 +123,10 @@ void TilesPoolComponent::Init()
 
 void TilesPoolComponent::Activate()
 {
+	m_gridLength = GRID_LENGTHS_FIRST_ACTIVATION;
+
 	CreateAllBoundaries();
-	CreateAllTiles();
+	CreateAllTiles(true);
 
 	GameNotificationBus::Handler::BusConnect();
 }
@@ -143,8 +145,16 @@ void TilesPoolComponent::OnGameLoading()
 	DestroyAllObstacles();
 	DestroyAllTiles();
 
+	if(m_gridLength != m_maxGridLength)
+	{
+		DestroyAllBoundaries();
+
+		m_gridLength = m_maxGridLength;
+		CreateAllBoundaries();
+	}
+
 	const CellIndexesList obstacleIndexes = CreateAllObstacles();
-	CreateAllTiles(obstacleIndexes);
+	CreateAllTiles(false, obstacleIndexes);
 }
 
 AZ::Vector2 TilesPoolComponent::GetGridSize() const
@@ -315,7 +325,7 @@ void TilesPoolComponent::CreateObstacle(AZ::u16 i_row, AZ::u16 i_column)
 	spawnableSystem->SpawnAllEntities(m_obstacleSpawnTickets[obstacleType], AZStd::move(spawnOptions));
 }
 
-void TilesPoolComponent::CreateAllTiles(const CellIndexesList& i_ignoredCellIndexes)
+void TilesPoolComponent::CreateAllTiles(bool i_forceEmptyTiles, const CellIndexesList& i_ignoredCellIndexes)
 {
 	const AZ::u16 halfLength = m_gridLength / 2;
 
@@ -332,14 +342,22 @@ void TilesPoolComponent::CreateAllTiles(const CellIndexesList& i_ignoredCellInde
 
 			const bool isCenterColumn = (j == halfLength);
 
-			CreateTile(i, j, isCenterRow && isCenterColumn);
+			CreateTile(i, j, isCenterRow && isCenterColumn, i_forceEmptyTiles);
 		}
 	}
+
+	EBUS_EVENT(TilesNotificationBus, OnAllTilesCreated);
 }
 
-void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isStart)
+void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isStart, bool i_forceEmpty)
 {
-	const AZStd::size_t tileType = (i_isStart) ? 0 : m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size();
+	const AZStd::size_t tileType = (i_isStart)
+		? TILE_TYPES_LANDING_AREA
+		: ((i_forceEmpty)
+			? TILE_TYPES_EMPTY
+			: m_randomGenerator.Getu64Random() % m_tileSpawnTickets.size()
+		)
+	;
 
 	AzFramework::SpawnAllEntitiesOptionalArgs spawnOptions;
 
@@ -354,7 +372,7 @@ void TilesPoolComponent::CreateTile(AZ::u16 i_row, AZ::u16 i_column, bool i_isSt
 		AZ::Entity* newEntity = *(i_newEntities.begin() + 1);
 		auto newTile = newEntity->FindComponent<TileComponent>();
 		newTile->m_id = CalculateTileId(i_row, i_column);
-		newTile->m_isLandingArea = (tileType == 0);
+		newTile->m_isLandingArea = (tileType == TILE_TYPES_LANDING_AREA);
 
 		if(i_isStart)
 		{

@@ -43,7 +43,6 @@ void UiComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("CameraGame", &UiComponent::m_gameCamera)
 			->Field("Lift", &UiComponent::m_liftDuration)
 			->Field("Fade", &UiComponent::m_fadeDuration)
-			->Field("Loading", &UiComponent::m_loadingDuration)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -64,7 +63,6 @@ void UiComponent::Reflect(AZ::ReflectContext* io_context)
 
 					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_liftDuration, "Animation - Moving", "")
 					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_fadeDuration, "Animation - Fading", "")
-					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_loadingDuration, "Loading", "")
 			;
 		}
 	}
@@ -157,6 +155,7 @@ bool UiComponent::FindAllUiElements(const AZ::EntityId& i_canvasId)
 	m_scoreEntityId = FindUiElement(UI_HUD_SCORE_TEXT);
 
 	m_loadingScreenEntityId = FindUiElement(UI_LOADING);
+	m_loadingTextEntityId = FindUiElement(UI_LOADING_TEXT);
 
 	m_mainMenuEntityId = FindUiElement(UI_MAIN_MENU);
 	m_startGameEntityId = FindUiElement(UI_MAIN_MENU_START_BUTTON);
@@ -230,6 +229,7 @@ void UiComponent::InitializeAllUiElements()
 		DestroyGame();
 	});
 
+	HideUiElement(m_loadingTextEntityId);
 	ShowUiElement(m_loadingScreenEntityId);
 
 	HideUiElement(m_hudEntityId);
@@ -264,6 +264,7 @@ void UiComponent::CreateGame()
 void UiComponent::StartGame()
 {
 	ShowUiElement(m_loadingScreenEntityId, 0.f);
+	ShowUiElement(m_loadingTextEntityId);
 
 	HideUiElement(m_spaceshipLowEnergyEntityId);
 	ShowUiElement(m_spaceshipHighEnergyEntityId);
@@ -283,10 +284,16 @@ void UiComponent::StartGame()
 
 	EBUS_EVENT_ID(m_gameCamera, Camera::CameraRequestBus, MakeActiveView);
 
-	EBUS_EVENT(GameNotificationBus, OnGameLoading);
-
-	m_timer = m_loadingDuration;
 	m_animation = Animation::LOADING;
+	m_timer = 0.5f;
+
+	AZ::TickBus::Handler::BusConnect();
+}
+
+void UiComponent::OnAllTilesCreated()
+{
+	m_timer = 0.5f;
+	m_animation = Animation::AFTER_LOADING;
 
 	AZ::TickBus::Handler::BusConnect();
 }
@@ -303,14 +310,24 @@ void UiComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint
 	{
 		case Animation::LOADING:
 		{
+			m_animation = Animation::NONE;
+			AZ::TickBus::Handler::BusDisconnect();
+
+			EBUS_EVENT(GameNotificationBus, OnGameLoading);
+		}
+		break;
+		
+		case Animation::AFTER_LOADING:
+		{
+			m_animation = Animation::NONE;
+			AZ::TickBus::Handler::BusDisconnect();
+
 			ShowUiElement(m_hudEntityId);
 
 			EBUS_EVENT(GameNotificationBus, OnGameStarted);
 
+			HideUiElement(m_loadingTextEntityId);
 			HideUiElement(m_loadingScreenEntityId, FADE_SPEED);
-
-			m_animation = Animation::NONE;
-			AZ::TickBus::Handler::BusDisconnect();
 		}
 		break;
 

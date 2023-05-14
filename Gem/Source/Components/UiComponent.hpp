@@ -75,6 +75,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		void OnTakeOffStarted() override;
 
 		// TilesNotificationBus
+		void OnAllTilesCreated();
 		void OnTileEnergyChanged(const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy) override;
 		void OnTileClaimed(const AZ::EntityId& i_tileEntityId) override;
 		void OnTileLost(const AZ::EntityId& i_tileEntityId) override;
@@ -89,7 +90,8 @@ namespace Loherangrin::Games::O3DEJam2305
 			AFTER_TAKE_OFF,
 			BEFORE_LAND,
 			LAND,
-			LOADING
+			LOADING,
+			AFTER_LOADING
 		};
 
 		bool FindAllUiElements(const AZ::EntityId& i_canvasId);
@@ -116,7 +118,6 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		Animation m_animation { Animation::NONE };
 
-		float m_loadingDuration { 1.f };
 		float m_liftDuration { 2.f };
 		float m_fadeDuration { 3.f };
 		float m_timer { -1.f };
@@ -143,6 +144,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::EntityId m_tileHighEnergyEntityId {};
 		AZ::EntityId m_claimedTilesEntityId {};
 		AZ::EntityId m_scoreEntityId {};
+
+		// Loading
+		AZ::EntityId m_loadingTextEntityId {};
 
 		// Main menu
 		AZ::EntityId m_startGameEntityId {};
@@ -178,6 +182,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		static constexpr const char* UI_HUD_SCORE_TEXT = "Score_Value";
 
 		static constexpr const char* UI_LOADING = "LoadingScreen";
+		static constexpr const char* UI_LOADING_TEXT = "Loading_Text";
 
 		static constexpr const char* UI_MAIN_MENU = "MainMenu";
 		static constexpr const char* UI_MAIN_MENU_START_BUTTON = "StartButton";
