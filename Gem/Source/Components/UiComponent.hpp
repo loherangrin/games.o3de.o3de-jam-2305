@@ -18,10 +18,12 @@
 
 #include <AzCore/Component/Component.h>
 #include <AzCore/Component/TickBus.h>
+#include <AzCore/std/string/string.h>
 
 #include <LyShine/Bus/World/UiCanvasRefBus.h>
 #include <LyShine/Bus/UiButtonBus.h>
 
+#include "../EBuses/CollectableBus.hpp"
 #include "../EBuses/GameBus.hpp"
 #include "../EBuses/ScoreBus.hpp"
 #include "../EBuses/SpaceshipBus.hpp"
@@ -34,6 +36,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
 		, protected UiCanvasAssetRefNotificationBus::Handler
+		, protected CollectablesNotificationBus::Handler
 		, protected GameNotificationBus::Handler
 		, protected ScoreNotificationBus::Handler
 		, protected SpaceshipNotificationBus::Handler
@@ -58,6 +61,13 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		// AZ::TickBus
 		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
+
+		// CollectablesNotificationBus
+		void OnStopDecayCollected(float i_duration);
+		void OnSpaceshipEnergyCollected(float i_energy);
+		void OnTileEnergyCollected(float i_energy);
+		void OnPointsCollected(Points i_points);
+		void OnSpeedCollected(float i_multiplier, float i_duration);
 
 		// GameNotificationBus
 		void OnGamePaused() override;
@@ -91,7 +101,8 @@ namespace Loherangrin::Games::O3DEJam2305
 			BEFORE_LAND,
 			LAND,
 			LOADING,
-			AFTER_LOADING
+			AFTER_LOADING,
+			COLLECTABLE
 		};
 
 		bool FindAllUiElements(const AZ::EntityId& i_canvasId);
@@ -106,6 +117,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		void EndGame();
 		void DestroyGame();
 
+		void SetCollectableText(const AZStd::string& i_message, bool i_isPositive);
+
 		static void ConnectOnButtonClick(const AZ::EntityId& i_buttonEntityId, const UiButtonInterface::OnClickCallback& i_callback);
 
 		static void ShowUiElement(const AZ::EntityId& i_elementEntityId);
@@ -118,6 +131,7 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		Animation m_animation { Animation::NONE };
 
+		float m_collectableNotificationDuration { 2.f };
 		float m_liftDuration { 2.f };
 		float m_fadeDuration { 3.f };
 		float m_timer { -1.f };
@@ -136,6 +150,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::EntityId m_endMenuEntityId {};
 
 		// Hud
+		AZ::EntityId m_lowEnergyModeEntityId {};
 		AZ::EntityId m_energyBarsSeparatorEntityId {};
 		AZ::EntityId m_spaceshipLowEnergyEntityId {};
 		AZ::EntityId m_spaceshipHighEnergyEntityId {};
@@ -144,6 +159,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::EntityId m_tileHighEnergyEntityId {};
 		AZ::EntityId m_claimedTilesEntityId {};
 		AZ::EntityId m_scoreEntityId {};
+		AZ::EntityId m_positiveCollectableEntityId {};
+		AZ::EntityId m_negativeCollectableEntityId {};
 
 		// Loading
 		AZ::EntityId m_loadingTextEntityId {};
@@ -172,6 +189,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		static constexpr float FADE_SPEED = 0.5f;
 
 		static constexpr const char* UI_HUD = "Hud";
+		static constexpr const char* UI_HUD_LOW_ENERGY_MODE_TEXT = "LowEnergyMode";
 		static constexpr const char* UI_HUD_ENERGY_BARS_SEPARATOR_IMAGE = "Separator";
 		static constexpr const char* UI_HUD_SPACESHIP_LOW_ENERGY_IMAGE = "SpaceshipEnergy_LowValue";
 		static constexpr const char* UI_HUD_SPACESHIP_HIGH_ENERGY_IMAGE = "SpaceshipEnergy_HighValue";
@@ -180,6 +198,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		static constexpr const char* UI_HUD_TILE_HIGH_ENERGY_IMAGE = "TileEnergy_HighValue";
 		static constexpr const char* UI_HUD_CLAIMED_TILES_TEXT = "ClaimedTiles_Value";
 		static constexpr const char* UI_HUD_SCORE_TEXT = "Score_Value";
+		static constexpr const char* UI_HUD_POSITIVE_COLLECTABLE_TEXT = "Collectable_Positive";
+		static constexpr const char* UI_HUD_NEGATIVE_COLLECTABLE_TEXT = "Collectable_Negative";
 
 		static constexpr const char* UI_LOADING = "LoadingScreen";
 		static constexpr const char* UI_LOADING_TEXT = "Loading_Text";

@@ -43,6 +43,7 @@ void UiComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("CameraGame", &UiComponent::m_gameCamera)
 			->Field("Lift", &UiComponent::m_liftDuration)
 			->Field("Fade", &UiComponent::m_fadeDuration)
+			->Field("Collectable", &UiComponent::m_collectableNotificationDuration)
 		;
 
 		if(AZ::EditContext* editContext = serializeContext->GetEditContext())
@@ -63,6 +64,7 @@ void UiComponent::Reflect(AZ::ReflectContext* io_context)
 
 					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_liftDuration, "Animation - Moving", "")
 					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_fadeDuration, "Animation - Fading", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &UiComponent::m_collectableNotificationDuration, "Notification - Collectable", "")
 			;
 		}
 	}
@@ -145,6 +147,7 @@ bool UiComponent::FindAllUiElements(const AZ::EntityId& i_canvasId)
 	m_canvasId = i_canvasId;
 
 	m_hudEntityId = FindUiElement(UI_HUD);
+	m_lowEnergyModeEntityId = FindUiElement(UI_HUD_LOW_ENERGY_MODE_TEXT);
 	m_energyBarsSeparatorEntityId = FindUiElement(UI_HUD_ENERGY_BARS_SEPARATOR_IMAGE);
 	m_spaceshipLowEnergyEntityId = FindUiElement(UI_HUD_SPACESHIP_LOW_ENERGY_IMAGE);
 	m_spaceshipHighEnergyEntityId = FindUiElement(UI_HUD_SPACESHIP_HIGH_ENERGY_IMAGE);
@@ -153,6 +156,8 @@ bool UiComponent::FindAllUiElements(const AZ::EntityId& i_canvasId)
 	m_tileHighEnergyEntityId = FindUiElement(UI_HUD_TILE_HIGH_ENERGY_IMAGE);
 	m_claimedTilesEntityId = FindUiElement(UI_HUD_CLAIMED_TILES_TEXT);
 	m_scoreEntityId = FindUiElement(UI_HUD_SCORE_TEXT);
+	m_positiveCollectableEntityId = FindUiElement(UI_HUD_POSITIVE_COLLECTABLE_TEXT);
+	m_negativeCollectableEntityId = FindUiElement(UI_HUD_NEGATIVE_COLLECTABLE_TEXT);
 
 	m_loadingScreenEntityId = FindUiElement(UI_LOADING);
 	m_loadingTextEntityId = FindUiElement(UI_LOADING_TEXT);
@@ -277,7 +282,13 @@ void UiComponent::StartGame()
 	HideUiElement(m_tileEnergyBarEntityId);
 	HideUiElement(m_energyBarsSeparatorEntityId);
 
+	HideUiElement(m_lowEnergyModeEntityId);
+	HideUiElement(m_positiveCollectableEntityId);
+	HideUiElement(m_negativeCollectableEntityId);
+
 	GameNotificationBus::Handler::BusConnect();
+
+	CollectablesNotificationBus::Handler::BusConnect();
 	ScoreNotificationBus::Handler::BusConnect();
 	SpaceshipNotificationBus::Handler::BusConnect();
 	TilesNotificationBus::Handler::BusConnect();
@@ -375,6 +386,16 @@ void UiComponent::OnTick(float i_deltaTime, [[maybe_unused]] AZ::ScriptTimePoint
 		}
 		break;
 
+		case Animation::COLLECTABLE:
+		{
+			HideUiElement(m_negativeCollectableEntityId);
+			HideUiElement(m_positiveCollectableEntityId);
+
+			m_animation = Animation::NONE;
+			AZ::TickBus::Handler::BusDisconnect();
+		}
+		break;
+
 		default:
 		{
 			m_animation = Animation::NONE;
@@ -455,11 +476,13 @@ void UiComponent::OnTakeOffStarted()
 
 void UiComponent::OnEnergySavingModeActivated()
 {
+	ShowUiElement(m_lowEnergyModeEntityId);
 	SwapUiElements(m_spaceshipEnergyEntityId, m_spaceshipLowEnergyEntityId);
 }
 
 void UiComponent::OnEnergySavingModeDeactivated()
 {
+	HideUiElement(m_lowEnergyModeEntityId);
 	SwapUiElements(m_spaceshipEnergyEntityId, m_spaceshipHighEnergyEntityId);
 }
 
@@ -532,6 +555,59 @@ void UiComponent::OnTileDeselected(const AZ::EntityId& i_tileEntityId)
 	HideUiElement(m_energyBarsSeparatorEntityId);
 
 	m_selectedTileEntityId.SetInvalid();
+}
+
+void UiComponent::OnStopDecayCollected(float i_duration)
+{
+	SetCollectableText(AZStd::string::format("Block tiles for %.f sec", i_duration), true);
+}
+
+void UiComponent::OnSpaceshipEnergyCollected(float i_energy)
+{
+	const bool isDamage = (i_energy < 0.f);
+	SetCollectableText(AZStd::string::format("%s %.f energy to spaceship", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
+}
+
+void UiComponent::OnTileEnergyCollected(float i_energy)
+{
+	const bool isDamage = (i_energy < 0.f);
+	SetCollectableText(AZStd::string::format("%s %.f energy to all tiles", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
+}
+
+void UiComponent::OnPointsCollected(Points i_points)
+{
+	SetCollectableText(AZStd::string::format("+ %u points", i_points), true);
+}
+
+void UiComponent::OnSpeedCollected(float i_multiplier, float i_duration)
+{
+	const bool isBoost = (i_multiplier > 1.f);
+	SetCollectableText(AZStd::string::format("x%.1f speed for %.f sec", i_multiplier, i_duration), isBoost);
+}
+
+void UiComponent::SetCollectableText(const AZStd::string& i_message, bool i_isPositive)
+{
+	if(m_animation == Animation::COLLECTABLE)
+	{
+		if(i_isPositive)
+		{
+			HideUiElement(m_negativeCollectableEntityId);
+		}
+		else
+		{
+			HideUiElement(m_positiveCollectableEntityId);
+		}
+	}
+
+	const AZ::EntityId& collectableEntityId = (i_isPositive) ? m_positiveCollectableEntityId : m_negativeCollectableEntityId;
+	ShowUiElement(collectableEntityId);
+
+	EBUS_EVENT_ID(collectableEntityId, UiTextBus, SetText, i_message);
+
+	m_animation = Animation::COLLECTABLE;
+	m_timer = m_collectableNotificationDuration;
+
+	AZ::TickBus::Handler::BusConnect();
 }
 
 void UiComponent::ConnectOnButtonClick(const AZ::EntityId& i_buttonEntityId, const UiButtonInterface::OnClickCallback& i_callback)
