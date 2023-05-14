@@ -120,6 +120,8 @@ void SpaceshipComponent::Activate()
 {
 	EBUS_EVENT_RESULT(m_tileCollisionGroup, Physics::CollisionRequestBus, GetCollisionGroupByName, AZStd::string { COLLISION_GROUPS_ALL_TILES });
 
+	AZ::EntityBus::Handler::BusConnect(m_meshEntityId);
+
 	GameNotificationBus::Handler::BusConnect();
 
 	CollectablesNotificationBus::Handler::BusConnect();
@@ -136,12 +138,25 @@ void SpaceshipComponent::Deactivate()
 	GameNotificationBus::Handler::BusDisconnect();
 
 	InputChannelEventListener::Disconnect();
+	AZ::EntityBus::Handler::BusDisconnect();
 	AZ::TickBus::Handler::BusDisconnect();
+}
+
+void SpaceshipComponent::OnEntityActivated(const AZ::EntityId& i_entityId)
+{
+	if(i_entityId != m_meshEntityId)
+	{
+		return;
+	}
+
+	AZ::EntityBus::Handler::BusDisconnect();
+
+	EBUS_EVENT_ID(m_meshEntityId, AZ::TransformBus, SetLocalZ, m_minHeight);
 }
 
 void SpaceshipComponent::OnGameCreated()
 {
-	m_speedMultiplier = m_lowEnergySpeedMultiplier;
+	m_speedMultiplier = SPEEDS_MENU_LIFT_ANIMATION;
 	m_liftDirection = 1.f;
 
 	AZ::TickBus::Handler::BusConnect();
@@ -188,7 +203,7 @@ void SpaceshipComponent::OnGameDestroyed()
 	ResetPosition();
 	ResetState();
 
-	m_speedMultiplier = m_lowEnergySpeedMultiplier;
+	m_speedMultiplier = SPEEDS_MENU_LIFT_ANIMATION;
 	m_liftDirection = -1.f;
 
 	AZ::TickBus::Handler::BusConnect();

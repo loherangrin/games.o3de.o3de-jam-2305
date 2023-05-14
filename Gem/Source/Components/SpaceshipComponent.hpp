@@ -17,6 +17,7 @@
 #pragma once
 
 #include <AzCore/Component/Component.h>
+#include <AzCore/Component/EntityBus.h>
 #include <AzCore/Component/TickBus.h>
 
 #include <AzFramework/Input/Events/InputChannelEventListener.h>
@@ -33,6 +34,7 @@ namespace Loherangrin::Games::O3DEJam2305
 	class SpaceshipComponent
 		: public AZ::Component
 		, protected AZ::TickBus::Handler
+		, protected AZ::EntityBus::Handler
 		, protected AzFramework::InputChannelEventListener
 		, protected CollectablesNotificationBus::Handler
 		, protected GameNotificationBus::Handler
@@ -53,6 +55,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		void Init() override;
 		void Activate() override;
 		void Deactivate() override;
+
+		// AZ::EntityBus
+		void OnEntityActivated(const AZ::EntityId& i_entityId) override;
 
 		// AZ::TickBus
 		void OnTick(float i_deltaTime, AZ::ScriptTimePoint i_time) override;
@@ -129,6 +134,8 @@ namespace Loherangrin::Games::O3DEJam2305
 		AzPhysics::CollisionGroup m_tileCollisionGroup {};
 
 		static constexpr const char* COLLISION_GROUPS_ALL_TILES = "AllTiles_Query";
+
+		static constexpr float SPEEDS_MENU_LIFT_ANIMATION = 0.1f;
 	};
 
 } // Loherangrin::Games::O3DEJam2305
