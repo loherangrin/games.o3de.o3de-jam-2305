@@ -106,7 +106,7 @@ void ScoreComponent::OnGameLoading()
 	m_nClaimedTiles = 0;
 
 	EBUS_EVENT(ScoreNotificationBus, OnScoreChanged, m_totalPoints);
-	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
+	NotifyClaimedTiles();
 }
 
 void ScoreComponent::OnGamePaused()
@@ -144,11 +144,16 @@ void ScoreComponent::OnTileClaimed([[maybe_unused]] const AZ::EntityId& i_tileEn
 		m_timer = m_tileTimerPeriod;
 	}
 
-	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
+	NotifyClaimedTiles();
 }
 
 void ScoreComponent::OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntityId)
 {
+	if(m_nClaimedTiles == 0)
+	{
+		return;
+	}
+
 	--m_nClaimedTiles;
 
 	if(m_nClaimedTiles == 0)
@@ -156,10 +161,15 @@ void ScoreComponent::OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntit
 		AZ::TickBus::Handler::BusDisconnect();
 	}
 
-	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles);
+	NotifyClaimedTiles();
 }
 
 ScoreComponent::Points ScoreComponent::CalculateAllTilePoints() const
 {
 	return (m_nClaimedTiles * m_claimedTilePoints);
+}
+
+void ScoreComponent::NotifyClaimedTiles() const
+{
+	EBUS_EVENT(ScoreNotificationBus, OnClaimedTilesChanged, m_nClaimedTiles + 1);
 }

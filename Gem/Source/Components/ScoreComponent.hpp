@@ -69,6 +69,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		using TotalPoints = ScoreNotifications::TotalPoints;
 
 		Points CalculateAllTilePoints() const;
+		void NotifyClaimedTiles() const;
 
 		TotalPoints m_totalPoints { 0 };
 
