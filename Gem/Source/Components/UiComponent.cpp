@@ -565,18 +565,18 @@ void UiComponent::OnStopDecayCollected(float i_duration)
 void UiComponent::OnSpaceshipEnergyCollected(float i_energy)
 {
 	const bool isDamage = (i_energy < 0.f);
-	SetCollectableText(AZStd::string::format("%s %.f energy to spaceship", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
+	SetCollectableText(AZStd::string::format("%s%.f energy to spaceship", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
 }
 
 void UiComponent::OnTileEnergyCollected(float i_energy)
 {
 	const bool isDamage = (i_energy < 0.f);
-	SetCollectableText(AZStd::string::format("%s %.f energy to all tiles", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
+	SetCollectableText(AZStd::string::format("%s%.f energy to all tiles", (isDamage) ? "-" : "+", AZStd::abs(i_energy)), !isDamage);
 }
 
 void UiComponent::OnPointsCollected(Points i_points)
 {
-	SetCollectableText(AZStd::string::format("+ %u points", i_points), true);
+	SetCollectableText(AZStd::string::format("+%u points", i_points), true);
 }
 
 void UiComponent::OnSpeedCollected(float i_multiplier, float i_duration)

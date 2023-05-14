@@ -68,11 +68,11 @@ namespace Loherangrin::Games::O3DEJam2305
 		float GenerateRandomInRange(float i_min, float i_max);
 
 		AZ::u64 m_collectableSeed { 1234 };
-		float m_collectableProbability { 0.1f };
-		float m_collectableHeight { 1.f };
+		float m_collectableProbability { 0.25f };
+		float m_collectableHeight { 1.5f };
 
-		float m_minCollectableExpiration { 2.f };
-		float m_maxCollectableExpiration { 10.f };
+		float m_minCollectableExpiration { 3.f };
+		float m_maxCollectableExpiration { 20.f };
 
 		AZ::Data::Asset<AzFramework::Spawnable> m_stopDecayPrefab {};
 		AZ::Data::Asset<AzFramework::Spawnable> m_spaceshipDamagePrefab {};

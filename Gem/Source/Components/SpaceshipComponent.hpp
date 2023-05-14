@@ -111,21 +111,21 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_moveSpeed { 5.f };
 
 		float m_turnDirection { 0.f };
-		float m_turnSpeed { 25.f };
+		float m_turnSpeed { 70.f };
 
 		float m_liftParameter { 0.f };
 		float m_liftDirection { 0.f };
 		float m_liftSpeed { 2.f };
-		float m_minHeight { 0.f };
-		float m_maxHeight { 2.f };
+		float m_minHeight { 0.5f };
+		float m_maxHeight { 2.5f };
 
-		float m_maxEnergy { 10.f };
+		float m_maxEnergy { 100.f };
 		float m_energy { 0.f };
 		float m_consumptionRate { 0.5f };
-		float m_rechargeRate { 1.f };
+		float m_rechargeRate { 5.f };
 
-		float m_lowEnergyThreshold { 2.f };
-		float m_lowEnergySpeedMultiplier { 0.5f };
+		float m_lowEnergyThreshold { 15.f };
+		float m_lowEnergySpeedMultiplier { 0.2f };
 
 		float m_speedMultiplier { 1.f };
 		float m_speedTimer { -1.f };

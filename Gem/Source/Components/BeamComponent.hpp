@@ -91,7 +91,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		bool m_isLocked { false };
 		bool m_isEnabled { false };
 
-		float m_transferSpeed { 1.f };
+		float m_transferSpeed { 4.f };
 
 		AZStd::set<AZ::EntityId> m_selectedTiles {};
 

@@ -86,9 +86,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		AZ::u16 m_maxGridLength { 11 };
 		AZ::u16 m_maxObstacles { 5 };
 
-		AZ::Vector2 m_boundaryCellSize { AZ::Vector2::CreateOne() };
-		AZ::Vector2 m_obstacleCellSize { AZ::Vector2::CreateOne() };
-		AZ::Vector2 m_tileCellSize { AZ::Vector2::CreateOne() };
+		AZ::Vector2 m_boundaryCellSize { 3.f, 3.f };
+		AZ::Vector2 m_obstacleCellSize { 6.f, 6.f };
+		AZ::Vector2 m_tileCellSize { 3.f, 3.f };
 
 		AZStd::vector<AZ::Data::Asset<AzFramework::Spawnable>> m_boundaryPrefabs {};
     	AZStd::vector<AzFramework::EntitySpawnTicket> m_boundarySpawnTickets {};

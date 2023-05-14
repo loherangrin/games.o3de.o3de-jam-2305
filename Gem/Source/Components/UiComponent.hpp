@@ -131,9 +131,9 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		Animation m_animation { Animation::NONE };
 
-		float m_collectableNotificationDuration { 2.f };
-		float m_liftDuration { 2.f };
-		float m_fadeDuration { 3.f };
+		float m_collectableNotificationDuration { 5.f };
+		float m_liftDuration { 1.5f };
+		float m_fadeDuration { 2.f };
 		float m_timer { -1.f };
 
 		AZ::EntityId m_selectedTileEntityId {};

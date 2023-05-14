@@ -110,7 +110,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_toggleEnergyThreshold { 2.5f };
 		float m_alertEnergyThreshold { 3.5f };
 
-		float m_decaySpeed { 1.f };
+		float m_decaySpeed { 0.25f };
 		float m_noDecayTimer { -1.f };
 
 		bool m_isRecharging { false };
@@ -120,10 +120,10 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		AZ::u8 m_nClaimedNeighbors { 0 };
 
-		float m_flipSpeed { 2.f };
+		float m_flipSpeed { 0.75f };
 
-		float m_maxShakeHeight { 1.f };
-		float m_shakeSpeed { 2.f };
+		float m_maxShakeHeight { 0.2f };
+		float m_shakeSpeed { 1.f };
 
 		Animation m_animation { Animation::NONE };
 		float m_animationParameter { 0.f };

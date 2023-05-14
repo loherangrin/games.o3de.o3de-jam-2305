@@ -76,7 +76,7 @@ namespace Loherangrin::Games::O3DEJam2305
 		Points m_claimedTilePoints { 1 };
 		TileCount m_nClaimedTiles { 0 };
 
-		float m_tileTimerPeriod { 1.f };
+		float m_tileTimerPeriod { 5.f };
 		float m_timer { -1.f };
 	};
 
