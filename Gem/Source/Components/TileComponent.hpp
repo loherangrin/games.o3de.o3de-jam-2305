@@ -107,6 +107,9 @@ namespace Loherangrin::Games::O3DEJam2305
 		float m_maxEnergy { 10.f };
 		float m_energy { 0.f };
 
+		float m_toggleEnergyThreshold { 2.5f };
+		float m_alertEnergyThreshold { 3.5f };
+
 		float m_decaySpeed { 1.f };
 		float m_noDecayTimer { -1.f };
 
@@ -133,9 +136,6 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		AZ::EntityId m_meshEntityId {};
 		AZ::EntityId m_selectionEntityId {};
-
-		static constexpr float THRESHOLDS_ALERT = 5.f;
-		static constexpr float THRESHOLDS_TOGGLE = 2.5f;
 
 		static constexpr AZ::u8 MAX_NEIGHBORS = 8;
 

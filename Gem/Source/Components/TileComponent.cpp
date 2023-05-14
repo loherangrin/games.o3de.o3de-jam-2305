@@ -36,9 +36,11 @@ void TileComponent::Reflect(AZ::ReflectContext* io_context)
 			->Field("Mesh", &TileComponent::m_meshEntityId)
 			->Field("Energy", &TileComponent::m_maxEnergy)
 			->Field("Decay", &TileComponent::m_decaySpeed)
-			->Field("Flip", &TileComponent::m_flipSpeed)
+			->Field("ShakeThreshold", &TileComponent::m_alertEnergyThreshold)
 			->Field("ShakeSpeed", &TileComponent::m_shakeSpeed)
 			->Field("ShakeHeight", &TileComponent::m_maxShakeHeight)
+			->Field("ToggleThreshold", &TileComponent::m_toggleEnergyThreshold)
+			->Field("Flip", &TileComponent::m_flipSpeed)
 			->Field("Select", &TileComponent::m_selectionEntityId)
 		;
 
@@ -57,11 +59,18 @@ void TileComponent::Reflect(AZ::ReflectContext* io_context)
 					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_maxEnergy, "Max", "")
 					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_decaySpeed, "Decay", "")
 
-				->ClassElement(AZ::Edit::ClassElements::Group, "Animation")
+				->ClassElement(AZ::Edit::ClassElements::Group, "Alert")
 					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
 
-					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_shakeSpeed, "Alert", "")
-					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_flipSpeed, "Toggle", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_alertEnergyThreshold, "Energy", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_shakeSpeed, "Speed", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_maxShakeHeight, "Height", "")
+
+				->ClassElement(AZ::Edit::ClassElements::Group, "Toggle")
+					->Attribute(AZ::Edit::Attributes::AutoExpand, true)
+
+					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_toggleEnergyThreshold, "Energy", "")
+					->DataElement(AZ::Edit::UIHandlers::Default, &TileComponent::m_flipSpeed, "Speed", "")
 
 				->ClassElement(AZ::Edit::ClassElements::Group, "")
 
@@ -205,11 +214,11 @@ void TileComponent::AddEnergy(float i_amount)
 	if(isAdded)
 	{
 		m_isRecharging = true;
-		if(!m_isClaimed && m_energy > THRESHOLDS_TOGGLE)
+		if(!m_isClaimed && m_energy > m_toggleEnergyThreshold)
 		{
 			Toggle();
 		}
-		else if(m_isClaimed && m_animation == Animation::SHAKE && m_energy > THRESHOLDS_ALERT)
+		else if(m_isClaimed && m_animation == Animation::SHAKE && m_energy > m_alertEnergyThreshold)
 		{
 			StopShakeAnimation();
 		}
@@ -218,11 +227,11 @@ void TileComponent::AddEnergy(float i_amount)
 	{
 		if(m_isClaimed)
 		{
-			if(m_energy < THRESHOLDS_TOGGLE)
+			if(m_energy < m_toggleEnergyThreshold)
 			{
 				Toggle();
 			}
-			else if(m_energy < THRESHOLDS_ALERT)
+			else if(m_energy < m_alertEnergyThreshold)
 			{
 				Alert();
 			}
