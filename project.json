@@ -20,7 +20,8 @@
         "CameraFramework",
         "ImGui",
         "LyShine",
-        "PhysX"
+        "PhysX",
+        "StartingPointCamera"
     ],
     "restricted": "Loherangrin_O3DEJam2305",
     "engine_version": "1.2.0",

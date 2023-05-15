@@ -1,0 +1,148 @@
+{
+    "values": [
+        {
+            "$type": "{5B03C8E6-8CEE-4DA0-A7FA-CD88689DD45B} MeshGroup",
+            "id": "{D978AF85-A07F-52C8-AA57-513F3BFC9851}",
+            "name": "hangar_smallA",
+            "NodeSelectionList": {
+                "unselectedNodes": [
+                    {},
+                    "RootNode",
+                    "RootNode.hangar_smallA",
+                    "RootNode.hangar_smallA.gate",
+                    "RootNode.hangar_smallA.gate_1"
+                ]
+            },
+            "PhysicsMaterialSlots": {
+                "Slots": [
+                    {
+                        "Name": "Entire object"
+                    }
+                ]
+            }
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "hangar_smallA",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    {},
+                    "RootNode",
+                    "RootNode.hangar_smallA",
+                    "RootNode.hangar_smallA.gate",
+                    "RootNode.hangar_smallA.gate_1"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{16359E30-A17A-52DC-AED4-0A29E405DED3}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_hangar_smallA_03F9A7AC_E93D_5D77_A127_C1D434A5E06F_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.hangar_smallA"
+                ],
+                "unselectedNodes": [
+                    "RootNode.hangar_smallA.gate",
+                    "RootNode.hangar_smallA.gate_1"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{03F9A7AC-E93D-5D77-A127-C1D434A5E06F}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_hangar_smallA_5F2445B6_FDA2_5547_A7A6_AA83D224FFD1_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.hangar_smallA.gate"
+                ],
+                "unselectedNodes": [
+                    "RootNode.hangar_smallA",
+                    "RootNode.hangar_smallA.gate_1"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{5F2445B6-FDA2-5547-A7A6-AA83D224FFD1}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_hangar_smallA_9280F1CF_D23E_5DD3_879F_2B104F8EB9EF_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.hangar_smallA.gate_1"
+                ],
+                "unselectedNodes": [
+                    "RootNode.hangar_smallA",
+                    "RootNode.hangar_smallA.gate"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{9280F1CF-D23E-5DD3-879F-2B104F8EB9EF}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/hangar_smallA_fbx.procprefab",
+            "id": "{13CDC5DF-12AC-5291-AFAF-2EDC61BDB09D}"
+        }
+    ]
+}

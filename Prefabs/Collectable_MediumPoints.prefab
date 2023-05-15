@@ -1,0 +1,189 @@
+{
+    "ContainerEntity": {
+        "Id": "ContainerEntity",
+        "Name": "Collectable_MediumPoints",
+        "Components": {
+            "Component_[10345113202413025097]": {
+                "$type": "EditorEntitySortComponent",
+                "Id": 10345113202413025097,
+                "Child Entity Order": [
+                    "Entity_[18296072406764]"
+                ]
+            },
+            "Component_[11230239872389848810]": {
+                "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                "Id": 11230239872389848810,
+                "Parent Entity": ""
+            },
+            "Component_[13523399546238348939]": {
+                "$type": "EditorOnlyEntityComponent",
+                "Id": 13523399546238348939
+            },
+            "Component_[1491168535516553872]": {
+                "$type": "EditorEntityIconComponent",
+                "Id": 1491168535516553872
+            },
+            "Component_[15124504935204525777]": {
+                "$type": "EditorPrefabComponent",
+                "Id": 15124504935204525777
+            },
+            "Component_[1614553084904554212]": {
+                "$type": "EditorLockComponent",
+                "Id": 1614553084904554212
+            },
+            "Component_[18155778545935925668]": {
+                "$type": "EditorPendingCompositionComponent",
+                "Id": 18155778545935925668
+            },
+            "Component_[2000498667418223392]": {
+                "$type": "EditorDisabledCompositionComponent",
+                "Id": 2000498667418223392
+            },
+            "Component_[8295332039248952994]": {
+                "$type": "EditorVisibilityComponent",
+                "Id": 8295332039248952994
+            },
+            "Component_[9955019244102283996]": {
+                "$type": "EditorInspectorComponent",
+                "Id": 9955019244102283996
+            }
+        }
+    },
+    "Entities": {
+        "Entity_[18296072406764]": {
+            "Id": "Entity_[18296072406764]",
+            "Name": "Collectable_MediumPoints",
+            "Components": {
+                "Component_[10203891771109541591]": {
+                    "$type": "EditorColliderComponent",
+                    "Id": 10203891771109541591,
+                    "ColliderConfiguration": {
+                        "CollisionLayer": {
+                            "Index": 4
+                        },
+                        "CollisionGroupId": {
+                            "GroupId": "{094428DB-3F56-4BA2-B5CD-6983A96AD9F0}"
+                        },
+                        "Trigger": true,
+                        "Position": [
+                            0.0,
+                            0.0,
+                            0.20000000298023224
+                        ],
+                        "MaterialSlots": {
+                            "Slots": [
+                                {
+                                    "Name": "Entire object"
+                                }
+                            ]
+                        }
+                    },
+                    "ShapeConfiguration": {
+                        "ShapeType": 1,
+                        "Box": {
+                            "Scale": [
+                                2.299999952316284,
+                                2.299999952316284,
+                                2.299999952316284
+                            ],
+                            "Configuration": [
+                                0.4000000059604645,
+                                0.4000000059604645,
+                                0.4000000059604645
+                            ]
+                        }
+                    }
+                },
+                "Component_[11098641646404248537]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11098641646404248537
+                },
+                "Component_[11930927080185345177]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11930927080185345177
+                },
+                "Component_[12089422395376287798]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 12089422395376287798,
+                    "Parent Entity": "ContainerEntity",
+                    "Transform Data": {
+                        "UniformScale": 2.299999952316284
+                    }
+                },
+                "Component_[13574116090370416915]": {
+                    "$type": "GenericComponentWrapper",
+                    "Id": 13574116090370416915,
+                    "m_template": {
+                        "$type": "CollectableComponent",
+                        "Type": 7,
+                        "Amount": 10.0
+                    }
+                },
+                "Component_[14101432015345361714]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14101432015345361714
+                },
+                "Component_[1580632620349321752]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 1580632620349321752
+                },
+                "Component_[16149254559597318777]": {
+                    "$type": "EditorStaticRigidBodyComponent",
+                    "Id": 16149254559597318777
+                },
+                "Component_[17183097540149551424]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 17183097540149551424
+                },
+                "Component_[1897501810817359222]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 1897501810817359222,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{85A7420F-7A65-5837-A4E8-C3E5F258D0B9}",
+                                    "subId": 271887520
+                                },
+                                "assetHint": "assets/3rdparty/kenney/platformerkit/models/fbx format/coinsilver.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[5118048989756122764]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5118048989756122764
+                },
+                "Component_[7408318042447394507]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 7408318042447394507
+                },
+                "Component_[9061100106071889821]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9061100106071889821,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 12089422395376287798
+                        },
+                        {
+                            "ComponentId": 16149254559597318777,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 1897501810817359222,
+                            "SortIndex": 2
+                        },
+                        {
+                            "ComponentId": 10203891771109541591,
+                            "SortIndex": 3
+                        },
+                        {
+                            "ComponentId": 13574116090370416915,
+                            "SortIndex": 4
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "corridor_end",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    {},
+                    "RootNode",
+                    "RootNode.corridor_end"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{DBED7CF1-6C1F-578F-851F-481EBC920472}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_corridor_end_C0254F63_4368_59FD_B46C_BD3510CF1AA9_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.corridor_end"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{C0254F63-4368-59FD-B46C-BD3510CF1AA9}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/corridor_end_fbx.procprefab",
+            "id": "{BFFF97F6-0220-5B93-AEC5-6F9C6141A9AB}"
+        }
+    ]
+}

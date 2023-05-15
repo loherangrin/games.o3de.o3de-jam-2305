@@ -1,0 +1,69 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "terrain_sideCorner",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode",
+                    "RootNode.terrain_sideCorner",
+                    "RootNode.terrain_sideCorner.transform",
+                    "RootNode.terrain_sideCorner.custom_properties",
+                    "RootNode.terrain_sideCorner.UV0",
+                    "RootNode.terrain_sideCorner.rock",
+                    "RootNode.terrain_sideCorner.rockDark"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true,
+                        "originNodeName": "RootNode",
+                        "translation": [
+                            -0.5,
+                            -0.5,
+                            0.0
+                        ]
+                    }
+                ]
+            },
+            "id": "{C95DDB65-869B-5609-8737-57C2474D73A5}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_terrain_sideCorner_2B8B967B_338C_5728_897A_DEF6DD22CD44_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.terrain_sideCorner"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{2B8B967B-338C-5728-897A-DEF6DD22CD44}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/terrain_sideCorner_fbx.procprefab",
+            "id": "{42181473-ADAF-531D-BCFC-67EDFA922FA0}"
+        }
+    ]
+}

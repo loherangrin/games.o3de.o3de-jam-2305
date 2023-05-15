@@ -1,0 +1,3647 @@
+{
+    "ContainerEntity": {
+        "Id": "ContainerEntity",
+        "Name": "Obstacle_Mountains",
+        "Components": {
+            "Component_[10834567409015280613]": {
+                "$type": "EditorLockComponent",
+                "Id": 10834567409015280613
+            },
+            "Component_[13046147150964535215]": {
+                "$type": "EditorEntityIconComponent",
+                "Id": 13046147150964535215
+            },
+            "Component_[13211033424424308699]": {
+                "$type": "EditorDisabledCompositionComponent",
+                "Id": 13211033424424308699
+            },
+            "Component_[13883794229540826423]": {
+                "$type": "EditorInspectorComponent",
+                "Id": 13883794229540826423
+            },
+            "Component_[14497484091776436252]": {
+                "$type": "EditorOnlyEntityComponent",
+                "Id": 14497484091776436252
+            },
+            "Component_[17964290002436778470]": {
+                "$type": "EditorEntitySortComponent",
+                "Id": 17964290002436778470,
+                "Child Entity Order": [
+                    "Entity_[229448609193816]"
+                ]
+            },
+            "Component_[3034664892907938649]": {
+                "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                "Id": 3034664892907938649,
+                "Parent Entity": ""
+            },
+            "Component_[5603955938719498921]": {
+                "$type": "EditorPendingCompositionComponent",
+                "Id": 5603955938719498921
+            },
+            "Component_[6677243753467758788]": {
+                "$type": "EditorVisibilityComponent",
+                "Id": 6677243753467758788
+            },
+            "Component_[891736730792398386]": {
+                "$type": "EditorPrefabComponent",
+                "Id": 891736730792398386
+            }
+        }
+    },
+    "Entities": {
+        "Entity_[229414249455448]": {
+            "Id": "Entity_[229414249455448]",
+            "Name": "Side_3",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229418544422744]": {
+            "Id": "Entity_[229418544422744]",
+            "Name": "Side_1",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            -2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229422839390040]": {
+            "Id": "Entity_[229422839390040]",
+            "Name": "Side_1",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            -2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229427134357336]": {
+            "Id": "Entity_[229427134357336]",
+            "Name": "Side_6",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229431429324632]": {
+            "Id": "Entity_[229431429324632]",
+            "Name": "Rocks_3",
+            "Components": {
+                "Component_[11625562504158101762]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 11625562504158101762
+                },
+                "Component_[1285581499721508090]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 1285581499721508090
+                },
+                "Component_[14506375507710847144]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14506375507710847144
+                },
+                "Component_[15084440635535494595]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 15084440635535494595,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{393F6878-C206-5B12-BF19-7CA960C0CF97}",
+                                    "subId": 278007561
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rocks_smalla.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[1743238074948970605]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 1743238074948970605
+                },
+                "Component_[17448658595248538440]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 17448658595248538440
+                },
+                "Component_[17626431092477545037]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 17626431092477545037
+                },
+                "Component_[18143206582899433982]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 18143206582899433982,
+                    "Parent Entity": "Entity_[229525918605144]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.30000001192092896,
+                            0.25,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            45.000003814697266
+                        ],
+                        "UniformScale": 0.5
+                    }
+                },
+                "Component_[2737373683099102645]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 2737373683099102645
+                },
+                "Component_[7990061698695839814]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 7990061698695839814
+                }
+            }
+        },
+        "Entity_[229435724291928]": {
+            "Id": "Entity_[229435724291928]",
+            "Name": "Rocks_1",
+            "Components": {
+                "Component_[10444619947585213834]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10444619947585213834
+                },
+                "Component_[12575033004126441490]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 12575033004126441490,
+                    "Parent Entity": "Entity_[229525918605144]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.30000001192092896,
+                            -0.30000001192092896,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            45.000003814697266
+                        ],
+                        "UniformScale": 0.5
+                    }
+                },
+                "Component_[17911968238255824557]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 17911968238255824557,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{80B16A9F-F943-590A-9DCB-A2F39E6155FB}",
+                                    "subId": 273267618
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rock.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[4588819998553150883]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4588819998553150883
+                },
+                "Component_[4844964962293291645]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 4844964962293291645
+                },
+                "Component_[5164726083489848588]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5164726083489848588
+                },
+                "Component_[5801476189541305783]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 5801476189541305783
+                },
+                "Component_[6140033088870040452]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 6140033088870040452
+                },
+                "Component_[7816213288342008460]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 7816213288342008460
+                },
+                "Component_[9408879804592841183]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 9408879804592841183
+                }
+            }
+        },
+        "Entity_[229440019259224]": {
+            "Id": "Entity_[229440019259224]",
+            "Name": "Corner_BottomRight",
+            "Components": {
+                "Component_[12333395104169460335]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 12333395104169460335
+                },
+                "Component_[13516217581169642701]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13516217581169642701
+                },
+                "Component_[15038536197220561214]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15038536197220561214
+                },
+                "Component_[15983486091178424556]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 15983486091178424556
+                },
+                "Component_[16298754244180236275]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 16298754244180236275,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{2B1156AA-2EF4-54B2-822F-85B66B43BF12}",
+                                    "subId": 275823131
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecorner.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[2346916942273830525]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2346916942273830525
+                },
+                "Component_[3184866271907151400]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3184866271907151400
+                },
+                "Component_[4694023729538454906]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4694023729538454906,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            3.0,
+                            -3.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            270.0
+                        ]
+                    }
+                },
+                "Component_[6359394788771639088]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6359394788771639088
+                },
+                "Component_[8952474273560059410]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 8952474273560059410
+                }
+            }
+        },
+        "Entity_[229444314226520]": {
+            "Id": "Entity_[229444314226520]",
+            "Name": "Side_8",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229448609193816]": {
+            "Id": "Entity_[229448609193816]",
+            "Name": "Obstacle_Mountains",
+            "Components": {
+                "Component_[11543039721452627434]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 11543039721452627434
+                },
+                "Component_[12318090941085151593]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 12318090941085151593
+                },
+                "Component_[1480904243168465515]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 1480904243168465515,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 3167076464422182994
+                        },
+                        {
+                            "ComponentId": 7988864791696889412,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 8883529734703827265,
+                            "SortIndex": 2
+                        }
+                    ]
+                },
+                "Component_[15589294586986830319]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15589294586986830319,
+                    "Child Entity Order": [
+                        "Entity_[229538803507032]",
+                        "Entity_[229452904161112]",
+                        "Entity_[229440019259224]",
+                        "Entity_[229594638081880]",
+                        "Entity_[229607522983768]",
+                        "Entity_[229555983376216]",
+                        "Entity_[229581753179992]",
+                        "Entity_[229487263899480]",
+                        "Entity_[229525918605144]"
+                    ]
+                },
+                "Component_[16274282741105586505]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16274282741105586505
+                },
+                "Component_[17053475313372343546]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 17053475313372343546
+                },
+                "Component_[2627208698327650551]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 2627208698327650551
+                },
+                "Component_[3167076464422182994]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3167076464422182994,
+                    "Parent Entity": "ContainerEntity"
+                },
+                "Component_[4645336785533549961]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 4645336785533549961
+                },
+                "Component_[7988864791696889412]": {
+                    "$type": "EditorStaticRigidBodyComponent",
+                    "Id": 7988864791696889412
+                },
+                "Component_[8883529734703827265]": {
+                    "$type": "EditorColliderComponent",
+                    "Id": 8883529734703827265,
+                    "ColliderConfiguration": {
+                        "Position": [
+                            0.0,
+                            0.0,
+                            1.5
+                        ],
+                        "MaterialSlots": {
+                            "Slots": [
+                                {
+                                    "Name": "Entire object"
+                                }
+                            ]
+                        }
+                    },
+                    "ShapeConfiguration": {
+                        "ShapeType": 1,
+                        "Box": {
+                            "Configuration": [
+                                6.0,
+                                6.0,
+                                3.0
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[229452904161112]": {
+            "Id": "Entity_[229452904161112]",
+            "Name": "Corner_TopRight",
+            "Components": {
+                "Component_[12333395104169460335]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 12333395104169460335
+                },
+                "Component_[13516217581169642701]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13516217581169642701
+                },
+                "Component_[15038536197220561214]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15038536197220561214
+                },
+                "Component_[15983486091178424556]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 15983486091178424556
+                },
+                "Component_[16298754244180236275]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 16298754244180236275,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{2B1156AA-2EF4-54B2-822F-85B66B43BF12}",
+                                    "subId": 275823131
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecorner.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[2346916942273830525]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2346916942273830525
+                },
+                "Component_[3184866271907151400]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3184866271907151400
+                },
+                "Component_[4694023729538454906]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4694023729538454906,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            3.0,
+                            3.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[6359394788771639088]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6359394788771639088
+                },
+                "Component_[8952474273560059410]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 8952474273560059410
+                }
+            }
+        },
+        "Entity_[229457199128408]": {
+            "Id": "Entity_[229457199128408]",
+            "Name": "Side_4",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229461494095704]": {
+            "Id": "Entity_[229461494095704]",
+            "Name": "Side_9",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229465789063000]": {
+            "Id": "Entity_[229465789063000]",
+            "Name": "Side_5",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229470084030296]": {
+            "Id": "Entity_[229470084030296]",
+            "Name": "Side_7",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229474378997592]": {
+            "Id": "Entity_[229474378997592]",
+            "Name": "Side_7",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229478673964888]": {
+            "Id": "Entity_[229478673964888]",
+            "Name": "Side_6",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229482968932184]": {
+            "Id": "Entity_[229482968932184]",
+            "Name": "Side_6",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229487263899480]": {
+            "Id": "Entity_[229487263899480]",
+            "Name": "Side_Left",
+            "Components": {
+                "Component_[11647970532323009747]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11647970532323009747
+                },
+                "Component_[12076675805629451591]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12076675805629451591
+                },
+                "Component_[14600369156898759758]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14600369156898759758
+                },
+                "Component_[16401970516159703235]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16401970516159703235,
+                    "Child Entity Order": [
+                        "Entity_[229577458212696]",
+                        "Entity_[229530213572440]",
+                        "Entity_[229586048147288]",
+                        "Entity_[229491558866776]",
+                        "Entity_[229465789063000]",
+                        "Entity_[229508738735960]",
+                        "Entity_[229474378997592]",
+                        "Entity_[229628997820248]",
+                        "Entity_[229590343114584]",
+                        "Entity_[229513033703256]"
+                    ]
+                },
+                "Component_[16479766275287228468]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16479766275287228468
+                },
+                "Component_[2692556473790177880]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2692556473790177880
+                },
+                "Component_[3520792712558663015]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3520792712558663015,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            -3.0,
+                            0.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            90.0
+                        ]
+                    }
+                },
+                "Component_[4493637855984628435]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4493637855984628435
+                },
+                "Component_[6366431092946171513]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6366431092946171513
+                }
+            }
+        },
+        "Entity_[229491558866776]": {
+            "Id": "Entity_[229491558866776]",
+            "Name": "Side_4",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229495853834072]": {
+            "Id": "Entity_[229495853834072]",
+            "Name": "Side_4",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229500148801368]": {
+            "Id": "Entity_[229500148801368]",
+            "Name": "Side_9",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229504443768664]": {
+            "Id": "Entity_[229504443768664]",
+            "Name": "Side_10",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229508738735960]": {
+            "Id": "Entity_[229508738735960]",
+            "Name": "Side_6",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229513033703256]": {
+            "Id": "Entity_[229513033703256]",
+            "Name": "Side_10",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229517328670552]": {
+            "Id": "Entity_[229517328670552]",
+            "Name": "Side_7",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229521623637848]": {
+            "Id": "Entity_[229521623637848]",
+            "Name": "Side_10",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229525918605144]": {
+            "Id": "Entity_[229525918605144]",
+            "Name": "Top",
+            "Components": {
+                "Component_[11016577046072511594]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 11016577046072511594
+                },
+                "Component_[15386951182569800020]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 15386951182569800020
+                },
+                "Component_[17044717777073506269]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 17044717777073506269
+                },
+                "Component_[2065667715771151940]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 2065667715771151940,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{E247080E-7A5A-5ECF-9B37-5511AD612FFE}",
+                                    "subId": 276190129
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[2254028606625607450]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 2254028606625607450
+                },
+                "Component_[4473541923190151287]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4473541923190151287
+                },
+                "Component_[5427665697802841872]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 5427665697802841872,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            0.5
+                        ],
+                        "UniformScale": 5.0
+                    }
+                },
+                "Component_[5579094003588237752]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 5579094003588237752
+                },
+                "Component_[8430322251767352483]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 8430322251767352483
+                },
+                "Component_[9637839297834596791]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 9637839297834596791,
+                    "Child Entity Order": [
+                        "Entity_[229435724291928]",
+                        "Entity_[229620407885656]",
+                        "Entity_[229431429324632]",
+                        "Entity_[229573163245400]"
+                    ]
+                }
+            }
+        },
+        "Entity_[229530213572440]": {
+            "Id": "Entity_[229530213572440]",
+            "Name": "Side_2",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229534508539736]": {
+            "Id": "Entity_[229534508539736]",
+            "Name": "Side_2",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229538803507032]": {
+            "Id": "Entity_[229538803507032]",
+            "Name": "Corner_TopLeft",
+            "Components": {
+                "Component_[11142247315343008928]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11142247315343008928
+                },
+                "Component_[11438409281979945714]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 11438409281979945714,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            -3.0,
+                            3.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            90.0
+                        ]
+                    }
+                },
+                "Component_[13105830361389554981]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 13105830361389554981
+                },
+                "Component_[1319209304425265448]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1319209304425265448
+                },
+                "Component_[15102074008569369403]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 15102074008569369403
+                },
+                "Component_[15255437165794162325]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15255437165794162325
+                },
+                "Component_[16235579755942483506]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 16235579755942483506,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{2B1156AA-2EF4-54B2-822F-85B66B43BF12}",
+                                    "subId": 275823131
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecorner.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[6722837843597036125]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6722837843597036125
+                },
+                "Component_[8288520665084100820]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 8288520665084100820
+                },
+                "Component_[9731349262400409678]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 9731349262400409678
+                }
+            }
+        },
+        "Entity_[229543098474328]": {
+            "Id": "Entity_[229543098474328]",
+            "Name": "Side_10",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229547393441624]": {
+            "Id": "Entity_[229547393441624]",
+            "Name": "Side_8",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229551688408920]": {
+            "Id": "Entity_[229551688408920]",
+            "Name": "Side_2",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229555983376216]": {
+            "Id": "Entity_[229555983376216]",
+            "Name": "Side_Right",
+            "Components": {
+                "Component_[11647970532323009747]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11647970532323009747
+                },
+                "Component_[12076675805629451591]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12076675805629451591
+                },
+                "Component_[14600369156898759758]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14600369156898759758
+                },
+                "Component_[16401970516159703235]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16401970516159703235,
+                    "Child Entity Order": [
+                        "Entity_[229422839390040]",
+                        "Entity_[229551688408920]",
+                        "Entity_[229564573310808]",
+                        "Entity_[229457199128408]",
+                        "Entity_[229560278343512]",
+                        "Entity_[229427134357336]",
+                        "Entity_[229470084030296]",
+                        "Entity_[229603228016472]",
+                        "Entity_[229461494095704]",
+                        "Entity_[229543098474328]"
+                    ]
+                },
+                "Component_[16479766275287228468]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16479766275287228468
+                },
+                "Component_[2692556473790177880]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2692556473790177880
+                },
+                "Component_[3520792712558663015]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3520792712558663015,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            3.0,
+                            0.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            270.0
+                        ]
+                    }
+                },
+                "Component_[4493637855984628435]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4493637855984628435
+                },
+                "Component_[6366431092946171513]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6366431092946171513
+                }
+            }
+        },
+        "Entity_[229560278343512]": {
+            "Id": "Entity_[229560278343512]",
+            "Name": "Side_5",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229564573310808]": {
+            "Id": "Entity_[229564573310808]",
+            "Name": "Side_3",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229568868278104]": {
+            "Id": "Entity_[229568868278104]",
+            "Name": "Side_5",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229573163245400]": {
+            "Id": "Entity_[229573163245400]",
+            "Name": "Rocks_4",
+            "Components": {
+                "Component_[11557984033456265957]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 11557984033456265957
+                },
+                "Component_[14505129916503785052]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 14505129916503785052,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{653D8D5D-7DA6-508B-A6F4-27415BAD1DDD}",
+                                    "subId": 271263241
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rock_largeb.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[17209563916187935786]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 17209563916187935786
+                },
+                "Component_[2579676372575998038]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2579676372575998038
+                },
+                "Component_[3032873783246341866]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3032873783246341866
+                },
+                "Component_[3232981871822080626]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 3232981871822080626
+                },
+                "Component_[4986626546575306827]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 4986626546575306827
+                },
+                "Component_[5631312890137876842]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 5631312890137876842,
+                    "Parent Entity": "Entity_[229525918605144]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.20000000298023224,
+                            0.20000000298023224,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            45.000003814697266
+                        ],
+                        "UniformScale": 0.75
+                    }
+                },
+                "Component_[7007759196049943156]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 7007759196049943156
+                },
+                "Component_[8646410312217421513]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 8646410312217421513
+                }
+            }
+        },
+        "Entity_[229577458212696]": {
+            "Id": "Entity_[229577458212696]",
+            "Name": "Side_1",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            -2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229581753179992]": {
+            "Id": "Entity_[229581753179992]",
+            "Name": "Side_Bottom",
+            "Components": {
+                "Component_[11647970532323009747]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11647970532323009747
+                },
+                "Component_[12076675805629451591]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12076675805629451591
+                },
+                "Component_[14600369156898759758]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14600369156898759758
+                },
+                "Component_[16401970516159703235]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16401970516159703235,
+                    "Child Entity Order": [
+                        "Entity_[229624702852952]",
+                        "Entity_[229534508539736]",
+                        "Entity_[229414249455448]",
+                        "Entity_[229495853834072]",
+                        "Entity_[229611817951064]",
+                        "Entity_[229478673964888]",
+                        "Entity_[229517328670552]",
+                        "Entity_[229444314226520]",
+                        "Entity_[229500148801368]",
+                        "Entity_[229521623637848]"
+                    ]
+                },
+                "Component_[16479766275287228468]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16479766275287228468
+                },
+                "Component_[2692556473790177880]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2692556473790177880
+                },
+                "Component_[3520792712558663015]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3520792712558663015,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            -3.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            180.0
+                        ]
+                    }
+                },
+                "Component_[4493637855984628435]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4493637855984628435
+                },
+                "Component_[6366431092946171513]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6366431092946171513
+                }
+            }
+        },
+        "Entity_[229586048147288]": {
+            "Id": "Entity_[229586048147288]",
+            "Name": "Side_3",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229590343114584]": {
+            "Id": "Entity_[229590343114584]",
+            "Name": "Side_9",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229594638081880]": {
+            "Id": "Entity_[229594638081880]",
+            "Name": "Corner_BottomLeft",
+            "Components": {
+                "Component_[12333395104169460335]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 12333395104169460335
+                },
+                "Component_[13516217581169642701]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 13516217581169642701
+                },
+                "Component_[15038536197220561214]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 15038536197220561214
+                },
+                "Component_[15983486091178424556]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 15983486091178424556
+                },
+                "Component_[16298754244180236275]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 16298754244180236275,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{2B1156AA-2EF4-54B2-822F-85B66B43BF12}",
+                                    "subId": 275823131
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecorner.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[2346916942273830525]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2346916942273830525
+                },
+                "Component_[3184866271907151400]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3184866271907151400
+                },
+                "Component_[4694023729538454906]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4694023729538454906,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            -3.0,
+                            -3.0,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            180.0
+                        ]
+                    }
+                },
+                "Component_[6359394788771639088]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6359394788771639088
+                },
+                "Component_[8952474273560059410]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 8952474273560059410
+                }
+            }
+        },
+        "Entity_[229598933049176]": {
+            "Id": "Entity_[229598933049176]",
+            "Name": "Side_3",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229603228016472]": {
+            "Id": "Entity_[229603228016472]",
+            "Name": "Side_8",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229555983376216]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229607522983768]": {
+            "Id": "Entity_[229607522983768]",
+            "Name": "Side_Top",
+            "Components": {
+                "Component_[11647970532323009747]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11647970532323009747
+                },
+                "Component_[12076675805629451591]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12076675805629451591
+                },
+                "Component_[14600369156898759758]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 14600369156898759758
+                },
+                "Component_[16401970516159703235]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16401970516159703235,
+                    "Child Entity Order": [
+                        "Entity_[229418544422744]",
+                        "Entity_[229637587754840]",
+                        "Entity_[229598933049176]",
+                        "Entity_[229616112918360]",
+                        "Entity_[229568868278104]",
+                        "Entity_[229482968932184]",
+                        "Entity_[229641882722136]",
+                        "Entity_[229547393441624]",
+                        "Entity_[229633292787544]",
+                        "Entity_[229504443768664]"
+                    ]
+                },
+                "Component_[16479766275287228468]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 16479766275287228468
+                },
+                "Component_[2692556473790177880]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 2692556473790177880
+                },
+                "Component_[3520792712558663015]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 3520792712558663015,
+                    "Parent Entity": "Entity_[229448609193816]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            3.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[4493637855984628435]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4493637855984628435
+                },
+                "Component_[6366431092946171513]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6366431092946171513
+                }
+            }
+        },
+        "Entity_[229611817951064]": {
+            "Id": "Entity_[229611817951064]",
+            "Name": "Side_5",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229616112918360]": {
+            "Id": "Entity_[229616112918360]",
+            "Name": "Side_4",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229620407885656]": {
+            "Id": "Entity_[229620407885656]",
+            "Name": "Rocks_2",
+            "Components": {
+                "Component_[1253903366502632394]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 1253903366502632394
+                },
+                "Component_[13185482442054256594]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 13185482442054256594
+                },
+                "Component_[16470357390673319743]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 16470357390673319743
+                },
+                "Component_[17089635789339398439]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 17089635789339398439
+                },
+                "Component_[17150421667199202693]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 17150421667199202693,
+                    "Parent Entity": "Entity_[229525918605144]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.25,
+                            -0.25,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            45.000003814697266
+                        ],
+                        "UniformScale": 0.6000000834465027
+                    }
+                },
+                "Component_[18129791178076961982]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 18129791178076961982,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{C789DCA6-82B8-513E-A2F9-2560DFBB8079}",
+                                    "subId": 270694323
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rock_largea.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[2831720823489835055]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 2831720823489835055
+                },
+                "Component_[579236722755704912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 579236722755704912
+                },
+                "Component_[5797931596318123759]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5797931596318123759
+                },
+                "Component_[8439159416710632976]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 8439159416710632976
+                }
+            }
+        },
+        "Entity_[229624702852952]": {
+            "Id": "Entity_[229624702852952]",
+            "Name": "Side_1",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229581753179992]",
+                    "Transform Data": {
+                        "Translate": [
+                            -2.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229628997820248]": {
+            "Id": "Entity_[229628997820248]",
+            "Name": "Side_8",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229487263899480]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.25,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229633292787544]": {
+            "Id": "Entity_[229633292787544]",
+            "Name": "Side_9",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229637587754840]": {
+            "Id": "Entity_[229637587754840]",
+            "Name": "Side_2",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            -1.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        },
+        "Entity_[229641882722136]": {
+            "Id": "Entity_[229641882722136]",
+            "Name": "Side_7",
+            "Components": {
+                "Component_[11623328336177143912]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11623328336177143912
+                },
+                "Component_[12805721471458387423]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12805721471458387423
+                },
+                "Component_[13409492147283746739]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 13409492147283746739
+                },
+                "Component_[15370854865068453994]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 15370854865068453994
+                },
+                "Component_[6224573761134412086]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 6224573761134412086
+                },
+                "Component_[7407743808618923076]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7407743808618923076,
+                    "Parent Entity": "Entity_[229607522983768]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.75,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[811615861219873447]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 811615861219873447
+                },
+                "Component_[9322389101730418370]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 9322389101730418370,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{758813E7-1AE8-5B62-B5A4-E774EAEC0C36}",
+                                    "subId": 283864742
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/terrain_sidecliff.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[9506225851289606566]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 9506225851289606566
+                },
+                "Component_[9752390784325493577]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9752390784325493577
+                }
+            }
+        }
+    }
+}

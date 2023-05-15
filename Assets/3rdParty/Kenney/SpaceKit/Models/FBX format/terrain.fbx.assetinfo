@@ -1,0 +1,62 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "terrain",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode",
+                    "RootNode.terrain",
+                    "RootNode.terrain.transform",
+                    "RootNode.terrain.custom_properties",
+                    "RootNode.terrain.map1",
+                    "RootNode.terrain.rock"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{508EE546-BBD3-5833-9009-7041B926B8DF}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_terrain_1092C4A6_956E_5D47_B57A_5DD614701E70_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.terrain"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{1092C4A6-956E-5D47-B57A-5DD614701E70}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/terrain_fbx.procprefab",
+            "id": "{FE2A87C6-367D-562F-92EF-B82AF70739B6}"
+        }
+    ]
+}

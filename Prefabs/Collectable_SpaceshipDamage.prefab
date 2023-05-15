@@ -1,0 +1,189 @@
+{
+    "ContainerEntity": {
+        "Id": "ContainerEntity",
+        "Name": "Collectable_SpaceshipDamage",
+        "Components": {
+            "Component_[10475682091423190450]": {
+                "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                "Id": 10475682091423190450,
+                "Parent Entity": ""
+            },
+            "Component_[1410972401489780787]": {
+                "$type": "EditorPrefabComponent",
+                "Id": 1410972401489780787
+            },
+            "Component_[16587140075070566501]": {
+                "$type": "EditorVisibilityComponent",
+                "Id": 16587140075070566501
+            },
+            "Component_[2325561790950654778]": {
+                "$type": "EditorEntitySortComponent",
+                "Id": 2325561790950654778,
+                "Child Entity Order": [
+                    "Entity_[17888050513644]"
+                ]
+            },
+            "Component_[4648521913960148616]": {
+                "$type": "EditorDisabledCompositionComponent",
+                "Id": 4648521913960148616
+            },
+            "Component_[5298972901484282743]": {
+                "$type": "EditorPendingCompositionComponent",
+                "Id": 5298972901484282743
+            },
+            "Component_[5425877141625515241]": {
+                "$type": "EditorInspectorComponent",
+                "Id": 5425877141625515241
+            },
+            "Component_[8984855053831109289]": {
+                "$type": "EditorLockComponent",
+                "Id": 8984855053831109289
+            },
+            "Component_[9054452133554679410]": {
+                "$type": "EditorOnlyEntityComponent",
+                "Id": 9054452133554679410
+            },
+            "Component_[911132208663595762]": {
+                "$type": "EditorEntityIconComponent",
+                "Id": 911132208663595762
+            }
+        }
+    },
+    "Entities": {
+        "Entity_[17888050513644]": {
+            "Id": "Entity_[17888050513644]",
+            "Name": "Collectable_SpaceshipDamage",
+            "Components": {
+                "Component_[10203891771109541591]": {
+                    "$type": "EditorColliderComponent",
+                    "Id": 10203891771109541591,
+                    "ColliderConfiguration": {
+                        "CollisionLayer": {
+                            "Index": 4
+                        },
+                        "CollisionGroupId": {
+                            "GroupId": "{094428DB-3F56-4BA2-B5CD-6983A96AD9F0}"
+                        },
+                        "Trigger": true,
+                        "Position": [
+                            0.0,
+                            0.0,
+                            0.5
+                        ],
+                        "MaterialSlots": {
+                            "Slots": [
+                                {
+                                    "Name": "Entire object"
+                                }
+                            ]
+                        }
+                    },
+                    "ShapeConfiguration": {
+                        "ShapeType": 1,
+                        "Box": {
+                            "Scale": [
+                                1.2000000476837158,
+                                1.2000000476837158,
+                                1.2000000476837158
+                            ],
+                            "Configuration": [
+                                0.8999999761581421,
+                                0.8999999761581421,
+                                0.8999999761581421
+                            ]
+                        }
+                    }
+                },
+                "Component_[11098641646404248537]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11098641646404248537
+                },
+                "Component_[11930927080185345177]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 11930927080185345177
+                },
+                "Component_[12089422395376287798]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 12089422395376287798,
+                    "Parent Entity": "ContainerEntity",
+                    "Transform Data": {
+                        "UniformScale": 1.2000000476837158
+                    }
+                },
+                "Component_[13574116090370416915]": {
+                    "$type": "GenericComponentWrapper",
+                    "Id": 13574116090370416915,
+                    "m_template": {
+                        "$type": "CollectableComponent",
+                        "Type": 2,
+                        "Amount": 25.0
+                    }
+                },
+                "Component_[14101432015345361714]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14101432015345361714
+                },
+                "Component_[1580632620349321752]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 1580632620349321752
+                },
+                "Component_[16149254559597318777]": {
+                    "$type": "EditorStaticRigidBodyComponent",
+                    "Id": 16149254559597318777
+                },
+                "Component_[17183097540149551424]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 17183097540149551424
+                },
+                "Component_[1897501810817359222]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 1897501810817359222,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{B21D8AA9-80DF-53EC-8172-28C4DA2DA62B}",
+                                    "subId": 272812129
+                                },
+                                "assetHint": "assets/3rdparty/kenney/platformerkit/models/fbx format/spikeblock.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[5118048989756122764]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 5118048989756122764
+                },
+                "Component_[7408318042447394507]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 7408318042447394507
+                },
+                "Component_[9061100106071889821]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 9061100106071889821,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 12089422395376287798
+                        },
+                        {
+                            "ComponentId": 16149254559597318777,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 1897501810817359222,
+                            "SortIndex": 2
+                        },
+                        {
+                            "ComponentId": 10203891771109541591,
+                            "SortIndex": 3
+                        },
+                        {
+                            "ComponentId": 13574116090370416915,
+                            "SortIndex": 4
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}

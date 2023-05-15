@@ -1,0 +1,93 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "machine_wirelessCable",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    {},
+                    "RootNode",
+                    "RootNode.machine_wirelessCable",
+                    "RootNode.machine_wirelessCable.cable"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{0783B363-7BAD-563F-99DE-CD293CF4D48E}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_machine_wirelessCable_7B412B28_9D00_573A_895C_7B00BB23912B_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.machine_wirelessCable"
+                ],
+                "unselectedNodes": [
+                    "RootNode.machine_wirelessCable.cable"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{7B412B28-9D00-573A-895C-7B00BB23912B}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_machine_wirelessCable_7BC19302_0D76_5D1B_BAD6_9C57D3E9B3B2_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.machine_wirelessCable.cable"
+                ],
+                "unselectedNodes": [
+                    "RootNode.machine_wirelessCable"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{7BC19302-0D76-5D1B-BAD6-9C57D3E9B3B2}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/machine_wirelessCable_fbx.procprefab",
+            "id": "{658298F7-C218-538B-B194-6E07799D2547}"
+        }
+    ]
+}

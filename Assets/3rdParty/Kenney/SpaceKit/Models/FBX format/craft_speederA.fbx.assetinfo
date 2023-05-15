@@ -1,0 +1,60 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "craft_speederA",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    {},
+                    "RootNode",
+                    "RootNode.craft_speederA"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "targetCoordinateSystem": 1,
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{F9A33963-E46E-54E8-80C2-71C488A344DE}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_craft_speederA_C5F76B6A_EA7D_5E75_9359_9ACD5B2D30DF_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.craft_speederA"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{C5F76B6A-EA7D-5E75-9359-9ACD5B2D30DF}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/craft_speederA_fbx.procprefab",
+            "id": "{4681B2F7-8AD4-5144-A33D-25CBDF42B18A}"
+        }
+    ]
+}

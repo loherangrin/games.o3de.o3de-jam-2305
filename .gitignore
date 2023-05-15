@@ -4,6 +4,7 @@
 _savebackup/
 CMakeUserPresets.json
 
+Assets/3rdParty/**/*.fbx
 Assets/3rdParty/**/*.png
 Assets/3rdParty/**/*.ttf
 Assets/3rdParty/**/*.txt

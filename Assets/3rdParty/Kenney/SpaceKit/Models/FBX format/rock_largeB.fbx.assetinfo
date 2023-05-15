@@ -1,0 +1,63 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "rock_largeB",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode",
+                    "RootNode.rock_largeB",
+                    "RootNode.rock_largeB.transform",
+                    "RootNode.rock_largeB.custom_properties",
+                    "RootNode.rock_largeB.UV0",
+                    "RootNode.rock_largeB.rockTrack",
+                    "RootNode.rock_largeB.rock"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{869E16BF-0F1C-5FD8-97B0-BB08C3E4BBA7}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_rock_largeB_7E5207ED_694A_54DA_ACC3_C63A3587D6A0_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.rock_largeB"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{7E5207ED-694A-54DA-ACC3-C63A3587D6A0}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/rock_largeB_fbx.procprefab",
+            "id": "{DBA3B75B-9598-52EC-87A2-8BC917FA0C59}"
+        }
+    ]
+}

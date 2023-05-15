@@ -1,0 +1,864 @@
+{
+    "ContainerEntity": {
+        "Id": "ContainerEntity",
+        "Name": "Tile_LandingArea",
+        "Components": {
+            "Component_[11098713641063705932]": {
+                "$type": "EditorInspectorComponent",
+                "Id": 11098713641063705932
+            },
+            "Component_[12821706647319340431]": {
+                "$type": "EditorDisabledCompositionComponent",
+                "Id": 12821706647319340431
+            },
+            "Component_[17852268908535539780]": {
+                "$type": "EditorEntityIconComponent",
+                "Id": 17852268908535539780
+            },
+            "Component_[2869956447090810029]": {
+                "$type": "EditorEntitySortComponent",
+                "Id": 2869956447090810029,
+                "Child Entity Order": [
+                    "Entity_[484721922131]"
+                ]
+            },
+            "Component_[3723743661699208892]": {
+                "$type": "EditorPendingCompositionComponent",
+                "Id": 3723743661699208892
+            },
+            "Component_[3994146936970816081]": {
+                "$type": "EditorPrefabComponent",
+                "Id": 3994146936970816081
+            },
+            "Component_[5354061532852703618]": {
+                "$type": "EditorLockComponent",
+                "Id": 5354061532852703618
+            },
+            "Component_[5857764762596454448]": {
+                "$type": "EditorVisibilityComponent",
+                "Id": 5857764762596454448
+            },
+            "Component_[6464254698951618645]": {
+                "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                "Id": 6464254698951618645,
+                "Parent Entity": ""
+            },
+            "Component_[9048921324848614418]": {
+                "$type": "EditorOnlyEntityComponent",
+                "Id": 9048921324848614418
+            }
+        }
+    },
+    "Entities": {
+        "Entity_[454657151059]": {
+            "Id": "Entity_[454657151059]",
+            "Name": "Pivot",
+            "Components": {
+                "Component_[10633059262178642278]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 10633059262178642278
+                },
+                "Component_[11212896381886634679]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 11212896381886634679,
+                    "Child Entity Order": [
+                        "Entity_[463247085651]",
+                        "Entity_[458952118355]"
+                    ]
+                },
+                "Component_[11984989660238129154]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 11984989660238129154
+                },
+                "Component_[12186066651094959854]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 12186066651094959854
+                },
+                "Component_[14764299028308840780]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14764299028308840780
+                },
+                "Component_[18191181300497989478]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 18191181300497989478,
+                    "Parent Entity": "Entity_[484721922131]"
+                },
+                "Component_[3321180538296234722]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 3321180538296234722,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 18191181300497989478
+                        }
+                    ]
+                },
+                "Component_[4319517698355735734]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 4319517698355735734
+                },
+                "Component_[5578182384773318507]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5578182384773318507
+                }
+            }
+        },
+        "Entity_[458952118355]": {
+            "Id": "Entity_[458952118355]",
+            "Name": "Selection",
+            "Components": {
+                "Component_[11218684959170502682]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11218684959170502682
+                },
+                "Component_[13283252000379036458]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 13283252000379036458,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 6041841020307422320
+                        },
+                        {
+                            "ComponentId": 246435818352317150,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 17016956160959793532,
+                            "SortIndex": 2
+                        },
+                        {
+                            "ComponentId": 14154118261332784397,
+                            "SortIndex": 3
+                        }
+                    ]
+                },
+                "Component_[14154118261332784397]": {
+                    "$type": "EditorMaterialComponent",
+                    "Id": 14154118261332784397,
+                    "Controller": {
+                        "Configuration": {
+                            "materials": [
+                                {
+                                    "Key": {
+                                        "materialSlotStableId": 1803671422
+                                    },
+                                    "Value": {
+                                        "MaterialAsset": {
+                                            "assetId": {
+                                                "guid": "{C47325C4-95A7-56D4-959B-0DE288051C93}"
+                                            },
+                                            "assetHint": "assets/tileselection.azmaterial"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                },
+                "Component_[14732980711727763103]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 14732980711727763103
+                },
+                "Component_[15727796308960798861]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 15727796308960798861
+                },
+                "Component_[17016956160959793532]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 17016956160959793532,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{B991E03B-F50D-552E-9E2D-64FA6DAB1CCB}",
+                                    "subId": 285127096
+                                },
+                                "assetHint": "materialeditor/viewportmodels/cube.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[1930416454631242264]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1930416454631242264
+                },
+                "Component_[246435818352317150]": {
+                    "$type": "EditorNonUniformScaleComponent",
+                    "Id": 246435818352317150,
+                    "NonUniformScale": [
+                        3.0999999046325684,
+                        3.0999999046325684,
+                        1.100000023841858
+                    ]
+                },
+                "Component_[4503969048136717252]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 4503969048136717252
+                },
+                "Component_[5680778001532595220]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 5680778001532595220
+                },
+                "Component_[6041841020307422320]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 6041841020307422320,
+                    "Parent Entity": "Entity_[454657151059]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            -0.550000011920929
+                        ]
+                    }
+                },
+                "Component_[6170054089200090057]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6170054089200090057
+                }
+            }
+        },
+        "Entity_[463247085651]": {
+            "Id": "Entity_[463247085651]",
+            "Name": "Mesh",
+            "Components": {
+                "Component_[11274827421413939050]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 11274827421413939050,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{B99988EA-7CA8-5381-8973-4A3CDE90EFA9}",
+                                    "subId": 270243618
+                                },
+                                "assetHint": "assets/3rdparty/kenney/platformerkit/models/fbx format/block.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[14202787679097373678]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 14202787679097373678
+                },
+                "Component_[15195168121558635339]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 15195168121558635339,
+                    "Child Entity Order": [
+                        "Entity_[467542052947]",
+                        "Entity_[480426954835]"
+                    ]
+                },
+                "Component_[17727213901865745502]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 17727213901865745502
+                },
+                "Component_[17910162091605618236]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 17910162091605618236,
+                    "Parent Entity": "Entity_[454657151059]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            0.5
+                        ],
+                        "Rotate": [
+                            180.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[1946359245141860815]": {
+                    "$type": "EditorNonUniformScaleComponent",
+                    "Id": 1946359245141860815,
+                    "NonUniformScale": [
+                        3.0,
+                        3.0,
+                        1.0
+                    ]
+                },
+                "Component_[2962112778169925927]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 2962112778169925927
+                },
+                "Component_[4518968000486697018]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 4518968000486697018
+                },
+                "Component_[5238082013637829335]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 5238082013637829335
+                },
+                "Component_[645000815982673556]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 645000815982673556,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 17910162091605618236
+                        },
+                        {
+                            "ComponentId": 1946359245141860815,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 11274827421413939050,
+                            "SortIndex": 2
+                        }
+                    ]
+                },
+                "Component_[6850120362699829814]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 6850120362699829814
+                }
+            }
+        },
+        "Entity_[467542052947]": {
+            "Id": "Entity_[467542052947]",
+            "Name": "Top",
+            "Components": {
+                "Component_[10358893040754915802]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 10358893040754915802
+                },
+                "Component_[10576227495999963130]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10576227495999963130
+                },
+                "Component_[17886191023684847188]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 17886191023684847188
+                },
+                "Component_[247933403144804743]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 247933403144804743
+                },
+                "Component_[2847381934562965640]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 2847381934562965640
+                },
+                "Component_[4222735375222998729]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 4222735375222998729,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 7168599871746257376
+                        }
+                    ]
+                },
+                "Component_[6725223417417099398]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6725223417417099398
+                },
+                "Component_[7168599871746257376]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 7168599871746257376,
+                    "Parent Entity": "Entity_[463247085651]",
+                    "Transform Data": {
+                        "Rotate": [
+                            180.0,
+                            0.0,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[7310791580400313204]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 7310791580400313204,
+                    "Child Entity Order": [
+                        "Entity_[476131987539]",
+                        "Entity_[489016889427]"
+                    ]
+                }
+            }
+        },
+        "Entity_[471837020243]": {
+            "Id": "Entity_[471837020243]",
+            "Name": "Recharger",
+            "Components": {
+                "Component_[112082530053558226]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 112082530053558226
+                },
+                "Component_[11355142177242602850]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 11355142177242602850
+                },
+                "Component_[1382432277491379697]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 1382432277491379697
+                },
+                "Component_[15430525403998621713]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 15430525403998621713,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 16983194677804980834
+                        },
+                        {
+                            "ComponentId": 7865192562256464146,
+                            "SortIndex": 1
+                        }
+                    ]
+                },
+                "Component_[15476437886443607777]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 15476437886443607777
+                },
+                "Component_[16983194677804980834]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 16983194677804980834,
+                    "Parent Entity": "Entity_[493311856723]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.6000000238418579,
+                            0.6000000238418579,
+                            0.5
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            135.0
+                        ]
+                    }
+                },
+                "Component_[3207547264145258833]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 3207547264145258833
+                },
+                "Component_[4678140592927619930]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4678140592927619930
+                },
+                "Component_[6470059648262401707]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6470059648262401707
+                },
+                "Component_[7865192562256464146]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 7865192562256464146,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{883A4A01-D5F8-58F0-92B8-439D2950ECD3}",
+                                    "subId": 271903907
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/machine_wirelesscable.azmodel"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[476131987539]": {
+            "Id": "Entity_[476131987539]",
+            "Name": "Rocks_1",
+            "Components": {
+                "Component_[12678855705212712412]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 12678855705212712412
+                },
+                "Component_[14523563206339460261]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 14523563206339460261
+                },
+                "Component_[15161068285998079426]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 15161068285998079426
+                },
+                "Component_[1844436615509672782]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 1844436615509672782
+                },
+                "Component_[2206877063142992741]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 2206877063142992741,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{393F6878-C206-5B12-BF19-7CA960C0CF97}",
+                                    "subId": 278007561
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rocks_smalla.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[3399725940101954366]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3399725940101954366
+                },
+                "Component_[4109904848550742099]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 4109904848550742099
+                },
+                "Component_[4437195634353413573]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4437195634353413573,
+                    "Parent Entity": "Entity_[467542052947]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.5,
+                            0.5,
+                            0.0
+                        ]
+                    }
+                },
+                "Component_[6764628728474611414]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 6764628728474611414,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 4437195634353413573
+                        },
+                        {
+                            "ComponentId": 2206877063142992741,
+                            "SortIndex": 1
+                        }
+                    ]
+                },
+                "Component_[8587652494571227496]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 8587652494571227496
+                }
+            }
+        },
+        "Entity_[480426954835]": {
+            "Id": "Entity_[480426954835]",
+            "Name": "Bottom",
+            "Components": {
+                "Component_[11877303647530869863]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 11877303647530869863
+                },
+                "Component_[1263630249815849074]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 1263630249815849074
+                },
+                "Component_[13205254434231434414]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 13205254434231434414,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 4351056547763097391
+                        }
+                    ]
+                },
+                "Component_[13560826614876321295]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 13560826614876321295
+                },
+                "Component_[18343613811035689948]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 18343613811035689948,
+                    "Child Entity Order": [
+                        "Entity_[493311856723]"
+                    ]
+                },
+                "Component_[1860486028602544195]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 1860486028602544195
+                },
+                "Component_[4351056547763097391]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 4351056547763097391,
+                    "Parent Entity": "Entity_[463247085651]",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            1.0
+                        ]
+                    }
+                },
+                "Component_[7556520062730991946]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 7556520062730991946
+                },
+                "Component_[9211874889725021780]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 9211874889725021780
+                }
+            }
+        },
+        "Entity_[484721922131]": {
+            "Id": "Entity_[484721922131]",
+            "Name": "Tile",
+            "Components": {
+                "Component_[1011365138734964543]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 1011365138734964543
+                },
+                "Component_[14113640122714645374]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 14113640122714645374
+                },
+                "Component_[14987722550609763918]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 14987722550609763918,
+                    "Child Entity Order": [
+                        "Entity_[454657151059]"
+                    ]
+                },
+                "Component_[18225302198385793238]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 18225302198385793238
+                },
+                "Component_[3198290230689532004]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 3198290230689532004,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 5235527072496595785
+                        },
+                        {
+                            "ComponentId": 6683566670108555950,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 8177967200863179891,
+                            "SortIndex": 2
+                        },
+                        {
+                            "ComponentId": 9423583702822358790,
+                            "SortIndex": 3
+                        }
+                    ]
+                },
+                "Component_[3529608618345087930]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 3529608618345087930
+                },
+                "Component_[5235527072496595785]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 5235527072496595785,
+                    "Parent Entity": "ContainerEntity",
+                    "Transform Data": {
+                        "Translate": [
+                            0.0,
+                            0.0,
+                            -0.5
+                        ]
+                    }
+                },
+                "Component_[6683566670108555950]": {
+                    "$type": "GenericComponentWrapper",
+                    "Id": 6683566670108555950,
+                    "m_template": {
+                        "$type": "TileComponent",
+                        "Mesh": "Entity_[454657151059]",
+                        "Decay": 0.25,
+                        "ShakeSpeed": 1.0,
+                        "ShakeHeight": 0.20000000298023224,
+                        "Flip": 0.75,
+                        "Select": "Entity_[458952118355]"
+                    }
+                },
+                "Component_[7769032804394617892]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 7769032804394617892
+                },
+                "Component_[8177967200863179891]": {
+                    "$type": "EditorStaticRigidBodyComponent",
+                    "Id": 8177967200863179891
+                },
+                "Component_[9361929054577835282]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 9361929054577835282
+                },
+                "Component_[9423583702822358790]": {
+                    "$type": "EditorColliderComponent",
+                    "Id": 9423583702822358790,
+                    "ColliderConfiguration": {
+                        "CollisionLayer": {
+                            "Index": 3
+                        },
+                        "CollisionGroupId": {
+                            "GroupId": "{77D4F507-7872-46C7-AB05-8EF256E9596E}"
+                        },
+                        "MaterialSlots": {
+                            "Slots": [
+                                {
+                                    "Name": "Entire object"
+                                }
+                            ]
+                        }
+                    },
+                    "ShapeConfiguration": {
+                        "ShapeType": 1,
+                        "Box": {
+                            "Configuration": [
+                                3.0,
+                                3.0,
+                                1.0
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "Entity_[489016889427]": {
+            "Id": "Entity_[489016889427]",
+            "Name": "Rocks_2",
+            "Components": {
+                "Component_[10421315101836637017]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 10421315101836637017
+                },
+                "Component_[11181721479957135604]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 11181721479957135604,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{2645DE6A-57FE-5261-9A50-55FE08CF9892}",
+                                    "subId": 278617779
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/rocks_smallb.azmodel"
+                            }
+                        }
+                    }
+                },
+                "Component_[12128145007424879703]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 12128145007424879703
+                },
+                "Component_[13893343215382838517]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 13893343215382838517,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 736156367993738774
+                        },
+                        {
+                            "ComponentId": 11181721479957135604,
+                            "SortIndex": 1
+                        }
+                    ]
+                },
+                "Component_[14065414991002560709]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 14065414991002560709
+                },
+                "Component_[14856104816550450589]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 14856104816550450589
+                },
+                "Component_[4527291847736138130]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 4527291847736138130
+                },
+                "Component_[736156367993738774]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 736156367993738774,
+                    "Parent Entity": "Entity_[467542052947]",
+                    "Transform Data": {
+                        "Translate": [
+                            -0.5,
+                            -0.5,
+                            0.0
+                        ],
+                        "Rotate": [
+                            0.0,
+                            0.0,
+                            45.000003814697266
+                        ]
+                    }
+                },
+                "Component_[8030913797949802952]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 8030913797949802952
+                },
+                "Component_[8685321999049939730]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 8685321999049939730
+                }
+            }
+        },
+        "Entity_[493311856723]": {
+            "Id": "Entity_[493311856723]",
+            "Name": "Platform",
+            "Components": {
+                "Component_[10435468597903035313]": {
+                    "$type": "EditorEntityIconComponent",
+                    "Id": 10435468597903035313
+                },
+                "Component_[10532729172315786787]": {
+                    "$type": "EditorOnlyEntityComponent",
+                    "Id": 10532729172315786787
+                },
+                "Component_[16548177713193753295]": {
+                    "$type": "EditorLockComponent",
+                    "Id": 16548177713193753295
+                },
+                "Component_[16644320763130644933]": {
+                    "$type": "EditorEntitySortComponent",
+                    "Id": 16644320763130644933,
+                    "Child Entity Order": [
+                        "Entity_[471837020243]"
+                    ]
+                },
+                "Component_[3274291602100162746]": {
+                    "$type": "EditorNonUniformScaleComponent",
+                    "Id": 3274291602100162746,
+                    "NonUniformScale": [
+                        2.0,
+                        2.0,
+                        1.0
+                    ]
+                },
+                "Component_[3498697528055642205]": {
+                    "$type": "EditorDisabledCompositionComponent",
+                    "Id": 3498697528055642205
+                },
+                "Component_[4210653320029747730]": {
+                    "$type": "EditorPendingCompositionComponent",
+                    "Id": 4210653320029747730
+                },
+                "Component_[5078243508445583696]": {
+                    "$type": "{27F1E1A1-8D9D-4C3B-BD3A-AFB9762449C0} TransformComponent",
+                    "Id": 5078243508445583696,
+                    "Parent Entity": "Entity_[480426954835]"
+                },
+                "Component_[5397147911669407388]": {
+                    "$type": "EditorInspectorComponent",
+                    "Id": 5397147911669407388,
+                    "ComponentOrderEntryArray": [
+                        {
+                            "ComponentId": 5078243508445583696
+                        },
+                        {
+                            "ComponentId": 3274291602100162746,
+                            "SortIndex": 1
+                        },
+                        {
+                            "ComponentId": 8835260596066383568,
+                            "SortIndex": 2
+                        }
+                    ]
+                },
+                "Component_[6139432932744354342]": {
+                    "$type": "EditorVisibilityComponent",
+                    "Id": 6139432932744354342
+                },
+                "Component_[8835260596066383568]": {
+                    "$type": "AZ::Render::EditorMeshComponent",
+                    "Id": 8835260596066383568,
+                    "Controller": {
+                        "Configuration": {
+                            "ModelAsset": {
+                                "assetId": {
+                                    "guid": "{D55A75D9-8EE7-52B4-9C61-54959E6C043A}",
+                                    "subId": 279874226
+                                },
+                                "assetHint": "assets/3rdparty/kenney/spacekit/models/fbx format/platform_low.azmodel"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

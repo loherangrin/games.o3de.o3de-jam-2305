@@ -1,0 +1,104 @@
+{
+    "values": [
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "machine_barrel",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode",
+                    "RootNode.machine_barrel",
+                    "RootNode.machine_barrel.transform",
+                    "RootNode.machine_barrel.custom_properties",
+                    "RootNode.machine_barrel.UV0",
+                    "RootNode.machine_barrel.dark",
+                    "RootNode.machine_barrel.metalRed",
+                    "RootNode.machine_barrel.metal",
+                    "RootNode.machine_barrel.metalDark",
+                    "RootNode.machine_barrel.cables",
+                    "RootNode.machine_barrel.cables.transform",
+                    "RootNode.machine_barrel.cables.custom_properties",
+                    "RootNode.machine_barrel.cables.UV0",
+                    "RootNode.machine_barrel.cables.metal",
+                    "RootNode.machine_barrel.cables.dark"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "MaterialRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    }
+                ]
+            },
+            "id": "{FBA518B4-EBA0-5442-B7BA-2C2772107752}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_machine_barrel_911B012B_5301_5FC7_A074_E3AA4A9C804F_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.machine_barrel"
+                ],
+                "unselectedNodes": [
+                    "RootNode.machine_barrel.cables"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{911B012B-5301-5FC7-A074-E3AA4A9C804F}"
+        },
+        {
+            "$type": "{07B356B7-3635-40B5-878A-FAC4EFD5AD86} MeshGroup",
+            "name": "default_machine_barrel_49D8C656_96D5_50E4_982E_118F4857C3B8_",
+            "nodeSelectionList": {
+                "selectedNodes": [
+                    "RootNode.machine_barrel.cables"
+                ],
+                "unselectedNodes": [
+                    "RootNode.machine_barrel"
+                ]
+            },
+            "rules": {
+                "rules": [
+                    {
+                        "$type": "ProceduralMeshGroupRule"
+                    },
+                    {
+                        "$type": "UnmodifiableRule"
+                    },
+                    {
+                        "$type": "CoordinateSystemRule",
+                        "useAdvancedData": true
+                    },
+                    {
+                        "$type": "{6E796AC8-1484-4909-860A-6D3F22A7346F} LodRule"
+                    }
+                ]
+            },
+            "id": "{49D8C656-96D5-50E4-982E-118F4857C3B8}"
+        },
+        {
+            "$type": "PrefabGroup",
+            "name": "Assets/3rdParty/Kenney/SpaceKit/Models/FBX format/machine_barrel_fbx.procprefab",
+            "id": "{13FA08D5-D176-553F-87C1-A2F1E0F9D1E0}"
+        }
+    ]
+}
