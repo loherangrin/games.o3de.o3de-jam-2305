@@ -108,7 +108,7 @@ void SpaceshipComponent::GetRequiredServices(AZ::ComponentDescriptor::Dependency
 	io_required.push_back(AZ_CRC_CE("TransformService"));
 }
 
-void SpaceshipComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void SpaceshipComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void SpaceshipComponent::Init()

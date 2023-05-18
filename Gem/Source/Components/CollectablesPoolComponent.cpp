@@ -104,10 +104,10 @@ void CollectablesPoolComponent::GetIncompatibleServices(AZ::ComponentDescriptor:
 	io_incompatible.push_back(AZ_CRC_CE("CollectablesPoolService"));
 }
 
-void CollectablesPoolComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& io_required)
+void CollectablesPoolComponent::GetRequiredServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_required)
 {}
 
-void CollectablesPoolComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void CollectablesPoolComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void CollectablesPoolComponent::Init()
@@ -188,7 +188,7 @@ void CollectablesPoolComponent::TryCreateCollectable(const AZ::EntityId& i_tileE
 		newCollectable->m_timer = GenerateRandomInRange(m_minCollectableExpiration, m_maxCollectableExpiration);
 	};
 
-	spawnOptions.m_completionCallback = [this, i_tileEntityId](AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
+	spawnOptions.m_completionCallback = [this, i_tileEntityId]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
 		{

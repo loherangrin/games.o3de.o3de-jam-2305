@@ -111,13 +111,13 @@ namespace Loherangrin::Games::O3DEJam2305
 
 		virtual void OnAllTilesCreated(){}
 
-		virtual void OnTileEnergyChanged(const AZ::EntityId& i_tileEntityId, float i_normalizedNewEnergy){}
+		virtual void OnTileEnergyChanged([[maybe_unused]] const AZ::EntityId& i_tileEntityId, [[maybe_unused]] float i_normalizedNewEnergy){}
 
-        virtual void OnTileClaimed(const AZ::EntityId& i_tileEntityId){}
-		virtual void OnTileLost(const AZ::EntityId& i_tileEntityId){}
+        virtual void OnTileClaimed([[maybe_unused]] const AZ::EntityId& i_tileEntityId){}
+		virtual void OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntityId){}
 
-		virtual void OnTileSelected(const AZ::EntityId& i_tileEntityId){}
-		virtual void OnTileDeselected(const AZ::EntityId& i_tileEntityId){}
+		virtual void OnTileSelected([[maybe_unused]] const AZ::EntityId& i_tileEntityId){}
+		virtual void OnTileDeselected([[maybe_unused]] const AZ::EntityId& i_tileEntityId){}
     };
     
     class TilesNotificationBusTraits

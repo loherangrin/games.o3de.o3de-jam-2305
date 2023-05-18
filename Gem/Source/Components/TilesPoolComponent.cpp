@@ -94,10 +94,10 @@ void TilesPoolComponent::GetIncompatibleServices(AZ::ComponentDescriptor::Depend
 	io_incompatible.push_back(AZ_CRC_CE("TilesPoolService"));
 }
 
-void TilesPoolComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& io_required)
+void TilesPoolComponent::GetRequiredServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_required)
 {}
 
-void TilesPoolComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void TilesPoolComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void TilesPoolComponent::Init()

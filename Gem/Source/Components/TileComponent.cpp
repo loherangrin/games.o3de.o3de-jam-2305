@@ -95,7 +95,7 @@ void TileComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArray
 	io_required.push_back(AZ_CRC_CE("TransformService"));
 }
 
-void TileComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void TileComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void TileComponent::Activate()

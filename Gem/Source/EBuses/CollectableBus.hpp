@@ -29,11 +29,11 @@ namespace Loherangrin::Games::O3DEJam2305
         AZ_RTTI(CollectablesNotifications, "{580578F6-150A-4A30-8A22-C799B336B52A}");
         virtual ~CollectablesNotifications() = default;
 
-		virtual void OnStopDecayCollected(float i_duration){}
-		virtual void OnSpaceshipEnergyCollected(float i_energy){}
-		virtual void OnTileEnergyCollected(float i_energy){}
-        virtual void OnPointsCollected(Points i_points){}
-        virtual void OnSpeedCollected(float i_multiplier, float i_duration){}
+		virtual void OnStopDecayCollected([[maybe_unused]] float i_duration){}
+		virtual void OnSpaceshipEnergyCollected([[maybe_unused]] float i_energy){}
+		virtual void OnTileEnergyCollected([[maybe_unused]] float i_energy){}
+        virtual void OnPointsCollected([[maybe_unused]] Points i_points){}
+        virtual void OnSpeedCollected([[maybe_unused]] float i_multiplier, [[maybe_unused]] float i_duration){}
     };
     
     class CollectablesNotificationBusTraits

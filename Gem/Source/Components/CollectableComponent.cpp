@@ -71,12 +71,12 @@ void CollectableComponent::GetRequiredServices(AZ::ComponentDescriptor::Dependen
 	io_required.push_back(AZ_CRC_CE("PhysicsRigidBodyService"));
 }
 
-void CollectableComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void CollectableComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void CollectableComponent::Init()
 {
-	m_triggerEnterHandler = AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler([this]([[maybe_unused]] AzPhysics::SimulatedBodyHandle i_bodyHandle, const AzPhysics::TriggerEvent& i_trigger)
+	m_triggerEnterHandler = AzPhysics::SimulatedBodyEvents::OnTriggerEnter::Handler([this]([[maybe_unused]] AzPhysics::SimulatedBodyHandle i_bodyHandle, [[maybe_unused]] const AzPhysics::TriggerEvent& i_trigger)
 	{
 		switch(m_type)
 		{

@@ -85,7 +85,7 @@ void UiComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayTy
 	io_required.push_back(AZ_CRC("UiCanvasRefService", 0xb4cb5ef4));
 }
 
-void UiComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void UiComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void UiComponent::Activate()

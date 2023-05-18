@@ -97,10 +97,10 @@ void StormsPoolComponent::GetIncompatibleServices(AZ::ComponentDescriptor::Depen
 	io_incompatible.push_back(AZ_CRC_CE("StormsPoolService"));
 }
 
-void StormsPoolComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& io_required)
+void StormsPoolComponent::GetRequiredServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_required)
 {}
 
-void StormsPoolComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void StormsPoolComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void StormsPoolComponent::Init()
@@ -193,7 +193,7 @@ void StormsPoolComponent::CreateStorm()
 		newStorm->m_moveSpeed = GenerateRandomInRange(m_minStormSpeed, m_maxStormSpeed);
 	};
 
-	spawnOptions.m_completionCallback = [this](AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
+	spawnOptions.m_completionCallback = [this]([[maybe_unused]] AzFramework::EntitySpawnTicket::Id i_spawnTicketId, AzFramework::SpawnableConstEntityContainerView i_newEntities)
 	{
 		if(i_newEntities.empty())
 		{

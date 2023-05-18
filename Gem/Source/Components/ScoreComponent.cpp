@@ -60,10 +60,10 @@ void ScoreComponent::GetIncompatibleServices(AZ::ComponentDescriptor::Dependency
 	io_incompatible.push_back(AZ_CRC_CE("ScoreService"));
 }
 
-void ScoreComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArrayType& io_required)
+void ScoreComponent::GetRequiredServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_required)
 {}
 
-void ScoreComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void ScoreComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void ScoreComponent::Activate()

@@ -49,7 +49,7 @@ namespace Loherangrin::Games::O3DEJam2305
         AZ_RTTI(SpaceshipNotifications, "{089C3DD7-1BA9-444D-9CC0-7156848CFDA0}");
         virtual ~SpaceshipNotifications() = default;
 
-		virtual void OnSpaceshipEnergyChanged(float i_normalizedNewEnergy){}
+		virtual void OnSpaceshipEnergyChanged([[maybe_unused]] float i_normalizedNewEnergy){}
 
 		virtual void OnEnergySavingModeActivated(){}
         virtual void OnEnergySavingModeDeactivated(){}

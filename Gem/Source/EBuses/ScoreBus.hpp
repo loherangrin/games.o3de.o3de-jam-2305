@@ -31,8 +31,8 @@ namespace Loherangrin::Games::O3DEJam2305
         AZ_RTTI(ScoreNotifications, "{7796EF24-1875-4013-8A2E-E87FB75E256C}");
         virtual ~ScoreNotifications() = default;
 
-		virtual void OnScoreChanged(TotalPoints i_newPoints){}
-		virtual void OnClaimedTilesChanged(TileCount i_newClaimedTiles){}
+		virtual void OnScoreChanged([[maybe_unused]] TotalPoints i_newPoints){}
+		virtual void OnClaimedTilesChanged([[maybe_unused]] TileCount i_newClaimedTiles){}
     };
     
     class ScoreNotificationBusTraits

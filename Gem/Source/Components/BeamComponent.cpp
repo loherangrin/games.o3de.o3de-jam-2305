@@ -72,7 +72,7 @@ void BeamComponent::GetRequiredServices(AZ::ComponentDescriptor::DependencyArray
 	io_required.push_back(AZ_CRC_CE("PhysicsRigidBodyService"));
 }
 
-void BeamComponent::GetDependentServices(AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
+void BeamComponent::GetDependentServices([[maybe_unused]] AZ::ComponentDescriptor::DependencyArrayType& io_dependent)
 {}
 
 void BeamComponent::Init()
