@@ -166,7 +166,7 @@ void ScoreComponent::OnTileLost([[maybe_unused]] const AZ::EntityId& i_tileEntit
 
 ScoreComponent::Points ScoreComponent::CalculateAllTilePoints() const
 {
-	return (m_nClaimedTiles * m_claimedTilePoints);
+	return (static_cast<Points>(m_nClaimedTiles) * m_claimedTilePoints);
 }
 
 void ScoreComponent::NotifyClaimedTiles() const
